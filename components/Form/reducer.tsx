@@ -1,0 +1,188 @@
+type actionType = {
+    type: string,
+    value: any
+}
+
+function reducer(state: any, action: actionType) {
+    const { type, value } = action
+    console.log('action: ', type, ' value: ', value)
+
+    if (type === 'phoneNumber') {
+        // toServer: smsCode.send()
+        // fromServer: (code send) -> next page 
+        return Object.assign({...state}, {
+            phoneNumber: value,
+            axiosPhoneNumber: true
+        })
+    }
+
+    else if (type === 'axios.phoneNumber') {
+        // TODO: throttle subsequent phonenumbers
+        return Object.assign({...state}, {
+            page: state.page + 1
+        })
+    }
+
+    if (type === 'axios.phoneNumber.error') {
+        return Object.assign({...state}, {
+            axiosPhoneNumber: false
+        })
+    }
+
+    if (type === 'smsCodeToMatch') {
+            return Object.assign({...state}, {
+                axiosSmsCode: true,
+                smsCodeToMatch: value,
+            })
+    }
+
+    else if (type === 'axios.smsCode') {
+        return Object.assign({...state}, {
+            page: state.page + 1
+        })    
+    }
+
+    else if (type === 'axios.smsCode.error') {
+        if (true) {
+            return Object.assign({...state}, {
+                page: state.page
+            })
+        }
+    }
+
+    else if (type === 'password') {
+        return Object.assign({...state}, {
+            axiosPassword: true,
+            password: value
+        })
+    }
+
+    else if (type === 'axios.password') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+        })
+    }
+
+    else if (type === 'email') {
+        return Object.assign({...state}, {
+            axiosEmail: true,
+            email: value
+        })
+    }
+
+    else if (type === 'axios.email') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+        })
+    }
+
+    else if (type === 'accountType') {
+        return Object.assign({...state}, {
+            accountType: value,
+            axiosAccountType: true
+        })
+    }
+
+    else if (type === 'axios.accountType') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+        })
+    }
+
+    else if (type === 'personalData') {
+        return Object.assign({...state}, {
+            axiosPersonalData: true,
+            personalData: value,
+            selectedCountry: value.country
+
+        })
+    }
+
+    else if (type === 'axios.personalData') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+        })
+    }
+
+    else if (type === 'addressData') {
+        return Object.assign({...state}, {
+            axiosAddressData: true,
+            addressData: value,
+            selectedCountry: value.country
+        })
+    }
+
+    else if (type === 'axios.addressData') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+        })
+    }
+
+    else if (type === 'idType') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            selectedIdType: value
+        })
+    }
+
+    else if (type === 'idData') {
+        return Object.assign({...state}, {
+            axiosIdData: true,
+            idData: value,
+        })
+    }
+
+    else if (type === 'axios.idData') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+        })
+    }
+
+    else if (type === 'idFiles') {
+        return Object.assign({...state}, {
+            axiosIdFiles: true,
+            idFiles: value
+        })
+    }
+
+    else if (type === 'axios.idFiles') {
+        return Object.assign({...state}, {
+            page: state.page + 1
+        })
+    }
+
+    else if (type === 'idSelfieFile') {
+        return Object.assign({...state}, {
+            axiosIdSelfieFile: true,
+            idSelfieFile: value
+        })
+    }
+
+    else if (type === 'axios.idSelfieFile') {
+        alert('selfie uploaded')
+        return Object.assign({...state}, {
+            page: state.page + 1
+        })
+    }
+
+    else if (type === 'poaFile') {
+        return Object.assign({...state}, {
+            axiosPoaFile: true,
+            poaFile: value
+        })
+    }
+
+    else if (type === 'axios.poaFile') {
+        alert('poa uploaded')
+        return Object.assign({...state}, {
+            page: state.page + 1
+        })
+    }
+
+    else {
+        throw new Error('Unknown action type: ' + type);
+    }
+}
+
+
+export default reducer

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import axios from 'axios'
+import reducer from './reducer'
 import PasswordInput from './PasswordInput'
 import EmailInput from './EmailInput'
 import PersonalDataForm from './PersonalDataForm'
@@ -48,193 +49,6 @@ const CurrentPage: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNu
     // if (pageNumber === 13) return <txSurveyInput />
     // if (pageNumber === 14) return <goalSurveyInput />
 return <div>Unknown step. {dispatchType}</div>
-}
-
-type actionType = {
-    type: string,
-    value: any
-}
-
-function reducer(state: any, action: actionType) {
-    const { type, value } = action
-    console.log('action: ', type, ' value: ', value)
-
-    if (type === 'phoneNumber') {
-        // toServer: smsCode.send()
-        // fromServer: (code send) -> next page 
-        return Object.assign({...state}, {
-            phoneNumber: value,
-            axiosPhoneNumber: true
-        })
-    }
-
-    if (type === 'axios.phoneNumber.error') {
-        // toServer: smsCode.send()
-        // fromServer: (code send) -> next page 
-        return Object.assign({...state}, {
-            // axiosPhoneNumber: false
-        })
-    }
-
-    else if (type === 'axios.phoneNumber') {
-        return Object.assign({...state}, {
-            page: state.page + 1
-        })
-    }
-
-    else if (type === 'smsCodeToMatch') {
-            return Object.assign({...state}, {
-                axiosSmsCode: true,
-                smsCodeToMatch: value,
-            })
-    }
-
-    else if (type === 'axios.smsCode') {
-        return Object.assign({...state}, {
-            page: state.page + 1
-        })    
-    }
-
-    else if (type === 'axios.smsCode.error') {
-        if (true) {
-            return Object.assign({...state}, {
-                page: state.page
-            })
-        }
-    }
-
-    else if (type === 'password') {
-        return Object.assign({...state}, {
-            axiosPassword: true,
-            password: value
-        })
-    }
-
-    else if (type === 'axios.password') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-        })
-    }
-
-    else if (type === 'email') {
-        return Object.assign({...state}, {
-            axiosEmail: true,
-            email: value
-        })
-    }
-
-    else if (type === 'axios.email') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-        })
-    }
-
-    else if (type === 'accountType') {
-        return Object.assign({...state}, {
-            accountType: value,
-            axiosAccountType: true
-        })
-    }
-
-    else if (type === 'axios.accountType') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-        })
-    }
-
-    else if (type === 'personalData') {
-        return Object.assign({...state}, {
-            axiosPersonalData: true,
-            personalData: value,
-            selectedCountry: value.country
-
-        })
-    }
-
-    else if (type === 'axios.personalData') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-        })
-    }
-
-    else if (type === 'addressData') {
-        return Object.assign({...state}, {
-            axiosAddressData: true,
-            addressData: value,
-            selectedCountry: value.country
-        })
-    }
-
-    else if (type === 'axios.addressData') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-        })
-    }
-
-    else if (type === 'idType') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-            selectedIdType: value
-        })
-    }
-
-    else if (type === 'idData') {
-        return Object.assign({...state}, {
-            axiosIdData: true,
-            idData: value,
-        })
-    }
-
-    else if (type === 'axios.idData') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-        })
-    }
-
-    else if (type === 'idFiles') {
-        return Object.assign({...state}, {
-            axiosIdFiles: true,
-            idFiles: value
-        })
-    }
-
-    else if (type === 'axios.idFiles') {
-        return Object.assign({...state}, {
-            page: state.page + 1
-        })
-    }
-
-    else if (type === 'idSelfieFile') {
-        return Object.assign({...state}, {
-            axiosIdSelfieFile: true,
-            idSelfieFile: value
-        })
-    }
-
-    else if (type === 'axios.idSelfieFile') {
-        alert('selfie uploaded')
-        return Object.assign({...state}, {
-            page: state.page + 1
-        })
-    }
-
-    else if (type === 'poaFile') {
-        return Object.assign({...state}, {
-            axiosPoaFile: true,
-            poaFile: value
-        })
-    }
-
-    else if (type === 'axios.poaFile') {
-        alert('poa uploaded')
-        return Object.assign({...state}, {
-            page: state.page + 1
-        })
-    }
-
-    else {
-        throw new Error('Unknown action type: ' + type);
-    }
 }
 
 const initialState = {
@@ -310,8 +124,9 @@ const MultiForm: React.FC = () => {
     const axiosPoaFile = React.useRef(state.axiosPoaFile)
 
     React.useEffect(() => {
+        console.log('LAUNCH AXIOS_PHONENUMBER:')
+        console.log(axiosPhoneNumber)
         if (axiosPhoneNumber.current) {
-            console.log('LAUNCH AXIOS_PHONENUMBER')
             axios.post('http://localhost:4000/api', {phoneNumber: state.phoneNumber})
             .then(({ data }) => {
                 if (data.status === 'ok') {
@@ -319,6 +134,7 @@ const MultiForm: React.FC = () => {
                 }
                 else if (data.status === 'error') {
                     dispatch({ type: 'axios.phoneNumber.error', value: data.value})
+                    axiosPhoneNumber.current = false
                 } 
             })
             .catch(err => console.log(err))

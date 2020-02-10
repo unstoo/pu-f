@@ -43,18 +43,29 @@
 
 .multiForm button {
     box-sizing: border-box;
-    border: none;
-    background-color: #ff9b0f;
     width: 200px;
     height: 45px;
+    border: none;
+    border-radius: 30px;
+    background-color: #ff9b0f;
+    box-shadow: 0px 4px 6.65px 0.35px rgba(255, 155, 15, 0.53);
     color: #fff;
     font-weight: bold;
     font-size: 16px;
     line-height: 10px;
-    box-shadow: 0px 4px 6.65px 0.35px rgba(255, 155, 15, 0.53);
-    border: none;
-    border-radius: 30px;
     transition: ease-in-out 0.3s;  
+}
+
+.multiForm button:hover {
+    background-color: #e6780e;
+    transition: ease-in-out 0.3s;    
+    box-shadow: 1px 3px 5px 0px rgba(255, 155, 15, 0.43);
+}
+
+.multiForm button:hover:disabled{
+    background-color: silver;
+    transition: ease-in-out 0.3s;
+    box-shadow: none;
 }
 
 .multiForm button:disabled {

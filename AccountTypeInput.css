@@ -1,0 +1,23 @@
+.AccountType h2 {
+
+}
+
+.AccountTypeStep .AccountTypeStep-OptionsRow button {
+    width: 200px;
+    height: 75px;
+    margin-right: 20px;
+    background-color: #f8fcfd;
+    color: #555;
+}
+
+.AccountTypeStep .AccountTypeStep-OptionsRow button:hover {
+    background-color: #ecf7f9;
+    color: #222;
+}
+
+
+
+.multiForm .AccountTypeStep .AccountTypeStep-OptionsRow {
+    display: flex;
+    flex-direction: row;
+}

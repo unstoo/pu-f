@@ -1,0 +1,127 @@
+.multiForm{
+    /* max-width: 500px; */
+    padding: 15px;
+    margin: 0 auto;
+    box-shadow: 1px 0 6px 1px rgba(111,111,111,0.2);
+}
+
+.multiForm p {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    color: #555;
+}
+
+.multiForm h2 {
+    color: #333;
+    font-size: 20px;
+}
+
+.multiForm input {
+    width: 330px;
+    height: 50px;
+    background-color: #ecf7f9;
+    color: #444;
+    font-size: 18px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+.multiForm label {
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    
+    margin-top: 90px;
+    margin-bottom: 15px;
+}
+
+
+.multiForm button {
+    border: none;
+    background-color: #ff9b0f;
+    border-radius: 20px;
+    width: 200px;
+    height: 45px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+
+
+.multiForm div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.multiForm .birthdateInput {
+    flex-direction: row;
+    width: 500px;
+}
+
+.birthdateInput{
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.birthdateInput div{
+    margin-right: 15px;
+}
+
+.birthdateInput label {
+    font-weight: normal;
+}
+
+.birthdateHeader{
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+.phoneInput2 div.react-tel-input,
+.phoneInput2 div.react-tel-input div{
+    display: block;
+}
+
+.phoneInput2 {
+    margin-bottom: 30px;
+}
+
+.phoneInput2 div.react-tel-input input {
+    width: 330px;
+    height: 50px;
+    background-color: #ecf7f9;
+    color: #444;
+    font-size: 18px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    padding-left: 80px;
+}
+
+.react-tel-input .selected-flag {
+    left: 15px;
+}
+
+
+.phoneInput2 #flag-dropdown {
+    width: 65px;
+    border: none;
+    border-bottom-left-radius: 30px ;
+    border-top-left-radius: 30px ;
+}
+
+.phoneNumberInput .phoneNumberInput-error {
+    color: red;
+    opacity: 0.8;
+}

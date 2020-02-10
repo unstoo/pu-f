@@ -54,10 +54,16 @@ return <div>Unknown step. {dispatchType}</div>
 const initialState = {
     page: 1,
 
-    phoneNumber: '',
+    phoneNumber: {
+        value: '',
+        error: ''
+    },
     axiosPhoneNumber: false,
 
-    smsCodeToMatch: '',
+    smsCodeToMatch: {
+        value: '',
+        error: ''        
+    },
     axiosSmsCode: false,
 
     password: '',
@@ -124,10 +130,10 @@ const MultiForm: React.FC = () => {
     const axiosPoaFile = React.useRef(state.axiosPoaFile)
 
     React.useEffect(() => {
-        console.log('LAUNCH AXIOS_PHONENUMBER:')
+        console.log('axiosPhoneNumber::')
         console.log(axiosPhoneNumber)
         if (axiosPhoneNumber.current) {
-            axios.post('http://localhost:4000/api', {phoneNumber: state.phoneNumber})
+            axios.post('http://localhost:4000/api', {phoneNumber: state.phoneNumber.value})
             .then(({ data }) => {
                 if (data.status === 'ok') {
                     dispatch({ type: 'axios.phoneNumber', value: data.value})
@@ -150,14 +156,13 @@ const MultiForm: React.FC = () => {
             console.log('LAUNCH axiosSmsCode')
             axios.post('http://localhost:4000/api', {smsCodeToMatch: state.smsCodeToMatch})
             .then(({ data }) => {
-                if (data.status === 'ok') {
-                    console.log('useEffect')
-                    
-                    dispatch({ type: 'axios.smsCode', value: data.status })
+                if (data.status === 'ok') {                    
+                    dispatch({ type: 'axios.smsCode', value: data.value })
                 }
                 
-                if (data.status === 'error')
-                    dispatch({ type: 'axios.smsCode.error', value: data.status })
+                else if (data.status === 'error')
+                    dispatch({ type: 'axios.smsCode.error', value: data.value })
+                    axiosSmsCode.current = false
             })
             .catch(err => console.log(err))
 

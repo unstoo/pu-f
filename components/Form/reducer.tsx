@@ -11,7 +11,10 @@ function reducer(state: any, action: actionType) {
         // toServer: smsCode.send()
         // fromServer: (code send) -> next page 
         return Object.assign({...state}, {
-            phoneNumber: value,
+            phoneNumber: {
+                value,
+                error: state.phoneNumber.error
+            },
             axiosPhoneNumber: true
         })
     }
@@ -19,13 +22,21 @@ function reducer(state: any, action: actionType) {
     else if (type === 'axios.phoneNumber') {
         // TODO: throttle subsequent phonenumbers
         return Object.assign({...state}, {
-            page: state.page + 1
+            page: state.page + 1,
+            phoneNumber: {
+                value: state.phoneNumber.value,
+                error: ''
+            },
         })
     }
 
     if (type === 'axios.phoneNumber.error') {
         return Object.assign({...state}, {
-            axiosPhoneNumber: false
+            axiosPhoneNumber: false,
+            phoneNumber: {
+                value: state.phoneNumber.value,
+                error: value
+            },
         })
     }
 
@@ -38,16 +49,23 @@ function reducer(state: any, action: actionType) {
 
     else if (type === 'axios.smsCode') {
         return Object.assign({...state}, {
-            page: state.page + 1
+            page: state.page + 1,
+            smsCodeToMatch: {
+                smsCodeToMatch: state.smsCodeToMatch.value,
+                error:  ''
+            },
         })    
     }
 
     else if (type === 'axios.smsCode.error') {
-        if (true) {
-            return Object.assign({...state}, {
-                page: state.page
-            })
-        }
+        alert(value)
+        return Object.assign({...state}, {
+            axiosSmsCode: false,
+            smsCodeToMatch: {
+                smsCodeToMatch: state.smsCodeToMatch.value,
+                error:  value
+            },
+        })    
     }
 
     else if (type === 'password') {

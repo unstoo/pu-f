@@ -23,8 +23,13 @@ type StepProps = {
 }
 
 const PhoneNumberInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
-    const [value, setValue] = React.useState(defValue)
+    const [value, setValue] = React.useState(defValue.value)
     const [error, setError] = React.useState('')
+
+    if (defValue.error) {
+        setError(defValue.error)
+        defValue.error = ''
+    }
 
     const onChange = (e: any) => {
         const value = e
@@ -32,24 +37,22 @@ const PhoneNumberInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValu
         if (error) setError('')
     }
 
-    const clickHandler = (e: any) => {
-        e.preventDefault()
+    const clickHandler = () => {
         const digits = onlyDigitsInString(value)
 
-        if (digits.length < 3) {
+        if (digits.length < 2) {
             setError('Incorrect number')
         } else {
             dispatch({ type: dispatchType, value: digits })
         }
     }
-
+    
     return (
         <div className="phoneNumberInput"> 
             <h2>Get started with PAYSUNION in a few seconds.</h2>
             <p>We'll send you a message with a code to approve your phone.</p> 
             {!error && <label>Phone number</label>}
-            {error && <label className="phoneNumberInput-error">{error}</label>}
-            {/* <input onChange={onChange} value={value} type="text" min="0" max="0" /> */}
+            {error  && <label className="phoneNumberInput-error">{error}</label>}
             <div className="phoneInput2">
                 <PhoneInput
                     country={'ru'}

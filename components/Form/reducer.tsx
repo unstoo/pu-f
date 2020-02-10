@@ -48,6 +48,7 @@ function reducer(state: any, action: actionType) {
     }
 
     else if (type === 'axios.smsCode') {
+        // TODO: throttle incoming phonenumbers ?
         return Object.assign({...state}, {
             page: state.page + 1,
             smsCodeToMatch: {
@@ -58,7 +59,6 @@ function reducer(state: any, action: actionType) {
     }
 
     else if (type === 'axios.smsCode.error') {
-        alert(value)
         return Object.assign({...state}, {
             axiosSmsCode: false,
             smsCodeToMatch: {
@@ -78,8 +78,17 @@ function reducer(state: any, action: actionType) {
     else if (type === 'axios.password') {
         return Object.assign({...state}, {
             page: state.page + 1,
+            password: ''
         })
     }
+
+    else if (type === 'axios.password.error') {
+        return Object.assign({...state}, {
+            axiosPassword: false,
+            password: value
+        })
+    }
+
 
     else if (type === 'email') {
         return Object.assign({...state}, {

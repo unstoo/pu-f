@@ -82,12 +82,14 @@ function reducer(state: any, action: actionType) {
         })
     }
 
-    else if (type === 'axios.password.error') {
-        return Object.assign({...state}, {
-            axiosPassword: false,
-            password: value
-        })
-    }
+    // TODO:
+    // else if (type === 'axios.password.error') {
+    //     return Object.assign({...state}, {
+    //         axiosPassword: false,
+    //         // TODO: 
+    //         passwordError: value
+    //     })
+    // }
 
 
     else if (type === 'email') {
@@ -115,6 +117,13 @@ function reducer(state: any, action: actionType) {
             page: state.page + 1,
         })
     }
+
+    // TODO: accontType already selected / Can't amend it.
+    // else if (type === 'axios.accountType.error') {
+    //     return Object.assign({...state}, {
+    //         page: state.page + 1,
+    //     })
+    // }
 
     else if (type === 'personalData') {
         return Object.assign({...state}, {

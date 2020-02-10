@@ -4,6 +4,15 @@ import '../SMSCodeInput.css'
 import '../PasswordInput.css'
 import '../EmailInput.css'
 import '../AccountTypeInput.css'
+import '../PersonalDataInput.css'
+//AddressDataStep
+//IdTypeSelector
+//IdDataStepEu
+// FileInputID
+// FileInputSelfie
+// FileInputPoA
+// TxSurveyInput
+// GoalSurveyInput
 
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }) {

@@ -96,30 +96,6 @@
     align-items: center;
 }
 
-.multiForm .birthdateInput {
-    flex-direction: row;
-    width: 500px;
-}
-
-.birthdateInput{
-    display: flex;
-    margin-bottom: 15px;
-}
-
-.birthdateInput div{
-    margin-right: 15px;
-}
-
-.birthdateInput label {
-    font-weight: normal;
-}
-
-.birthdateHeader{
-    font-weight: bold;
-    margin-bottom: 10px;
-    margin-top: 15px;
-}
-
 .phoneInput2 div.react-tel-input,
 .phoneInput2 div.react-tel-input div{
     display: block;

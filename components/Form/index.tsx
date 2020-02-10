@@ -3,7 +3,7 @@ import axios from 'axios'
 import reducer from './reducer'
 import PasswordInput from './PasswordInput'
 import EmailInput from './EmailInput'
-import PersonalDataForm from './PersonalDataForm'
+import PersonalDataInput from './PersonalDataInput'
 import AddressDataStep from './AddressDataStep'
 import IdDataStep from './IdDataStep'
 import IdDataStepEu from './IdDataStepEu'
@@ -28,7 +28,7 @@ const CurrentPage: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNu
     if (pageNumber === 3) return <PasswordInput  dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 4) return <EmailInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 5) return <AccountTypeInput  dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
-    if (pageNumber === 6) return <PersonalDataForm dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
+    if (pageNumber === 6) return <PersonalDataInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 7) return <AddressDataStep dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 8) return <IdTypeSelector dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 9) {

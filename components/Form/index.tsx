@@ -52,7 +52,7 @@ return <div>Unknown step. {dispatchType}</div>
 }
 
 const initialState = {
-    page: 3,
+    page: 1,
 
     phoneNumber: {
         value: '',

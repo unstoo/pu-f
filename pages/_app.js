@@ -1,5 +1,5 @@
 import 'react-phone-input-2/lib/style.css'
-import '../style.css'
+import '../styleNext.css'
 import '../SMSCodeInput.css'
 import '../PasswordInput.css'
 import '../EmailInput.css'
@@ -11,6 +11,12 @@ import '../IdDataInput.css'
 import '../FileInput.css'
 import '../TxSurveyInput.css'
 import '../GoalSurveyInput.css'
+import '../TopUp.css'
+import '../ToActivate.css'
+//  ------ стили верстальщиков
+import '../style.css'
+import '../bootstrap.min.css'
+import '../font-awesome.min.css'
 // FileInputSelfie
 // FileInputPoA
 

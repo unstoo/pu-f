@@ -234,6 +234,46 @@ function reducer(state: any, action: actionType) {
         })
     }
 
+    else if (type === 'topUp.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+        })
+    }
+
+    else if (type === 'topUp.back') {
+        // TOOO: axiosAccountType isn't ready for back-forth scenario. Edit useEffect.
+        return Object.assign({...state}, {
+            page: state.page - 1,
+        })
+    }
+
+    else if (type === 'topUp.deposit') {
+        alert('TODO: deposit mechanism.')
+        return Object.assign({...state}, {
+            page: state.page,
+        })
+    }
+
+    else if (type === 'toActivate.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+        })
+    }
+
+    else if (type === 'toActivate.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+        })
+    }
+
+    else if (type === 'toActivate.dashboard') {
+        alert('TODO: Dashboard redirect.')
+        window.location.href = "/dashboard"
+        // return Object.assign({...state}, {
+        //     page: state.page,
+        // })
+    }
+
 
     else {
         throw new Error('Unknown action type: ' + type);

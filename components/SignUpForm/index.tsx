@@ -35,9 +35,9 @@ const CurrentPage: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNu
     if (pageNumber === 5) return <PersonalDataInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 6) return <AccountTypeInput  dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     //topup
-    if (pageNumber === 7) return <div>TopUp</div>
+    if (pageNumber === 7) return <TopUp dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     //toactivate
-    if (pageNumber === 8) return <div>ToActivate</div>
+    if (pageNumber === 8) return <ToActivate dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     // if (pageNumber === 7) return <AddressDataInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     // if (pageNumber === 8) return <IdTypeSelector dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 9) {
@@ -88,7 +88,7 @@ const initialState = {
 
     
     personalData: {
-        firstName: '',
+        firstName: 'Yev',
         lastName: '',
         patronymic: '',
         dob: '',
@@ -111,6 +111,14 @@ const initialState = {
         addressOne: '',
         addressTwo: ''
     },
+
+    topUp: {  
+    },
+
+    toActivate: {
+        firstName: ''
+    },
+
     axiosPersonalData: false,
     axiosaddressData: false,
 
@@ -370,16 +378,21 @@ const MultiForm: React.FC = () => {
 
         return country === 'United Kingdom' ? true : false
     }
-
     return (
         <div>
-            <h1>Page: {state.page}</h1>
+            {/* <h1>Page: {state.page}</h1> */}
             {/* <div>state: { JSON.stringify(state, null, 2) }</div> */}
+            {console.log(state[scheme[state.page - 1].name])}
             <form className="multiForm">
                 <CurrentPage 
                 dispatchType = {scheme[state.page - 1].name}
                 pageNumber={state.page} 
-                defValue={state[scheme[state.page - 1].name]} 
+                defValue={ 
+                    
+                    Object.assign( state[scheme[state.page - 1].name],
+                    {firstName: state.personalData.firstName} 
+                        ) 
+                } 
                 dispatch={dispatch} 
                 validationScheme={scheme}
                 isEuCountry={isEuCountry(state.selectedCountry)} 

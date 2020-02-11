@@ -1,34 +1,38 @@
-.AddressData h2 {
+.IdType {
 }
 
-.AddressData-header {
+.Header {
     margin-bottom: 50px;
 }
 
+.Header p {
+    text-align: left;
+}
 
-.AddressData .AddressData-InputBlock {
+.IdType .InputBlock {
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
 }
 
-.AddressData .AddressData-InputBlock label {
+.IdType .InputBlock label {
     margin: 15px;
     margin-left: 25px;
     margin-top: 20px;
 }
 
-.AddressData .AddressData-InputBlock input {
+.IdType .InputBlock input {
     margin-bottom: 20px;
 }
 
-.AddressData .AddressData-Controls {
+.IdType .Controls {
     width: 330px;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 25px;
 }
 
-.AddressData button {
-    width: 100px;
+.IdType button {
+    width: 140px;
 }

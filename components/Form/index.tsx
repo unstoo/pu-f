@@ -5,9 +5,9 @@ import PasswordInput from './PasswordInput'
 import EmailInput from './EmailInput'
 import PersonalDataInput from './PersonalDataInput'
 import AddressDataInput from './AddressDataInput'
+import IdTypeSelector from './IdTypeSelector'
 import IdDataStep from './IdDataStep'
 import IdDataStepEu from './IdDataStepEu'
-import IdTypeSelector from './IdTypeSelector'
 import FileInput from './FileInput'
 import PhoneNumberInput from './PhoneNumberInput'
 import SMSCodeInput from './SMSCodeInput'
@@ -52,7 +52,7 @@ return <div>Unknown step. {dispatchType}</div>
 }
 
 const initialState = {
-    page: 7,
+    page: 8,
 
     phoneNumber: {
         value: '',

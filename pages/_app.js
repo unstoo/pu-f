@@ -6,7 +6,7 @@ import '../EmailInput.css'
 import '../AccountTypeInput.css'
 import '../PersonalDataInput.css'
 import '../AddressDataInput.css'
-//IdTypeSelector
+import '../IdTypeSelector.css'
 //IdDataStepEu
 // FileInputID
 // FileInputSelfie

@@ -145,6 +145,10 @@
     padding-left: 80px;
 }
 
+#phone-form-control{
+    text-align: left;
+}
+
 .react-tel-input .selected-flag {
     left: 15px;
 }

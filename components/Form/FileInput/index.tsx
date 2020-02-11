@@ -6,11 +6,12 @@ type StepProps = {
     defValue?: any,
     dispatchType: string,
     filesCount? : number,
-    header?: string
+    header?: string,
+    paragraph?: string,
 }
 
 
-const FileInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue, filesCount, header }) => {
+const FileInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue, filesCount, header, paragraph }) => {
     console.log('new id image')
     const [uploadOne, setUploadOne] = React.useState()
     const [uploadTwo, setUploadTwo] = React.useState()
@@ -41,14 +42,24 @@ const FileInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue, file
 
 
     return (
-    <>      
-        <h2>{header || 'Upload file'}</h2>
-         <input type="file" name="upload" multiple={true} key={header} onChange={fileLoadHandler}/>
-        {filesCount === 2 &&
-            <input type="file" name="uploadtwo" multiple={true} onChange={fileLoadHandler}/>
-        }
-        <button type="button" onClick={clickHandler}>Select</button>
-    </>
+    <div>      
+        <div>
+            <h2>{header || 'Upload file'}</h2>
+            
+        </div>
+        <div className="FileInput-Block">
+            <label>
+            <div>{paragraph || 'Select image of your ID'}</div>
+            <input className="FileInput" type="file" name="upload" multiple={true} key={header} onChange={fileLoadHandler}/>
+            {filesCount === 2 &&
+                <input type="file" name="uploadtwo" multiple={true} onChange={fileLoadHandler}/>
+            }
+            </label>
+        </div>
+        <div className="Controls">
+            <button type="button" onClick={clickHandler}>Next</button>
+        </div>
+    </div>
     )
 }
 

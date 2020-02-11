@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+
 type StepProps = {
     validationScheme?: any,
     dispatch: Function,
@@ -7,68 +8,56 @@ type StepProps = {
     dispatchType: string
 }
 
-const IdDataStep: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
-    const [country, setCountry] = React.useState(defValue.country)
-    const [state, setState] = React.useState(defValue.firstName)
-    const [city, setCity] = React.useState(defValue.lastName)
-    const [zip, setZip] = React.useState('')
-    const [addressOne, setAddressOne] = React.useState('')
-    const [addressTwo, setAddressTwo] = React.useState('')
-    const [goodToSend, setGoodToSend] = React.useState(false)
+const GoalSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
+    const [goal, setGoal] = React.useState()
 
-    const addressHandler = (e: any) => {
-        const {value, name}  = e.target
-
-        if (name === 'country') setCountry(value)
-        if (name === 'state') setState(value)
-        if (name === 'city') setCity(value)
-        if (name === 'zip') setZip(value)
-        if (name === 'addressone') setAddressOne(value)
-        if (name === 'addresstwo') setAddressTwo(value)
+    const changeHandler = (e: any) => {
+        const {value}  = e.target
+        setGoal(value)
     }
 
-    const checkGoodToSend = () => { 
-        setGoodToSend(true)
-    }
-
-    const clickHandler = (e: React.SyntheticEvent) => {
-        e.preventDefault()
-        checkGoodToSend()
-
-        if (goodToSend) {
-            dispatch({ type: dispatchType, value: {
-                country,
-                state,
-                city,
-                zip,
-                addressOne,
-                addressTwo
-           }})
-        }
+    const clickHandler = () => {
+        dispatch({ type: dispatchType, value: {
+            goal
+        }})   
     }
 
     return (
-         <> 
-            <h2>Your ID/passport data</h2>
-            <label>ID date issue</label>
-            <input type="text" name="state" onChange={addressHandler}/>
-            <label>ID expiration date (optionally)</label>
-            <input type="text" name="city" onChange={addressHandler}/>
-            <label>ID division coe (optionally)</label>
-            <input type="text" name="zip" onChange={addressHandler}/>
-            <label>ID issuer</label>
-            <input type="text" name="addressone" onChange={addressHandler}/>
-            <label>ID series (optionally)</label>
-            <input type="text" name="addresstwo" onChange={addressHandler}/>
-            <label>ID number</label>
-            <input type="text" name="addresstwo" onChange={addressHandler}/>
-            <label>Sex</label>
-            <input type="text" name="addresstwo" onChange={addressHandler}/>
-            
-            <button type="button" onClick={clickHandler}>Back</button>
-            <button type="button" onClick={clickHandler}>Next</button>
-        </>
-    )
+        <div className="GoalSurvey"> 
+            <div className="Header">
+                <h2>What is the main reason you use PAYSUNION</h2>
+            </div>
+
+            <div className="InputBlock">
+                <div>
+                    <input onChange={changeHandler} type="radio" name="goal" value="Daily Payments and Savings"/>
+                    <label htmlFor="goal">Daily Payments and Savings</label>
+                </div>
+                <div>
+                    <input onChange={changeHandler} type="radio" name="goal2" value="Travel Payments"/>
+                    <label htmlFor="goal2">Travel Payments</label>
+                </div>
+                <div>
+                    <input onChange={changeHandler} type="radio" name="goal3" value="Sending Money"/>
+                    <label htmlFor="goal3">Sending Money</label>
+                </div>
+                <div>
+                    <input onChange={changeHandler} type="radio" name="goal4" value="Access to financial assets"/>
+                    <label htmlFor="goal4">Access to financial assets</label>
+                </div>
+            </div>
+        
+            <div className="Controls">
+                <button type="button" onClick={() => {}}>Back</button>
+                <button type="button" onClick={clickHandler}>Next</button>
+            </div>    
+        </div>)
 }
 
-export default IdDataStep
+// const volumesList = [
+//     {label: "EUR 1 000 - 10 000", value: "1000-10000"},
+//     {label: "EUR 100 - 1 000", value: "100-1000"},
+//     {label: "EUR 10 000+", value: "10000+"}
+// ]
+
+export default GoalSurveryInput

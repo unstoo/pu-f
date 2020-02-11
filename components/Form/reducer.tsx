@@ -195,7 +195,6 @@ function reducer(state: any, action: actionType) {
     }
 
     else if (type === 'axios.idSelfieFile') {
-        alert('selfie uploaded')
         return Object.assign({...state}, {
             page: state.page + 1
         })
@@ -209,11 +208,32 @@ function reducer(state: any, action: actionType) {
     }
 
     else if (type === 'axios.poaFile') {
-        alert('poa uploaded')
         return Object.assign({...state}, {
             page: state.page + 1
         })
     }
+
+    else if (type === 'txSurvey') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            txSurvery: value
+        })
+    }
+
+    else if (type === 'goalSurvey') {
+        return Object.assign({...state}, {
+            axiosComplete: true,
+            goalSurvery: value
+        })
+    }
+
+    else if (type === 'axios.goalSurvey') {
+        return Object.assign({...state}, {
+            axiosComplete: true,
+            goalSurvery: value
+        })
+    }
+
 
     else {
         throw new Error('Unknown action type: ' + type);

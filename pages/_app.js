@@ -8,11 +8,11 @@ import '../PersonalDataInput.css'
 import '../AddressDataInput.css'
 import '../IdTypeSelector.css'
 import '../IdDataInput.css'
-// FileInputID
+import '../FileInput.css'
+import '../TxSurveyInput.css'
+import '../GoalSurveyInput.css'
 // FileInputSelfie
 // FileInputPoA
-// TxSurveyInput
-// GoalSurveyInput
 
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }) {

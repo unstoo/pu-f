@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+
 type StepProps = {
     validationScheme?: any,
     dispatch: Function,
@@ -7,68 +8,65 @@ type StepProps = {
     dispatchType: string
 }
 
-const IdDataStep: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
-    const [country, setCountry] = React.useState(defValue.country)
-    const [state, setState] = React.useState(defValue.firstName)
-    const [city, setCity] = React.useState(defValue.lastName)
-    const [zip, setZip] = React.useState('')
-    const [addressOne, setAddressOne] = React.useState('')
-    const [addressTwo, setAddressTwo] = React.useState('')
-    const [goodToSend, setGoodToSend] = React.useState(false)
+const TxSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
+    const [txVolume, setTxVolume] = React.useState()
+    const [txCount, stTxCount] = React.useState()
+    const [singleMaxLimitTx, setTxMaxLimit] = React.useState()
 
-    const addressHandler = (e: any) => {
+    const changeHandler = (e: any) => {
         const {value, name}  = e.target
 
-        if (name === 'country') setCountry(value)
-        if (name === 'state') setState(value)
-        if (name === 'city') setCity(value)
-        if (name === 'zip') setZip(value)
-        if (name === 'addressone') setAddressOne(value)
-        if (name === 'addresstwo') setAddressTwo(value)
+        if (name === 'txVolume') setTxVolume(value)
+        if (name === 'txCount') stTxCount(value)
+        if (name === 'singleMaxLimitTx') setTxMaxLimit(value)
     }
 
-    const checkGoodToSend = () => { 
-        setGoodToSend(true)
-    }
-
-    const clickHandler = (e: React.SyntheticEvent) => {
-        e.preventDefault()
-        checkGoodToSend()
-
-        if (goodToSend) {
-            dispatch({ type: dispatchType, value: {
-                country,
-                state,
-                city,
-                zip,
-                addressOne,
-                addressTwo
-           }})
-        }
+    const clickHandler = () => {
+        dispatch({ type: dispatchType, value: {
+            txVolume,
+            txCount,
+            singleMaxLimitTx
+        }})   
     }
 
     return (
-         <> 
-            <h2>Your ID/passport data</h2>
-            <label>ID date issue</label>
-            <input type="text" name="state" onChange={addressHandler}/>
-            <label>ID expiration date (optionally)</label>
-            <input type="text" name="city" onChange={addressHandler}/>
-            <label>ID division coe (optionally)</label>
-            <input type="text" name="zip" onChange={addressHandler}/>
-            <label>ID issuer</label>
-            <input type="text" name="addressone" onChange={addressHandler}/>
-            <label>ID series (optionally)</label>
-            <input type="text" name="addresstwo" onChange={addressHandler}/>
-            <label>ID number</label>
-            <input type="text" name="addresstwo" onChange={addressHandler}/>
-            <label>Sex</label>
-            <input type="text" name="addresstwo" onChange={addressHandler}/>
-            
+        <div className="TxSurvey"> 
+        <div className="Header">
+            <h2>Confirm your transactional information</h2>
+            <p>This is just for indicative purpose and does not need to be precise</p>
+        </div>
+        <div className="InputBlock">
+            <label>Monthly volume of transfers</label>
+            <select name="txVolume" onChange={changeHandler}>
+                { volumesList.map(o => <option key={'txSurvey-' + o.value} value={o.value}>{o.label}</option>)}
+            </select>
+        </div>
+
+        <div className="InputBlock">
+            <label>Number of payments per month</label>
+            <select name="txCount" onChange={changeHandler}>
+                <option value={"<10"}>{"< 10"}</option>
+                <option value={">10"}>{"> 10"}</option>
+            </select>
+        </div>
+
+        <div className="InputBlock">
+            <label>Maximum single payment</label>
+            <input type="number" name="singleMaxLimitTx" onChange={changeHandler}/>
+        </div>
+        
+        <div className="Controls">
             <button type="button" onClick={clickHandler}>Back</button>
             <button type="button" onClick={clickHandler}>Next</button>
-        </>
+        </div>
+    </div>
     )
 }
 
-export default IdDataStep
+const volumesList = [
+    {label: "EUR 1 000 - 10 000", value: "1000-10000"},
+    {label: "EUR 100 - 1 000", value: "100-1000"},
+    {label: "EUR 10 000+", value: "10000+"}
+]
+
+export default TxSurveryInput

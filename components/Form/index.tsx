@@ -1,17 +1,21 @@
 import * as React from 'react'
 import axios from 'axios'
 import reducer from './reducer'
+import PhoneNumberInput from './PhoneNumberInput'
+import SMSCodeInput from './SMSCodeInput'
 import PasswordInput from './PasswordInput'
 import EmailInput from './EmailInput'
+import AccountTypeInput from './AccountTypeInput'
 import PersonalDataInput from './PersonalDataInput'
-import AddressDataInput from './AddressDataInput'
-import IdTypeSelector from './IdTypeSelector'
+// import AddressDataInput from './AddressDataInput'
+// import IdTypeSelector from './IdTypeSelector'
 import IdDataInput from './IdDataInput'
 import IdDataInputEu from './IdDataInputEu'
 import FileInput from './FileInput'
-import PhoneNumberInput from './PhoneNumberInput'
-import SMSCodeInput from './SMSCodeInput'
-import AccountTypeInput from './AccountTypeInput'
+import TxSurveyInput from './TxSurveyInput'
+import GoalSurveyInput from './GoalSurveyInput'
+import TopUp from './TopUp'
+import ToActivate from './ToActivate'
 
 type CurrentPageProps = {
     pageNumber: number, 
@@ -20,17 +24,22 @@ type CurrentPageProps = {
     dispatch: Function,
     dispatchType: string,
     isEuCountry?: boolean,
+    idFilesCount?: number,
 }
 
-const CurrentPage: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNumber, isEuCountry, validationScheme, defValue}) => {
+const CurrentPage: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNumber, isEuCountry, validationScheme, defValue, idFilesCount}) => {
     if (pageNumber === 1) return <PhoneNumberInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 2) return <SMSCodeInput  dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 3) return <PasswordInput  dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 4) return <EmailInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
-    if (pageNumber === 5) return <AccountTypeInput  dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
-    if (pageNumber === 6) return <PersonalDataInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
-    if (pageNumber === 7) return <AddressDataInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
-    if (pageNumber === 8) return <IdTypeSelector dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
+    if (pageNumber === 5) return <PersonalDataInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
+    if (pageNumber === 6) return <AccountTypeInput  dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
+    //topup
+    if (pageNumber === 7) return <div>TopUp</div>
+    //toactivate
+    if (pageNumber === 8) return <div>ToActivate</div>
+    // if (pageNumber === 7) return <AddressDataInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
+    // if (pageNumber === 8) return <IdTypeSelector dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 9) {
         
         if (isEuCountry)
@@ -40,19 +49,21 @@ const CurrentPage: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNu
             return <IdDataInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue} />
     }
     // id
-    if (pageNumber === 10) return <FileInput filesCount={2} dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
+    if (pageNumber === 10) return <FileInput filesCount={idFilesCount} dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue} header={'Provide ID'} paragraph={'Upload front side photo of ID'}/>
     // selfie
     // if (pageNumber === 10) return <idSelfieInput />
     if (pageNumber === 11) return <FileInput header={'Selfie upload'} filesCount={1} dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     // if (pageNumber === 11) return <ProofOfAddressInput />
     if (pageNumber === 12) return <FileInput header={'Proof of address'} filesCount={1} dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
-    // if (pageNumber === 13) return <txSurveyInput />
-    // if (pageNumber === 14) return <goalSurveyInput />
-return <div>Unknown step. {dispatchType}</div>
+    if (pageNumber === 13) {
+        return <TxSurveyInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue} />
+    }
+    if (pageNumber === 14) return <GoalSurveyInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue} />
+            return <div>Unknown step. {dispatchType}</div>
 }
 
 const initialState = {
-    page: 8,
+    page: 7,
 
     phoneNumber: {
         value: '',
@@ -103,7 +114,7 @@ const initialState = {
     axiosPersonalData: false,
     axiosaddressData: false,
 
-    selectedIdType: '',
+    selectedIdType: 'passport',
     idData: {
         idType: '',
         idDateIssue: '',
@@ -125,7 +136,16 @@ const initialState = {
     poaFile: null,
     axiosPoaFile: false,
 
-    txSurvey: {},
+    txSurvey: {
+        txVolume: '',
+        txCount: '',
+        singleMaxLimitTx: ''
+    },
+    goalSurvey: {
+        txVolume: '',
+        txCount: '',
+        singleMaxLimitTx: ''
+    },
     goalsSurvey: {},
     axiosComplete: false,
 }
@@ -327,19 +347,21 @@ const MultiForm: React.FC = () => {
     const scheme = [
         { name: 'phoneNumber', inputType: 'number', minLength: '10', maxLength: '10' },
         { name: 'smsCodeToMatch', inputType: 'number', minLength: '10', maxLength: '10' },
-        { name: 'password', inputType: 'text', minLength: '6', maxLength: '112' },
+        { name: 'password', inputType: 'password', minLength: '6', maxLength: '112' },
         { name: 'email', inputType: 'email', minLength: '6', maxLength: '112' },
-        { name: 'accountType', inputType: 'text', minLength: '6', maxLength: '15' },
         { name: 'personalData', inputType: 'text', },
+        { name: 'accountType', inputType: 'text', minLength: '6', maxLength: '15' },
+        { name: 'topUp' },
+        { name: 'toActivate' },
         { name: 'addressData', inputType: 'text' },
-        { name: 'idType', inputType: 'string' },
-        { name: 'idData', inputType: 'string' },
+        { name: 'idType', inputType: 'text' },
+        { name: 'idData', inputType: 'text' },
         
         { name: 'idFiles', inputType: 'file',  },
         { name: 'idSelfieFile', inputType: 'file' },
         { name: 'poaFile', inputType: 'file'},
-        { name: 'txSurvey', inputType: 'file'},
-        { name: 'goalSurvey', inputType: 'file'},
+        { name: 'txSurvey', inputType: 'text'},
+        { name: 'goalSurvey', inputType: 'text'},
     ]
 
     // const schemeFreelance = []
@@ -360,10 +382,12 @@ const MultiForm: React.FC = () => {
                 defValue={state[scheme[state.page - 1].name]} 
                 dispatch={dispatch} 
                 validationScheme={scheme}
-                isEuCountry={isEuCountry(state.selectedCountry)} />
-                <div>
+                isEuCountry={isEuCountry(state.selectedCountry)} 
+                idFilesCount={state.selectedIdType === 'passport' ? 1 : 2}
+                />
+                {/* <div>
                     <input type="range" min="1" max="12" id="stepNumber" name="stepNumber" step="1" value={state.page} readOnly />
-                </div>
+                </div> */}
             </form>
         </div>
     )

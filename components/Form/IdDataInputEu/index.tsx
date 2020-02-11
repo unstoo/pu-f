@@ -7,7 +7,7 @@ type StepProps = {
     dispatchType: string
 }
 
-const IdDataStepEu: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
+const IdDataInputEu: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
     defValue;
     const [idDateIssue, setIdDateIssue] = React.useState('')
     const [idExpirationDate, setIdExpirationDate] = React.useState('')
@@ -67,4 +67,4 @@ const IdDataStepEu: React.FC<StepProps> = ({ dispatch, dispatchType, defValue })
     )
 }
 
-export default IdDataStepEu
+export default IdDataInputEu

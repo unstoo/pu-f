@@ -164,7 +164,7 @@ function reducer(state: any, action: actionType) {
     else if (type === 'idData') {
         return Object.assign({...state}, {
             axiosIdData: true,
-            idData: value,
+            idData: Object.assign({idType: state.selectedIdType}, value),
         })
     }
 

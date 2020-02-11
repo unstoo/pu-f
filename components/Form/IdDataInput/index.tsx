@@ -7,8 +7,7 @@ type StepProps = {
     dispatchType: string
 }
 
-const IdDataStep: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
-    defValue;
+const IdDataInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
     const [idDateIssue, setIdDateIssue] = React.useState('')
     const [idExpirationDate, setIdExpirationDate] = React.useState('')
     const [idDivsionCode, setIdDivsionCode] = React.useState('')
@@ -17,30 +16,19 @@ const IdDataStep: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) =
     const [idNumber, setIdNumber] = React.useState('')
     const [sex, setSex] = React.useState('')
 
-    const [goodToSend, setGoodToSend] = React.useState(false)
-
     const idDataHandler = (e: any) => {
         const {value, name}  = e.target
-
-        if (name === 'idDateIssue') setIdDateIssue(value)
-        if (name === 'idExpirationDate') setIdExpirationDate(value)
-        if (name === 'idDivsionCode') setIdDivsionCode(value)
-        if (name === 'idIssuer') setIdIssuer(value)
-        if (name === 'idSeries') setIdSeries(value)
-        if (name === 'idNumber') setIdNumber(value)
+        if (name === 'iddateissue') setIdDateIssue(value)
+        if (name === 'idexpirationdata') setIdExpirationDate(value)
+        if (name === 'iddivisioncode') setIdDivsionCode(value)
+        if (name === 'idissuer') setIdIssuer(value)
+        if (name === 'idseries') setIdSeries(value)
+        if (name === 'idnumber') setIdNumber(value)
         if (name === 'sex') setSex(value)
-        
-        checkGoodToSend()
+    
     }
 
-    const checkGoodToSend = () => { 
-        setGoodToSend(true)
-    }
-
-    const clickHandler = (e: React.SyntheticEvent) => {
-        e.preventDefault()
-
-        if (goodToSend) {
+    const clickHandler = () => {
             dispatch({ type: dispatchType, value: {
                 idDateIssue,
                 idExpirationDate,
@@ -50,14 +38,12 @@ const IdDataStep: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) =
                 idNumber,
                 sex,
            }})
-        }
     }
 
     return (
          <div className="IdData"> 
             <div>
                 <h2>Your ID/passport data</h2>
-                
             </div>
             <div>
                 <label>ID date issue</label>
@@ -97,4 +83,4 @@ const IdDataStep: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) =
     )
 }
 
-export default IdDataStep
+export default IdDataInput

@@ -105,7 +105,14 @@ const initialState = {
 
     selectedIdType: '',
     idData: {
-
+        idType: '',
+        idDateIssue: '',
+        idExpirationDate: '',
+        idDivsionCode: '',
+        idIssuer: '',
+        idSeries: '',
+        idNumber: '',
+        sex: ''
     },
     axiosIdData: false,
 

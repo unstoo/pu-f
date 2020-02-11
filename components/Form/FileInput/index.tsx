@@ -26,7 +26,7 @@ const FileInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue, file
         
         const formDataNew = new FormData()
         formDataNew.append("upload", uploadOne);
-        formDataNew.append("uploadtwo", uploadTwo);
+        formDataNew.append("upload", uploadTwo);
         dispatch({ type: dispatchType, value: formDataNew})
 
     }

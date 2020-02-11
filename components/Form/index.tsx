@@ -6,8 +6,8 @@ import EmailInput from './EmailInput'
 import PersonalDataInput from './PersonalDataInput'
 import AddressDataInput from './AddressDataInput'
 import IdTypeSelector from './IdTypeSelector'
-import IdDataStep from './IdDataStep'
-import IdDataStepEu from './IdDataStepEu'
+import IdDataInput from './IdDataInput'
+import IdDataInputEu from './IdDataInputEu'
 import FileInput from './FileInput'
 import PhoneNumberInput from './PhoneNumberInput'
 import SMSCodeInput from './SMSCodeInput'
@@ -34,10 +34,10 @@ const CurrentPage: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNu
     if (pageNumber === 9) {
         
         if (isEuCountry)
-            return <IdDataStepEu dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue} />
+            return <IdDataInputEu dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue} />
         
         if (!isEuCountry) 
-            return <IdDataStep dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue} />
+            return <IdDataInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue} />
     }
     // id
     if (pageNumber === 10) return <FileInput filesCount={2} dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>

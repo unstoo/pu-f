@@ -1,0 +1,18 @@
+.IdData {
+    
+}
+
+.IdData label {
+    margin-top: 25px;
+}
+
+.IdData .Controls {
+    width: 330px;
+    margin-top: 50px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.IdData .Controls button {
+    width: 140px;
+}

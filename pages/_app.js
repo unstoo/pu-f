@@ -7,7 +7,7 @@ import '../AccountTypeInput.css'
 import '../PersonalDataInput.css'
 import '../AddressDataInput.css'
 import '../IdTypeSelector.css'
-//IdDataStepEu
+import '../IdDataInput.css'
 // FileInputID
 // FileInputSelfie
 // FileInputPoA

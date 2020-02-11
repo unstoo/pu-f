@@ -54,26 +54,46 @@ const IdDataStep: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) =
     }
 
     return (
-         <> 
-            <h2>Your ID/passport data</h2>
-            <label>ID date issue</label>
-            <input type="text" name="iddateissue" onChange={idDataHandler}/>
-            <label>ID expiration time (optionally)</label>
-            <input type="text" name="idexpirationdata" onChange={idDataHandler}/>
-            <label>ID division code</label>
-            <input type="text" name="iddivisioncode" onChange={idDataHandler}/>
-            <label>ID issuer</label>
-            <input type="text" name="idissuer" onChange={idDataHandler}/>
-            <label>ID series</label>
-            <input type="text" name="idseries" onChange={idDataHandler}/>
-            <label>ID number</label>
-            <input type="text" name="idnumber" onChange={idDataHandler}/>
-            <label>Sex</label>
-            <input type="text" name="sex" onChange={idDataHandler}/>
-            
-            <button type="button" name="back" onClick={clickHandler}>Back</button>
-            <button type="button" name="next" onClick={clickHandler}>Next</button>
-        </>
+         <div className="IdData"> 
+            <div>
+                <h2>Your ID/passport data</h2>
+                
+            </div>
+            <div>
+                <label>ID date issue</label>
+                <input type="text" name="iddateissue" onChange={idDataHandler}/>
+                
+            </div>
+            <div>
+                <label>ID expiration time (optionally)</label>
+                <input type="text" name="idexpirationdata" onChange={idDataHandler}/>
+            </div>
+            <div>
+                <label>ID division code</label>
+                <input type="text" name="iddivisioncode" onChange={idDataHandler}/>
+            </div>
+            <div>
+                <label>ID issuer</label>
+                <input type="text" name="idissuer" onChange={idDataHandler}/>
+            </div>
+            <div>
+                <label>ID series</label>
+                <input type="text" name="idseries" onChange={idDataHandler}/>
+            </div>
+            <div>
+                <label>ID number</label>
+                <input type="text" name="idnumber" onChange={idDataHandler}/>
+            </div>
+            <div>
+                <label>Sex</label>
+                <input type="text" name="sex" onChange={idDataHandler}/>
+            </div>
+
+            <div className="Controls">
+                <button type="button" name="back" onClick={clickHandler}>Back</button>
+                <button type="button" name="next" onClick={clickHandler}>Next</button>
+            </div>
+        </div>
     )
 }
 

@@ -4,7 +4,7 @@ import reducer from './reducer'
 import PasswordInput from './PasswordInput'
 import EmailInput from './EmailInput'
 import PersonalDataInput from './PersonalDataInput'
-import AddressDataStep from './AddressDataStep'
+import AddressDataInput from './AddressDataInput'
 import IdDataStep from './IdDataStep'
 import IdDataStepEu from './IdDataStepEu'
 import IdTypeSelector from './IdTypeSelector'
@@ -29,7 +29,7 @@ const CurrentPage: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNu
     if (pageNumber === 4) return <EmailInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 5) return <AccountTypeInput  dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 6) return <PersonalDataInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
-    if (pageNumber === 7) return <AddressDataStep dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
+    if (pageNumber === 7) return <AddressDataInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 8) return <IdTypeSelector dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue}/>
     if (pageNumber === 9) {
         
@@ -52,7 +52,7 @@ return <div>Unknown step. {dispatchType}</div>
 }
 
 const initialState = {
-    page: 1,
+    page: 7,
 
     phoneNumber: {
         value: '',
@@ -75,17 +75,12 @@ const initialState = {
     accountType: '',
     axiosAccountType: false,
 
-    selectedCountry: '',
+    
     personalData: {
         firstName: '',
         lastName: '',
         patronymic: '',
         dob: '',
-        country: '',
-    },
-    axiosPersonalData: false,
-
-    addressData: {
         country: '',
         city: '',
         state: '',
@@ -93,6 +88,19 @@ const initialState = {
         addressOne: '',
         addressTwo: ''
     },
+    addressData: {
+        firstName: '',
+        lastName: '',
+        patronymic: '',
+        dob: '',
+        country: '',
+        city: '',
+        state: '',
+        zip: '',
+        addressOne: '',
+        addressTwo: ''
+    },
+    axiosPersonalData: false,
     axiosaddressData: false,
 
     selectedIdType: '',

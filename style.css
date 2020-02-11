@@ -32,6 +32,31 @@
     margin-bottom: 30px;
 }
 
+.multiForm select {
+
+    text-align: center;
+    width: 330px;
+    height: 50px;
+    background-color: #ecf7f9;
+    color: #444;
+    font-size: 18px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    background-position: right 5px top;
+        
+    background-image: url("https://image.flaticon.com/icons/svg/60/60995.svg");
+    background-size: 12px 12px;
+        background-repeat: no-repeat;
+        background-position: top 20px right 20px;
+        appearance: none;
+
+}
+
 .multiForm label {
     color: #666;
     font-size: 14px;

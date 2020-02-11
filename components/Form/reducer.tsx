@@ -127,24 +127,24 @@ function reducer(state: any, action: actionType) {
 
     else if (type === 'personalData') {
         return Object.assign({...state}, {
-            axiosPersonalData: true,
+            // axiosPersonalData: true,
             personalData: value,
-            selectedCountry: value.country
-
-        })
-    }
-
-    else if (type === 'axios.personalData') {
-        return Object.assign({...state}, {
+            addressData:  Object.assign(state.addressData, value),
             page: state.page + 1,
         })
     }
 
+    // TODO: remove this and its code. Send personal and home address data together.
+    // else if (type === 'axios.personalData') {
+    //     return Object.assign({...state}, {
+    //         page: state.page + 1,
+    //     })
+    // }
+
     else if (type === 'addressData') {
         return Object.assign({...state}, {
             axiosAddressData: true,
-            addressData: value,
-            selectedCountry: value.country
+            addressData: Object.assign(state.addressData, value),
         })
     }
 

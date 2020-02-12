@@ -13,12 +13,13 @@ const AccountTypeInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
     const [type, setType] = React.useState('')
 
     const selectHandler = (e: any) => {
+        debugger
         setType(e.target.value)
     }
 
     const clickHandler = (e: any) => {
         e.preventDefault()
-        dispatch({ type: dispatchType, value: e.target.value })
+        dispatch({ type: dispatchType, value: type})
     }
 
     const options = ['Personal', 'Business', 'Freelance']

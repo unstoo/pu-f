@@ -1,0 +1,106 @@
+.selectContainer{
+    position: relative;
+    width: 100%;
+    display: flex;
+    margin-right: auto;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: ProximaNova, sans-serif;
+    text-transform: uppercase;
+    color: #ff9b0f;
+}
+
+.selectContainer.open .select{
+    
+    border: solid 1px #e9f2f2;
+}
+
+.select{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+    padding: 0;
+    margin-left: -3px;
+    padding-left: 2px;
+    border: solid 1px rgba(255,255,255,0);
+    background: none;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: ProximaNova, sans-serif;
+    text-transform: uppercase;
+    color: #ff9b0f;
+}
+
+.cellsContainer{
+    position: absolute;
+    display: flex;
+    left: -9px;
+    top: 20px;
+    padding: 0;
+
+    padding-left: 2px;
+    margin-right: 0;
+    width: 100%;
+}
+
+.cellsContainer.closed {
+    display: none;
+}
+
+.cellsContainer.open {
+    display: block;
+    
+}
+
+.cell{
+    display: block;
+    width: 50%;
+    margin-left: 5px;
+    padding: 0;
+    padding-top: 4px;
+    padding-left: 2px;
+    border: solid 1px #e9f2f2;
+    border-top: none;
+    background-color: #f5fbfb;
+    font-size: 14px;
+    text-align: left;
+    font-weight: bold;
+    font-family: ProximaNova, sans-serif;
+    text-transform: uppercase;
+    color: #ff9b0f;
+}
+
+/* .cell{
+    padding-left: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: flex;
+    height: 35px;
+    width: 36px;
+    border: solid 1px #e9f2f2;
+    border-top: none;
+    background-color: #f5fbfb;
+    color: #ff9b0f;
+    background-repeat: no-repeat;
+    background-position: center;
+} */
+
+.select:hover{    
+    background-color: #dbebeb;
+}
+
+.cell:hover{
+    background-color: #dbebeb;
+}
+
+
+.arrowDown{
+    font-size: 26px;
+    margin-left: 8px;
+    line-height: 10px;
+    font-weight: bold;
+    font-family: ProximaNova, sans-serif;
+    -webkit-transform: rotate(90deg);
+}

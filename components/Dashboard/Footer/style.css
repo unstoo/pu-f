@@ -1,0 +1,70 @@
+.component-style{
+    position: relative;
+    height: 160px;
+    background-color: #2b3241;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgba(225, 225, 225, 0.8);
+    font-weight: normal;
+    font-family: ProximaNova, sans-serif;
+    width: 100%;
+}
+
+.component-style::before{
+    content: '';
+    position: absolute;
+    top: -40px;
+    display: block;
+    height: 40px;
+    width: 100%;
+    background-image: url('/footer_background.png');
+    background-repeat: no-repeat;
+    background-position-x: -240px;
+}
+
+.paragraph{
+    width: 340px;
+    margin-left: 100px;
+    margin-right: 90px;
+}
+
+.footer{
+    display: flex;
+    padding-top: 30px;
+}
+
+.links{
+    display: flex;
+}
+
+.links ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    margin-right: 92px;
+}
+
+.links ul:last-of-type {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    margin-right: 50px;
+}
+
+.links a {
+    text-decoration: none;
+    color: rgba(225, 225, 225, 0.8);
+}
+
+.links li:first-of-type {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.help{
+    margin: 0;
+    padding: 0;
+    margin-right: 50px;
+    list-style-type: none;
+}
+

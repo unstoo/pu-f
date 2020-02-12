@@ -1,0 +1,251 @@
+.componentStateMonitor{
+    background: white;
+    border: gold 2px solid;
+    position: fixed;
+    left: 30%;
+    top: 0;
+    padding: 8px;
+}
+.component-style{
+    margin-bottom: 71px;
+    margin-right: 95px;
+    width: 620px;
+    font-family: ProximaNova, sans-serif;
+}
+
+.headerRow{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 18px;
+}
+
+.header{
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #363636;
+}
+
+.arrow{
+    margin-left: 10px;
+    margin-top: 0px;
+    font-size: 28px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #ff9b0f;
+}
+
+.inputBlock{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 152px;
+    padding: 25px;
+    border: solid 1px #e9f2f2;
+}
+
+.inputRow{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.input{
+    height: 35px;
+    width: 260px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    border: solid 1px #e9f2f2;
+    font-size: 18px;
+    color: #363636;
+}
+
+.selectContainer{
+    position: relative;
+}
+
+.select{
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    padding-left: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: flex;
+    height: 33px;
+    width: 35px;
+    border: none;
+    border-left: solid 1px #e9f2f2;
+    background-color: #f5fbfb;
+    color: #ff9b0f;
+}
+
+.cellsContainer{
+    position: absolute;
+    top: 35px;
+    right: 0px;
+}
+
+.cellsContainer.open{
+    height:auto;
+}
+
+.cellsContainer.closed{
+    display: none;
+    height: 0;
+    padding: 0;
+    border: 0;
+}
+
+.cellsContainer.closed .cell{
+    height: 0;
+    padding: 0;
+    border: 0;
+}
+
+.cell{
+    padding-left: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: flex;
+    height: 35px;
+    width: 36px;
+    border: solid 1px #e9f2f2;
+    border-top: none;
+    background-color: #f5fbfb;
+    color: #ff9b0f;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cell:hover{
+    background-color: #dbebeb;
+}
+
+.cell.eur{
+    background-image: url('/icon-currency-eur.png');
+}
+
+.cell.usd{
+    background-image: url('/icon-usd.png');
+}
+
+
+.icon-currency {
+    width: 15px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-position-y: 0px;
+}
+.icon-currency.eur{
+    background-image: url('/icon-currency-eur.png');
+}
+.icon-currency.usd{
+    background-image: url('/icon-usd.png');
+}
+
+.down-arrow{
+    position: absolute;
+    top: 8px;
+    right: 7px;
+    font-size: 16px;
+    font-weight: bolder;
+    font-family: ProximaNova, sans-serif;
+    -webkit-transform: rotate(90deg);
+}
+
+.icon-exchange{
+    display: block;
+    width: 48px;
+    height: 35px;
+    background-image: url('/icon-exchange.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.controlsRow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.infoBox{
+    display: flex;
+}
+
+.info{
+    margin-right: 32px;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(54,54,54,0.7);
+}
+
+.info button {
+    height: 17px;
+    width: 17px;
+    padding: 0;
+    margin-left: 8px;
+    border: 1px solid rgba(54,54,54,0.7);
+    background: none;
+    border-radius: 25px;   
+    font-size: 11px;
+    color: rgba(54,54,54,0.7);
+}
+
+.button{
+    position: relative;
+    font-size: 14px;
+}
+
+.button.tip span {
+    display: none;
+    position: absolute;
+    width: 122px;
+    height: 50px;
+    top: -64px;
+    left: -55px;
+    -moz-border-radius: 5px; /* this works only in camino/firefox */
+    -webkit-border-radius: 5px; /* this is just for Safari */
+    box-shadow: 2px 3px 7px 1px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: #363636;
+    font-family: "ProximaNova", sans-serif;
+
+}
+.button.tip span:before{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+    
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent; 
+    border-top:8px solid white;
+    left: 54px;
+    bottom: -8px;
+}
+
+
+
+.button:hover.tip {
+     /* font-size: 99%; this is just for IE */
+}
+
+
+.button:hover.tip span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.fee{
+    font-weight: bold;
+    font-size: 14px;
+    color: #363636;
+}

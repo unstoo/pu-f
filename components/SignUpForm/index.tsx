@@ -63,10 +63,10 @@ const CurrentPage: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNu
 }
 
 const initialState = {
-    page: 7,
+    page: 1,
 
     phoneNumber: {
-        value: '',
+        value: '79046471416',
         error: ''
     },
     axiosPhoneNumber: false,
@@ -92,18 +92,10 @@ const initialState = {
         lastName: '',
         patronymic: '',
         dob: '',
-        country: '',
-        city: '',
-        state: '',
-        zip: '',
-        addressOne: '',
-        addressTwo: ''
+        country: ''
     },
     addressData: {
         firstName: '',
-        lastName: '',
-        patronymic: '',
-        dob: '',
         country: '',
         city: '',
         state: '',
@@ -176,7 +168,7 @@ const MultiForm: React.FC = () => {
         console.log('axiosPhoneNumber::')
         console.log(axiosPhoneNumber)
         if (axiosPhoneNumber.current) {
-            axios.post('http://localhost:4000/api', {phoneNumber: state.phoneNumber.value})
+            axios.post('http://localhost:4000/api', {phoneNumber: state.phoneNumber.value, new: true})
             .then(({ data }) => {
                 if (data.status === 'ok') {
                     dispatch({ type: 'axios.phoneNumber', value: data.value})
@@ -197,7 +189,7 @@ const MultiForm: React.FC = () => {
     React.useEffect(() => {
         if (axiosSmsCode.current) {
             console.log('LAUNCH axiosSmsCode')
-            axios.post('http://localhost:4000/api', {smsCodeToMatch: state.smsCodeToMatch})
+            axios.post('http://localhost:4000/api', { smsCodeToMatch: state.smsCodeToMatch, phoneNumber: state.phoneNumber.value })
             .then(({ data }) => {
                 if (data.status === 'ok') {                    
                     dispatch({ type: 'axios.smsCode', value: data.value })
@@ -218,7 +210,7 @@ const MultiForm: React.FC = () => {
     React.useEffect(() => {
         if (axiosPassword.current) {
             console.log('LAUNCH axiosPassword')
-            axios.post('http://localhost:4000/api', {password: state.password})
+            axios.post('http://localhost:4000/api', {password: state.password,  phoneNumber: state.phoneNumber.value })
             .then(({ data }) => dispatch({ type: 'axios.password', value: data.value}))
             .catch(err => console.log(err))
 
@@ -231,7 +223,7 @@ const MultiForm: React.FC = () => {
     React.useEffect(() => {
         if (axiosEmail.current) {
             console.log('LAUNCH axiosEmail')
-            axios.post('http://localhost:4000/api', {email: state.email})
+            axios.post('http://localhost:4000/api', {email: state.email,  phoneNumber: state.phoneNumber.value})
             .then(({ data }) => dispatch({ type: 'axios.email', value: data.value}))
             .catch(err => console.log(err))
 
@@ -242,22 +234,9 @@ const MultiForm: React.FC = () => {
     }, [state.axiosEmail])
 
     React.useEffect(() => {
-        if (axiosAccountType.current) {
-            console.log('LAUNCH axiosAccountType')
-            axios.post('http://localhost:4000/api', { accountType: state.accountType })
-            .then(({ data }) => dispatch({ type: 'axios.accountType', value: data.value }))
-            .catch(err => console.log(err))
-
-        } else if (!axiosAccountType.current) {
-            axiosAccountType.current = true
-        }
-        
-    }, [state.axiosAccountType])
-
-    React.useEffect(() => {
         if (axiosPersonalData.current) {
             console.log('LAUNCH axiosPersonalData')
-            axios.post('http://localhost:4000/api', { personalData: state.personalData })
+            axios.post('http://localhost:4000/api', { personalData: state.personalData, phoneNumber: state.phoneNumber.value })
             .then(({ data }) => dispatch({ type: 'axios.personalData', value: data.value }))
             .catch(err => console.log(err))
 
@@ -268,9 +247,23 @@ const MultiForm: React.FC = () => {
     }, [state.axiosPersonalData])
 
     React.useEffect(() => {
+        if (axiosAccountType.current) {
+            console.log('LAUNCH axiosAccountType')
+            axios.post('http://localhost:4000/api', { accountType: state.accountType, phoneNumber: state.phoneNumber.value })
+            .then(({ data }) => dispatch({ type: 'axios.accountType', value: data.value }))
+            .catch(err => console.log(err))
+
+        } else if (!axiosAccountType.current) {
+            axiosAccountType.current = true
+        }
+        
+    }, [state.axiosAccountType])
+
+  
+    React.useEffect(() => {
         if (axiosAddressData.current) {
             console.log('LAUNCH addressData')
-            axios.post('http://localhost:4000/api', { addressData: state.addressData })
+            axios.post('http://localhost:4000/api', { addressData: state.addressData, phoneNumber: state.phoneNumber.value })
             .then(({ data }) => dispatch({ type: 'axios.addressData', value: data.value }))
             .catch(err => console.log(err))
 

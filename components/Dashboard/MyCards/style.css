@@ -1,0 +1,97 @@
+.cards{
+    margin: 0;
+    padding: 0;
+}
+
+.headerButtonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 5px;
+    margin-right: 5px;;
+}
+
+.headerRow{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 24px;
+}
+
+.header{
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #363636;
+    font-family: "ProximaNova", sans-serif;
+}
+
+.arrow{
+    margin-left: 10px;
+    margin-top: 0px;
+    font-size: 28px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #ff9b0f;
+    font-family: ProximaNova, sans-serif;
+}
+
+/* <Card\> */
+.card{
+    position: relative;
+    display: flex;
+    padding-top: 17px;
+    padding-bottom: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
+    min-width: 242px;
+    height: 145px;
+    border-radius: 8px;
+    background-color: #2b3241;
+    background-image: url('/visaCard-pattern.png');
+}
+
+.cardDetails{
+    margin-top: auto;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 23px;
+    font-weight: normal;
+    font-family: "ProximaNova", sans-serif;
+}
+
+.cardNumber{
+    font-weight: bold;
+}
+
+.iconLock{
+    position: absolute;
+    width: 47px;
+    height: 47px;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.2);
+    background-image: url('/visaCard-lock.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.iconVisaLogo{
+    position: absolute;
+    right: 24px;
+    width: 54px;
+    height: 39px;
+    background-image: url('/visaCard-logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.iconWifi{
+    position: absolute;
+    right: 28px;
+    bottom: 22px;
+    width: 16px;
+    height: 20px;
+    background-image: url('/visaCard-wifi.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}

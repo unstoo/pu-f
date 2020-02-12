@@ -1,7 +1,7 @@
 .FileInput-Block .FileInput {
     background: none;
     border-radius: 0;
-}
+} 
 
 .FileInput-Block .FileInput::-webkit-file-upload-button {
    

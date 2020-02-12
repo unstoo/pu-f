@@ -105,7 +105,23 @@ function reducer(state: any, action: actionType) {
         })
     }
 
+    else if (type === 'personalData') {
+        return Object.assign({...state}, {
+            axiosPersonalData: true,
+            personalData: value,
+            addressData:  Object.assign(state.addressData, {country: value.country}),
+            page: state.page,
+        })
+    }
+
+    else if (type === 'axios.personalData') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+        })
+    }
+
     else if (type === 'accountType') {
+        
         return Object.assign({...state}, {
             accountType: value,
             axiosAccountType: true
@@ -125,21 +141,7 @@ function reducer(state: any, action: actionType) {
     //     })
     // }
 
-    else if (type === 'personalData') {
-        return Object.assign({...state}, {
-            // axiosPersonalData: true,
-            personalData: value,
-            addressData:  Object.assign(state.addressData, value),
-            page: state.page + 1,
-        })
-    }
-
-    // TODO: remove this and its code. Send personal and home address data together.
-    // else if (type === 'axios.personalData') {
-    //     return Object.assign({...state}, {
-    //         page: state.page + 1,
-    //     })
-    // }
+   
 
     else if (type === 'addressData') {
         return Object.assign({...state}, {

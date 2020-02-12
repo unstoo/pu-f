@@ -8,26 +8,35 @@ type StepProps = {
 }
 
 const PersonalDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
-    const [firstName, setFirstName] = React.useState(defValue.firstName)
+	const [firstName, setFirstName] = React.useState(defValue.firstName)
+	const [fnameError, setFnameError] = React.useState('')
     const [lastName, setLastName] = React.useState(defValue.lastName)
-    const [patrName, setPatrName] = React.useState(defValue.patrName)
+    const [lnameError, setLnameError] = React.useState('')
+    const [patronymic, setPatrName] = React.useState(defValue.patrName)
     const [day, setDay] = React.useState('')
     const [month, setMonth] = React.useState('')
     const [year, setYear] = React.useState('')
-    const [country, setCountry] = React.useState(defValue.country)
-    const [goodToSend, setGoodToSend] = React.useState(false)
+	const [country, setCountry] = React.useState(defValue.country)
+	const [countryError, setCountryError] = React.useState('')
 
     const firstNameHandler = (e: any) => {
         const {value} = e.target
-        if (value) setFirstName(value)
-        checkGoodToSend()
-    }
+		if (value) setFirstName(value)
+		if (fnameError) setFnameError('')
+	}
+	
+	const onBlurHandler = (e: any) => {
+		const {name, value} = e.target
+		if (name === 'firstname' && value.trim() === '') setFnameError('First name too short')
+		if (name === 'lastname' && value.trim() === '') setLnameError('Last name too short')
+
+	}
 
     const lastNameHandler = (e: any) => {
         const {value} = e.target
-        if (value) setLastName(value)
+		if (value) setLastName(value)
+		if (lnameError) setLnameError('')
     }
-
 
     const patrNameHandler = (e: any) => {
         const {value} = e.target
@@ -35,7 +44,8 @@ const PersonalDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
     }
 
     const countryHandler = (e: any) => {
-        const {value} = e.target
+		const {value} = e.target
+		if (countryError) setCountryError('')
         if (value) setCountry(value)
     }
 
@@ -47,22 +57,21 @@ const PersonalDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
         if (name === 'year') setYear(value)
     }
 
-    const checkGoodToSend = () => { 
-        setGoodToSend(true)
-    }
 
-    const clickHandler = (e: React.SyntheticEvent) => {
-        e.preventDefault()
-        
-        if (goodToSend) {
+    const clickHandler = () => {
+		if (country === '') setCountryError('Please select country')
+		if (firstName.trim() === '') setFnameError('First name too short')
+		if (lastName.trim() === '') setLnameError('Last name too short')
+
+		if (country && lastName && firstName) {
             dispatch({ type: dispatchType, value: {
                 firstName,
                 lastName,
-                patrName,
+                patronymic,
                 dob: day + '-' + month + '-' + year,
                 country
            }})
-        }
+		}
     }
 
 
@@ -71,16 +80,18 @@ const PersonalDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
          <div className="PersonalData">
              <h2>Your personal data</h2>
             <div className="PersonalData-InputBlock">
-                <label>First Name</label>
-                <input type="text" name="firstname" onChange={firstNameHandler}/>
+				{fnameError && <label style={errStyle}>{fnameError}</label>}
+                {!fnameError &&  <label>First name</label>}
+                <input type="text" name="firstname" onBlur={onBlurHandler} onChange={firstNameHandler}/>
             </div>
             <div className="PersonalData-InputBlock">
-                <label>Last Name</label>
-                <input type="text" name="lastname" onChange={lastNameHandler}/>
+				{lnameError && <label style={errStyle}>{lnameError}</label>}
+                {!lnameError &&  <label>Last name</label>}
+                <input type="text" name="lastname" onBlur={onBlurHandler} onChange={lastNameHandler}/>
             </div>
             <div className="PersonalData-InputBlock">
                 <label>Patronymic (optionally)</label>
-                <input type="text" name="patrname" onChange={patrNameHandler}/>
+                <input type="text" name="patronymic" onChange={patrNameHandler}/>
             </div>
             <div className="birthdate">
                 <div className='birthdateHeader'>Birthdate</div>
@@ -100,17 +111,25 @@ const PersonalDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
                 </div>
             </div>
             <div className="PersonalData-country">
-                <label>Country</label>
+				{lnameError && <label style={errStyle}>{countryError}</label>}
+                {!lnameError &&  <label>Country</label>}
                 <select name="country" onChange={countryHandler}>
                     {countryList.map(country => <option key={'PersonalData-' + country}>{country}</option>)}
                 </select>
             </div>
-            <button type="button" onClick={clickHandler}>Next</button>
+			{(countryError || fnameError || lnameError) ?
+			<button type="button" onClick={clickHandler} disabled>Next</button>
+			: <button type="button" onClick={clickHandler}>Next</button>}
         </div>
     )
 }
 
 export default PersonalDataInput
+
+const errStyle = {
+	color: "red",
+	opacity: "0.8"
+}
 
 const countryList = [
 	"Afghanistan",

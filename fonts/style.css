@@ -1,0 +1,585 @@
+/* base styles */
+@font-face {
+    font-family: ProximaNova; /* Имя шрифта */
+    src: url(fonts/ProximaNova-Regular.woff); /* Путь к файлу со шрифтом */
+   }
+
+body{
+    font-family: 'proxima-nova', sans-serif;
+}
+
+h3 {
+    font-size: 18px;
+    color: #363636;
+    margin-bottom: 15px;
+}
+
+/* end of base styles  */
+
+/* header styles */
+
+.head {
+    height: 60px;
+}
+
+.head a {
+    font-size: 14px;
+    color: #363636;
+    text-decoration: none;
+}
+
+.head a i {
+    color: #ff9b0f;
+    font-size: 20px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.head .log-in {
+    height: 33px;
+    width: 80px;
+    background-color: #ff9b0f;
+    color: #ffffff;
+    box-shadow: 0px 0px 0px 3px #ffebcf;
+    border: none;
+}
+
+.head .sign-up {
+    height: 33px;
+    width: 100px;
+    background-color: #2b3241;
+    color: #ffffff;
+    box-shadow: 0px 0px 0px 3px #d5d6d9;
+    border: none;
+}
+
+/* end of header styles */
+
+/* header menu styles */
+
+.head-menu {
+    margin: 40px auto 50px auto;
+}
+
+.head-menu button {
+    background-color: #2b3241;
+    padding: 0 20px;
+    height: 33px;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.head-menu .active {
+    background-color: #ff9b0f;
+    color: #ffffff;
+}
+
+.head-menu .col-auto {
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 0;
+}
+
+.head-menu .search {
+    background-color: #ebf7f8;
+    border: none;
+    padding: 0 15px;
+    height: 33px;
+    padding-top: 3px;
+    width: 180px;
+}
+
+.search input {
+    background: none;
+    border: none;
+    outline: none;
+    width: 120px;
+}
+
+.search input::placeholder {
+    color: black;
+}
+
+/* end of header menu styles */
+
+/* account styles */
+
+.account-block {
+    height: 65px;
+    border: solid 1px #ebebeb;
+    border-radius: 5px;
+    margin-right: 35px;
+}
+
+.account-block .col-auto {
+    padding: 0;
+}
+
+.account-block .tag {
+    width: 55px;
+    background-color: #ebf7f8;
+    height: 100%;
+}
+
+.account-block .tag i {
+    margin-top: 40%;
+    color: #ff9b0f;
+}
+
+.account-block input {
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #363636;
+    margin: auto 0px auto 20px;
+    width: 35px;
+}
+
+.account-block button {
+    width: 80px;
+    color: #ffffff;
+    background-color: #ff9b0f;
+    border-radius: 5px;
+    margin: auto 5px;
+    font-size: 14px;
+    height: 30px;
+}
+
+/* end of account styles */
+
+/* content styles */
+
+.content {
+    margin-top: 40px;
+}
+
+.content button {
+    background-color: #ff9b0f;
+    padding: 0 20px;
+    height: 33px;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border: solid 1px #e1e7e7;
+    border-radius: 10px;
+}
+
+thead {
+    background-color: #ebf7f8;
+}
+
+th{
+    padding-left: 30px;
+}
+
+tr {
+    height: 45px;
+}
+td{
+    padding-left: 30px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f3fafb;
+}
+
+table .active {
+    color: #d4b316;
+}
+
+table .ordered,
+table .plus {
+    color: #52cb3b;
+}
+
+table .expired,
+table .minus {
+    color: #d01818;
+}
+
+/* end of content styles */
+
+/* layout6 styles */
+.layout-6 {
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+.layout-6-rows .row {
+    margin-top: 10px;
+}
+
+.layout-6 p {
+    list-style: 12px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.layout-6 .input {
+    background-color: #ebf7f8;
+    height: 33px;
+    padding: 3.5px 15px 0 15px;
+}
+
+.layout-6 input {
+    outline: none;
+    background: none;
+    border: none;
+}
+
+.layout-6 .input i {
+    font-weight: bold;
+    color: #ff9b0f;
+}
+
+.layout-6 button {
+    margin-top: 40px;
+    width: 140px;
+    height: 40px;
+    color: #ffffff;
+    border: none;
+    font-size: 18px;
+}
+
+.layout-6 .back {
+    box-shadow: 0px 0px 0px 3px #e9eaec;
+    background-color: #2b3241;
+}
+
+.layout-6 .save {
+    box-shadow: 0px 0px 0px 3px #fff5e7;
+    background-color: #ff9b0f;
+}
+
+.layout-6 button i {
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+/* end of layout6 styles */
+
+/* layout5 styles*/
+.layout-5 {
+    height: 400px;
+    padding-top: 40px;
+}
+
+.layout-5 .row {
+    height: 100%;
+}
+
+.layout-5 button {
+    width: 200px;
+    height: 70px;
+    background-color: #f5fbfb;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+}
+
+.layout-5 button.active {
+    width: 200px;
+    height: 70px;
+    background-color: #ebf7f8;
+    border: solid 1px #cccccc;
+}
+
+.layout-5 button img {
+    margin-right: 10px;
+    margin-bottom: 3px;
+}
+
+.layout-5 .next {
+    width: 210px;
+    height: 45px;
+    background-color: #ff9b0f;
+    color: #ffffff;
+    box-shadow: 0px 0px 0px 4px #fff5e7;
+    margin-top: 30px;
+}
+
+.layout-5 i {
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+/* end of layout 5 styles */
+
+/* layout 4 styles */
+.layout-4 {
+    height: 400px;
+    padding-top: 40px;
+}
+
+.layout-4 .row {
+    height: 100%;
+}
+
+.layout-4 input {
+    height: 45px;
+    width: 330px;
+    border: none;
+    background-color: #ebf7f8;
+    text-align: center;
+    margin: 30px 0 25px 0;
+    outline: none;
+}
+
+.layout-4 button {
+    width: 200px;
+    height: 45px;
+    background-color: #ff9b0f;
+    color: #ffffff;
+    box-shadow: 0px 0px 0px 4px #fff5e7;
+}
+
+.layout-4 i {
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+/* end of layout 4 styles */
+
+/* layout 3 styles */
+.layout-3 {
+    height: 400px;
+    padding-top: 40px;
+}
+
+.layout-3 .row {
+    height: 100%;
+}
+
+.layout-3 input {
+    height: 45px;
+    border: none;
+    background-color: #ebf7f8;
+    text-align: center;
+    width: 325px;
+    margin: 10px 0px 20px 0px;
+    outline: none;
+}
+
+.layout-3 button {
+    width: 200px;
+    height: 45px;
+    background-color: #ff9b0f;
+    color: #ffffff;
+    box-shadow: 0px 0px 0px 4px #fff5e7;
+}
+
+.layout-3 input.error {
+    border: 1px solid red;
+}
+
+.layout-3 p {
+    margin: 0;
+}
+
+.layout-3 i {
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+/* end of layout 3 styles */
+
+/* layout 2 styles */
+.layout-2 {
+    height: 400px;
+    padding-top: 40px;
+}
+
+.layout-2 .row {
+    height: 100%;
+}
+
+.layout-2 input {
+    height: 45px;
+    border: none;
+    background-color: #ebf7f8;
+    text-align: center;
+    width: 325px;
+    margin: 10px 0px 20px 0px;
+    outline: none;
+}
+
+.layout-2 button {
+    width: 200px;
+    height: 45px;
+    background-color: #ff9b0f;
+    color: #ffffff;
+    box-shadow: 0px 0px 0px 4px #fff5e7;
+}
+
+.layout-2 input.error {
+    border: 1px solid red;
+}
+
+.layout-2 p {
+    margin: 0;
+}
+
+.layout-2 i {
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+/* end of layout 2 styles */
+
+/* layout 1 styles */
+.layout-1 {
+    height: 400px;
+    padding-top: 40px;
+}
+
+.layout-1 .row {
+    height: 100%;
+}
+
+.layout-1 .input-phone {
+    height: 45px;
+    border: none;
+    background-color: #ebf7f8;
+    width: 325px;
+    margin: 10px 0px 20px 0px;
+    outline: none;
+    padding-top: 10px;
+    color: #a4a6a6;
+    border-radius: 0 50px 50px 0;
+}
+
+.layout-1 .country-choose {
+    background-color: #eef0f0;
+    height: 45px;
+    width: 100px;
+    border-radius: 50px 0 0 50px;
+    margin: 10px 0px 20px 0px;
+    padding-top: 10px;
+    padding-left: 20px;
+    color: #a4a6a6;
+}
+
+.layout-1 input {
+    outline: none;
+    background: none;
+    border: none;
+    color: #a4a6a6;
+}
+
+.layout-1 button {
+    width: 200px;
+    height: 45px;
+    background-color: #ff9b0f;
+    color: #ffffff;
+    box-shadow: 0px 0px 0px 4px #fff5e7;
+}
+
+.layout-1 .input-phone.error {
+    border: 1px solid red;
+}
+
+.layout-1 p {
+    margin: 0;
+}
+
+.layout-1 i {
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 5px;
+    color: #a4a6a6;
+}
+
+.layout-1 button i {
+    color: #ffffff;
+}
+
+/* end of layout 1 styles */
+
+/* landing styles */
+.landing .row{
+    height: 70vh;
+}
+.landing h1 {
+    color: #363636;
+    font-size: 44px;
+    margin-top: 35px;
+}
+.landing h2 {
+    color: #ff9b0f;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.landing p {
+    color: #828385;
+    font-size: 15px;
+    margin-top: 35px;
+}
+/* end of landing styles */
+
+/* footer styles */
+footer {
+    background-image: url(/img/footer.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 178px;
+}
+
+.footer,
+.footer .row {
+    height: 100%;
+}
+
+.footer .row {
+    padding-bottom: 35px;
+}
+
+.footer p {
+    line-height: 12px;
+    padding: 0;
+    margin: 12px 0 0 0;
+}
+
+.footer a {
+    font-size: 12px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer img,
+.footer button {
+    margin-bottom: 20px;
+}
+
+.footer button {
+    height: 35px;
+    width: 120px;
+}
+
+.footer .log-in {
+    background-color: #ffffff;
+    color: #363636;
+    box-shadow: 0px 0px 0px 3px #555b67;
+    border: none;
+}
+
+.footer .sign-up {
+    background-color: #ff9b0f;
+    color: #ffffff;
+    box-shadow: 0px 0px 0px 3px #554737;
+    border: none;
+}

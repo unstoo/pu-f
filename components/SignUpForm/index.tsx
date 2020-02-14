@@ -170,12 +170,12 @@ const MultiForm: React.FC = () => {
     const axiosIdFiles = React.useRef(state.axiosIdFiles)
     const axiosIdSelfieFile = React.useRef(state.axiosIdSelfieFile)
     const axiosPoaFile = React.useRef(state.axiosPoaFile)
-
+    const url = 'http://78.155.206.34:4000/api'
     React.useEffect(() => {
         console.log('axiosPhoneNumber::')
         console.log(axiosPhoneNumber)
         if (axiosPhoneNumber.current) {
-            axios.post('http://localhost:4000/api', {phoneNumber: state.phoneNumber.value, new: true})
+            axios.post(url, {phoneNumber: state.phoneNumber.value, new: true})
             .then(({ data }) => {
                 if (data.status === 'ok') {
                     dispatch({ type: 'axios.phoneNumber', value: data.value})
@@ -196,7 +196,7 @@ const MultiForm: React.FC = () => {
     React.useEffect(() => {
         if (axiosSmsCode.current) {
             console.log('LAUNCH axiosSmsCode')
-            axios.post('http://localhost:4000/api', { smsCodeToMatch: state.smsCodeToMatch, phoneNumber: state.phoneNumber.value })
+            axios.post(url, { smsCodeToMatch: state.smsCodeToMatch, phoneNumber: state.phoneNumber.value })
             .then(({ data }) => {
                 if (data.status === 'ok') {                    
                     cookies.set('token', data.token);
@@ -218,7 +218,7 @@ const MultiForm: React.FC = () => {
     React.useEffect(() => {
         if (axiosPassword.current) {
             console.log('LAUNCH axiosPassword')
-            axios.post('http://localhost:4000/api', {password: state.password,  phoneNumber: state.phoneNumber.value })
+            axios.post(url, {password: state.password,  phoneNumber: state.phoneNumber.value })
             .then(({ data }) => dispatch({ type: 'axios.password', value: data.value}))
             .catch(err => console.log(err))
 
@@ -231,7 +231,7 @@ const MultiForm: React.FC = () => {
     React.useEffect(() => {
         if (axiosEmail.current) {
             console.log('LAUNCH axiosEmail')
-            axios.post('http://localhost:4000/api', {email: state.email,  phoneNumber: state.phoneNumber.value})
+            axios.post(url, {email: state.email,  phoneNumber: state.phoneNumber.value})
             .then(({ data }) => dispatch({ type: 'axios.email', value: data.value}))
             .catch(err => console.log(err))
 
@@ -244,7 +244,7 @@ const MultiForm: React.FC = () => {
     React.useEffect(() => {
         if (axiosPersonalData.current) {
             console.log('LAUNCH axiosPersonalData')
-            axios.post('http://localhost:4000/api', { personalData: state.personalData, phoneNumber: state.phoneNumber.value })
+            axios.post(url, { personalData: state.personalData, phoneNumber: state.phoneNumber.value })
             .then(({ data }) => dispatch({ type: 'axios.personalData', value: data.value }))
             .catch(err => console.log(err))
 
@@ -257,7 +257,7 @@ const MultiForm: React.FC = () => {
     React.useEffect(() => {
         if (axiosAccountType.current) {
             console.log('LAUNCH axiosAccountType')
-            axios.post('http://localhost:4000/api', { accountType: state.accountType, phoneNumber: state.phoneNumber.value })
+            axios.post(url, { accountType: state.accountType, phoneNumber: state.phoneNumber.value })
             .then(({ data }) => dispatch({ type: 'axios.accountType', value: data.value }))
             .catch(err => console.log(err))
 
@@ -270,7 +270,7 @@ const MultiForm: React.FC = () => {
     React.useEffect(() => {
         if (axiosAddressData.current) {
             console.log('LAUNCH addressData')
-            axios.post('http://localhost:4000/api', { addressData: state.addressData, phoneNumber: state.phoneNumber.value })
+            axios.post(url, { addressData: state.addressData, phoneNumber: state.phoneNumber.value })
             .then(({ data }) => dispatch({ type: 'axios.addressData', value: data.value }))
             .catch(err => console.log(err))
 
@@ -283,7 +283,7 @@ const MultiForm: React.FC = () => {
     React.useEffect(() => {
         if (axiosIdData.current) {
             console.log('LAUNCH axiosIdData')
-            axios.post('http://localhost:4000/api', { idData: state.idData })
+            axios.post(url, { idData: state.idData })
             .then(({ data }) => dispatch({ type: 'axios.idData', value: data.value }))
             .catch(err => console.log(err))
 
@@ -302,7 +302,7 @@ const MultiForm: React.FC = () => {
             const options = {
                 headers: { 'Content-Type': 'multipart/form-data' }
             }
-            axios.post('http://localhost:4000/api', formWithFilesToUpload, options)
+            axios.post(url, formWithFilesToUpload, options)
             .then(({ data }) => dispatch({ type: 'axios.idFiles', value: data.value }))
             .catch(err => console.log(err))
 
@@ -322,7 +322,7 @@ const MultiForm: React.FC = () => {
                 headers: { 'Content-Type': 'multipart/form-data' }
             }
 
-            axios.post('http://localhost:4000/api', formWithFilesToUpload, options)
+            axios.post(url, formWithFilesToUpload, options)
             .then(({ data }) => dispatch({ type: 'axios.idSelfieFile', value: data.value }))
             .catch(err => console.log(err))
 
@@ -342,7 +342,7 @@ const MultiForm: React.FC = () => {
                 headers: { 'Content-Type': 'multipart/form-data' }
             }
 
-            axios.post('http://localhost:4000/api', formWithFilesToUpload, options)
+            axios.post(url, formWithFilesToUpload, options)
             .then(({ data }) => dispatch({ type: 'axios.poaFile', value: data.value }))
             .catch(err => console.log(err))
 

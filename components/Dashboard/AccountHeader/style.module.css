@@ -1,0 +1,69 @@
+.component-style{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.component-style__left-col{
+    margin: 0;
+}
+
+.component-style__right-col{
+    margin: 0;
+}
+
+.name{
+    font-size: 14px;
+    font-weight: bold;
+    font-family: ProximaNova, sans-serif;
+    color: #363636;
+    margin-bottom: 5px;
+}
+
+.account{
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Verified{
+    font-size: 14px;
+    font-weight: bold;
+    font-family: ProximaNova, sans-serif;
+    color: #28be0a;
+}
+
+.Unverified{
+    font-size: 14px;
+    font-weight: bold;
+    font-family: ProximaNova, sans-serif;
+    color: #5a5c5c;
+}
+
+.accountId{
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: ProximaNova, sans-serif;
+    color: #5a5c5c;
+}
+
+.locale{
+    font-size: 14px;
+    font-weight: bold;
+    font-family: ProximaNova, sans-serif;
+    text-transform: uppercase;
+    color: #ff9b0f;
+    display: flex;
+    position: relative;
+}
+
+.locale-selector{
+    font-size: 26px;
+    line-height: 0px;
+    font-weight: bold;
+    font-family: ProximaNova, sans-serif;
+    -webkit-transform: rotate(90deg);
+}

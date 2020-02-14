@@ -1,0 +1,173 @@
+.component-style{
+    margin-bottom: 40px;
+}
+
+.headerRow{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 35px;
+}
+
+.header{
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #363636;
+    font-family: "ProximaNova", sans-serif;
+}
+
+.arrow{
+    margin-left: 10px;
+    margin-top: 0px;
+    font-size: 28px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #ff9b0f;
+    font-family: ProximaNova, sans-serif;
+}
+
+.transactionsList{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tx{
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+    padding-top: 4px;
+}
+
+.tx:hover{
+    background-color: rgba(255, 255, 255, 0.8);
+    width: calc(100% + 70px);
+    margin-left: -35px;
+    margin-right: -10px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.tx:last-of-type{
+    margin-bottom: 0px;
+}
+
+.tx-col1{
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+    width: 15px;
+}
+
+.tx-col2{
+    display: flex;
+    flex-direction: column;
+}
+
+.tx-col3{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    text-transform: uppercase;
+}
+
+.tx-col3--credit{
+    text-transform: uppercase;
+}
+
+.tx-col3--debit{
+    text-transform: uppercase;
+}
+
+.label{
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #363636;
+    font-family: ProximaNova, sans-serif;
+}
+
+.date{
+    font-size: 14px;
+    font-weight: normal;
+    color: #363636;
+    font-family: ProximaNova, sans-serif;
+}
+
+.color--debit,
+.color--debitInner,
+.color--credit,
+.color--creditInner{
+    font-size: 14px;
+    font-weight: bold;
+    font-family: ProximaNova, sans-serif;
+}
+
+.color--debit,
+.color--debitInner{
+    color: #d01818;
+}
+
+.color--credit,
+.color--creditInner{
+    color: #28be0a;
+}
+
+.tx-col1 > div{
+    margin-bottom: 5px;
+}
+
+.icon-tx-debit{
+    height: 15px;
+    width: 20px;
+    background-image: url('/icon-tx-debit.png');
+    background-repeat: no-repeat;
+    background-position-x: 6px;
+    background-position-y: 2px;
+}
+.icon-tx-debitInner{
+    height: 20px;
+    width: 20px;
+    background-image: url('/icon-tx-debitInner.png');
+    background-repeat: no-repeat;
+    background-position-x: 6px;
+    background-position-y: 3px;
+}
+
+.icon-tx-credit{
+    height: 15px;
+    width: 20px;
+    background-image: url('/icon-tx-credit.png');
+    background-repeat: no-repeat;
+    background-position-x: 6px;
+    background-position-y: 2px;
+}
+.icon-tx-creditInner{
+    height: 20px;
+    width: 20px;
+    background-image: url('/icon-tx-creditInner.png');
+    background-repeat: no-repeat;
+}
+.icon-tx-pending{
+    background: none;
+    border: none;
+    height: 18px;
+    width: 18px;
+    background-image: url('/icon-tx-pending.png');
+    background-repeat: no-repeat;
+    background-position: -2px -2px;
+    transition: all 0.5s linear;
+}
+
+.icon-tx-pending:hover{
+    transform:rotate(360deg);
+}
+
+.icon-tx-complete{
+    height: 20px;
+    width: 20px;
+    /* background-image: url('/'); */
+    background-repeat: no-repeat;
+
+}

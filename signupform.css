@@ -1,0 +1,168 @@
+.multiForm{
+    /* max-width: 500px; */
+    padding: 15px;
+    margin: 0 auto;
+    margin-top: 60px;
+    min-height: 400px;
+}
+
+.multiForm p {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    color: #555;
+}
+
+.multiForm h2 {
+    color: #333;
+    font-size: 20px;
+}
+
+.multiForm input {
+    text-align: center;
+    width: 330px;
+    height: 50px;
+    background-color: #ecf7f9;
+    color: #444;
+    font-size: 18px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
+.multiForm select {
+
+    text-align: center;
+    width: 330px;
+    height: 50px;
+    background-color: #ecf7f9;
+    color: #444;
+    font-size: 18px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    background-position: right 5px top;
+        
+    background-image: url("https://image.flaticon.com/icons/svg/60/60995.svg");
+    background-size: 12px 12px;
+        background-repeat: no-repeat;
+        background-position: top 20px right 20px;
+        appearance: none;
+
+}
+
+.multiForm label {
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
+    
+    margin-top: 90px;
+    margin-bottom: 15px;
+}
+
+.multiForm button {
+    box-sizing: border-box;
+    width: 200px;
+    height: 45px;
+    border: none;
+    border-radius: 30px;
+    background-color: #ff9b0f;
+    box-shadow: 0px 4px 6.65px 0.35px rgba(255, 155, 15, 0.53);
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 10px;
+    transition: ease-in-out 0.3s;  
+}
+
+.multiForm button:hover {
+    background-color: #e6780e;
+    transition: ease-in-out 0.3s;    
+    box-shadow: 1px 3px 5px 0px rgba(255, 155, 15, 0.43);
+}
+
+.multiForm button:hover:disabled{
+    background-color: silver;
+    transition: ease-in-out 0.3s;
+    box-shadow: none;
+}
+
+.multiForm button:disabled {
+    box-sizing: border-box;
+    border: none;
+    background-color: silver;
+    width: 200px;
+    height: 45px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 10px;
+    box-shadow: none;
+    border: none;
+    border-radius: 30px;
+    transition: ease-in-out 0.3s;  
+}
+
+.multiForm button:hover:disabled{
+    background-color: silver;
+    transition: ease-in-out 0.3s;
+    box-shadow: none;
+}
+
+.multiForm div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.phoneInput2 div.react-tel-input,
+.phoneInput2 div.react-tel-input div{
+    display: block;
+}
+
+.phoneInput2 {
+    margin-bottom: 30px;
+}
+
+.phoneInput2 div.react-tel-input input {
+    width: 330px;
+    height: 50px;
+    background-color: #ecf7f9;
+    color: #444;
+    font-size: 18px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    padding-left: 80px;
+}
+
+#phone-form-control{
+    text-align: left;
+}
+
+.react-tel-input .selected-flag {
+    left: 15px;
+}
+
+
+.phoneInput2 #flag-dropdown {
+    width: 65px;
+    border: none;
+    border-bottom-left-radius: 30px ;
+    border-top-left-radius: 30px ;
+}
+
+.phoneNumberInput .phoneNumberInput-error {
+    color: red;
+    opacity: 0.8;
+}

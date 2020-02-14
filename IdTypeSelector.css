@@ -1,0 +1,38 @@
+.IdType {
+}
+
+.Header {
+    margin-bottom: 50px;
+}
+
+.Header p {
+    text-align: left;
+}
+
+.IdType .InputBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.IdType .InputBlock label {
+    margin: 15px;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.IdType .InputBlock input {
+    margin-bottom: 20px;
+}
+
+.IdType .Controls {
+    width: 330px;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.IdType button {
+    width: 140px;
+}

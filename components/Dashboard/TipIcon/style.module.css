@@ -1,0 +1,80 @@
+.tipIcon{
+    height: 18px;
+    width: 18px;
+    background: none;
+    border: none;
+    background-image: url('/icon-tip-orange.png');
+    background-repeat: no-repeat;
+    z-index: 5;
+}
+
+.hintContainer{
+    position: relative;
+}
+
+/* .hint{
+    max-width: 150px;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: normal;
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: #363636;
+    font-family: "ProximaNova", sans-serif;
+} */
+
+/* .hint.hidden{
+    top: -900px;
+    position: absolute;
+}
+
+.hint.visible{
+    position: absolute;
+    top: 75px;
+    left: 25px;
+} */
+
+  button.tip span {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: -15px;
+    padding: 10px;
+    z-index: 100;
+    background: #fff;
+    color: #000;
+    -moz-border-radius: 5px; /* this works only in camino/firefox */
+    -webkit-border-radius: 5px; /* this is just for Safari */
+    box-shadow: 2px 3px 7px 1px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: normal;
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: #363636;
+    font-family: "ProximaNova", sans-serif;
+
+}
+button.tip span:before{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+    
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent; 
+    border-bottom:8px solid white;
+    left: 16px;
+    top: -8px;
+}
+
+
+
+button:hover.tip {
+     font-size: 99%; /*this is just for IE */
+}
+
+
+button:hover.tip span {
+    display: block;
+}

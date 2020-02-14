@@ -1,15 +1,18 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-closing-bracket-location */
 import React, { useState } from 'react';
-import style from './side-menu.css';
-// import Dashboard from '../svg/dashboard.svg';
+import style from './side-menu.module.css';
 
 const SideMenu = () => {
+
   const [isOpen, setIsOpen] = useState(false);
+
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+
   const menuState = isOpen ? style.menuOpen : style.menuClosed;
+
   return (
     <nav className={style['side-menu'] + ' ' + menuState}>
       <div className={style.logo}>
@@ -70,7 +73,7 @@ const SideMenu = () => {
 
 export default SideMenu;
 
-const DonationsSVG = ({ active }) => (
+const DonationsSVG: React.FC<{active: boolean}> = ({ active }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -131,7 +134,7 @@ const DonationsSVG = ({ active }) => (
   </svg>
 );
 
-const StockSVG = ({ active }) => (
+const StockSVG: React.FC<{active: boolean}>  = ({ active }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -220,7 +223,7 @@ const StockSVG = ({ active }) => (
   </svg>
 );
 
-const PosSVG = ({ active }) => (
+const PosSVG: React.FC<{active: boolean}>  = ({ active }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -325,7 +328,7 @@ const PosSVG = ({ active }) => (
   </svg>
 );
 
-const AtmSVG = ({ active }) => (
+const AtmSVG: React.FC<{active: boolean}>  = ({ active }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -423,7 +426,7 @@ const AtmSVG = ({ active }) => (
   </svg>
 );
 
-const AccuiringSVG = ({ active }) => (
+const AccuiringSVG: React.FC<{active: boolean}>  = ({ active }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -473,7 +476,7 @@ const AccuiringSVG = ({ active }) => (
   </svg>
 );
 
-const BankCardsSVG = ({ active }) => (
+const BankCardsSVG: React.FC<{active: boolean}>  = ({ active }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -565,7 +568,7 @@ const BankCardsSVG = ({ active }) => (
   </svg>
 );
 
-const BankTransferSVG = ({ active }) => (
+const BankTransferSVG: React.FC<{active: boolean}>  = ({ active }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -654,7 +657,7 @@ const BankTransferSVG = ({ active }) => (
   </svg>
 );
 
-const DashboardSVG = ({ active }) => {
+const DashboardSVG: React.FC<{active: boolean}>  = ({ active }) => {
   return (
     <svg
       id="Dashboard"

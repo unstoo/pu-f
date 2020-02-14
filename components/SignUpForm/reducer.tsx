@@ -1,3 +1,6 @@
+import Router from 'next/router'
+
+
 type actionType = {
     type: string,
     value: any
@@ -269,11 +272,11 @@ function reducer(state: any, action: actionType) {
     }
 
     else if (type === 'toActivate.dashboard') {
-        alert('TODO: Dashboard redirect.')
-        window.location.href = "/dashboard"
-        // return Object.assign({...state}, {
-        //     page: state.page,
-        // })
+        Router.push('/dashboard')
+        // window.location.href = "/dashboard"
+        return Object.assign({...state}, {
+            page: state.page,
+        })
     }
 
 

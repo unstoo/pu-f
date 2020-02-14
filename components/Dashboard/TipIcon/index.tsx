@@ -3,14 +3,14 @@ import React from 'react';
 // import Tooltip from 'react-simple-tooltip';
 // import Hint from "react-portal-hint";
 // import "react-portal-hint/default.css";
-import style from './style.css';
+import style from './style.module.css';
 
 // onMouseEnter={toggleVisibility}
 // onMouseOut={toggleVisibility}
 // onBlur={() => {}}
 
 // eslint-disable-next-line react/prop-types
-const TipIcon = ({ hintText }) => {
+const TipIcon: React.FC<{hintText?: string}> = ({ hintText }) => {
   // const [visible, setVisibility] = useState(false)
   // const toggleVisibility = () => setVisibility(!visible);
   // const hintClass = visible === true ? 'visible' : 'hidden';

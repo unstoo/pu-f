@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './style.css';
+import style from './style.module.css';
 
 const Footer = () => (
   <footer className={style['component-style'] + ' ' + style.footer}>

@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import style from './style.css'
+import style from './style.module.css';
 import DropDownSelector from '../DropDownSelector'
 
 const localeOptions = [{option: 'ENG'},{option: 'RUS'}];

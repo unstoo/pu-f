@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import ButtonStd from '../ButtonStd';
-import style from './style.css';
+import style from './style.module.css';
 // import PropTypes from 'prop-types';
 
 const accountsData = [

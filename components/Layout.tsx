@@ -7,13 +7,6 @@ type Props = {
   isThisIndexPage?: boolean
 }
 
-
-// const style = {
-//   backgroundImage: "url(/img/landingBg.png);" ,
-//   backgroundSize: "cover;",
-//   backgroundRepeat: "no-repeat;"
-// }
-
 const Layout: React.FunctionComponent<Props> = ({
   children,
   title = 'This is the default title',
@@ -26,12 +19,11 @@ const Layout: React.FunctionComponent<Props> = ({
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
       <link rel='icon' href='favicon.ico' type='image/x-icon' />
-      { isThisIndexPage 
-      && <style>
+      { isThisIndexPage && <style>
         {
           "body{background-image: url(/img/landingBg.png); background-size: cover; background-repeat: no-repeat;}"
         }
-        </style>}
+        </style> }
       </Head>
     <Header />
     {children}
@@ -39,26 +31,9 @@ const Layout: React.FunctionComponent<Props> = ({
   </div>
 )
 
-
-    {/* <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>
-      </nav>
-    </header> */}
-
 const Footer = () => {
   return (
-    <footer className="fixed-bottom">
+    <footer className="">
         <div className="container footer">
           <div className="row align-items-end">
             <div className="col-auto">
@@ -136,38 +111,5 @@ const Header = () => {
     </header>
   )
 }
-
-// const IndexPageHeader = () => {
-//   return (
-//     <header>
-//         <div className="container">
-//             <div className="row head align-items-end">
-//                 <div className="col-auto">
-//                     <img src="img/logo.png" alt="" />
-//                 </div>
-//                 <div className="col"></div>
-//                 <div className="col-auto">
-//                     <a href="#">Products <i className="fa fa-angle-down" aria-hidden="true"></i></a>
-//                 </div>
-//                 <div className="col-auto">
-//                     <a href="#">Pricing</a>
-//                 </div>
-//                 <div className="col-auto">
-//                     <a href="#">Company</a>
-//                 </div>
-//                 <div className="col-auto">
-//                     <a href="#">Help</a>
-//                 </div>
-//                 <div className="col-auto ml-4">
-//                     <button className="rounded-pill sign-up">Sign Up</button>
-//                 </div>
-//                 <div className="col-auto sign-in">
-//                     <button className="rounded-pill log-in">Log In</button>
-//                 </div>
-//             </div>
-//         </div>
-//     </header>
-//   )
-// }
 
 export default Layout

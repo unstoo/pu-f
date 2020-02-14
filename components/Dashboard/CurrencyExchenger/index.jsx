@@ -4,7 +4,7 @@
 /* eslint-disable react/jsx-closing-bracket-location */
 import React, { useState } from 'react';
 import ButtonStd from '../ButtonStd';
-import style from './style.css';
+import style from './style.module.css';
 
 const CurrencyExchenger = () => {
   const currenciesList = [{ currency: 'eur' }, { currency: 'usd' }];

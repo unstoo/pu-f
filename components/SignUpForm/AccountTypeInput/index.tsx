@@ -13,7 +13,7 @@ const AccountTypeInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
     const [type, setType] = React.useState('')
 
     const selectHandler = (e: any) => {
-        debugger
+        
         setType(e.target.value)
     }
 

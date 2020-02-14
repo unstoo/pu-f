@@ -1,8 +1,6 @@
 /* eslint-disable react/jsx-closing-bracket-location */
-/* eslint-disable react/prop-types */
 import React from 'react';
-// import PropTypes from 'prop-types';
-import style from './style.css';
+import style from './style.module.css';
 
 const LastOperations = ({ operations }) => (
   <div className={style['component-style']}>
@@ -27,10 +25,6 @@ const LastOperations = ({ operations }) => (
   </div>
 );
 
-// MasterScreen.propTypes = {
-//   // eslint-disable-next-line react/forbid-prop-types
-//   children: PropTypes.any,
-// };
 
 const Operation = ({ data }) => {
   const { transactionType, status, amount, currency, date, label } = data;

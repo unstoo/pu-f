@@ -3,11 +3,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-closing-bracket-location */
 import React, { useState } from 'react';
-import style from './style.css';
+import style from './style.module.css';
 
-const defaultHandler = e => {
+const defaultHandler = (e) => {
   // eslint-disable-next-line no-alert
-  console(
+  console.log(
     'please provide selectHandler for DropDownSelector. Event: ' +
       JSON.stringify(e.target),
   );

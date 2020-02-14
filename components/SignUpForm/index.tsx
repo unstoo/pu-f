@@ -17,6 +17,13 @@ import GoalSurveyInput from './GoalSurveyInput'
 import TopUp from './TopUp'
 import ToActivate from './ToActivate'
 
+import { Cookies } from 'react-cookie';
+const cookies = new Cookies();
+
+
+// import style from './style.module.css'
+
+
 type CurrentPageProps = {
     pageNumber: number, 
     validationScheme: any, 
@@ -66,7 +73,7 @@ const initialState = {
     page: 1,
 
     phoneNumber: {
-        value: '79046471416',
+        value: '',
         error: ''
     },
     axiosPhoneNumber: false,
@@ -192,6 +199,7 @@ const MultiForm: React.FC = () => {
             axios.post('http://localhost:4000/api', { smsCodeToMatch: state.smsCodeToMatch, phoneNumber: state.phoneNumber.value })
             .then(({ data }) => {
                 if (data.status === 'ok') {                    
+                    cookies.set('token', data.token);
                     dispatch({ type: 'axios.smsCode', value: data.value })
                 }
                 
@@ -259,7 +267,6 @@ const MultiForm: React.FC = () => {
         
     }, [state.axiosAccountType])
 
-  
     React.useEffect(() => {
         if (axiosAddressData.current) {
             console.log('LAUNCH addressData')
@@ -373,8 +380,6 @@ const MultiForm: React.FC = () => {
     }
     return (
         <div>
-            {/* <h1>Page: {state.page}</h1> */}
-            {/* <div>state: { JSON.stringify(state, null, 2) }</div> */}
             {console.log(state[scheme[state.page - 1].name])}
             <form className="multiForm">
                 <CurrentPage 
@@ -391,9 +396,6 @@ const MultiForm: React.FC = () => {
                 isEuCountry={isEuCountry(state.selectedCountry)} 
                 idFilesCount={state.selectedIdType === 'passport' ? 1 : 2}
                 />
-                {/* <div>
-                    <input type="range" min="1" max="12" id="stepNumber" name="stepNumber" step="1" value={state.page} readOnly />
-                </div> */}
             </form>
         </div>
     )

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import masterScreen from './master-screen.css';
+import masterScreen from './master-screen.module.css';
 
 const MasterScreen = ({ children }) => (
   <div className={masterScreen['master-screen']}>{children}</div>

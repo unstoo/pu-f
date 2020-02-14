@@ -1,5 +1,5 @@
 import * as React from 'react'
-
+import UserContext from '../../UserContext';
 
 type StepProps = {
     validationScheme?: any,
@@ -9,11 +9,13 @@ type StepProps = {
 }
 
 const ToActivate: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
+    const { user, setUser } = React.useContext(UserContext)
 
     const goNextHandler = () => {
         dispatch({ type: dispatchType+'.next' })   
     }
     const exitHandler = () => {
+        setUser('Yevgeny Ozhegob')
         dispatch({ type: dispatchType+'.dashboard' })   
     }
     const goBackHandler = () => {
@@ -23,7 +25,7 @@ const ToActivate: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) =
     return (
         <div className="ToActivate"> 
             <div className="Header">
-            <p>To activat your account, let's quickly confirm that you are really {defValue.firstName || 'you'}</p>
+            <p>To activat your account, let's quickly confirm that you are really {user || defValue.firstName || 'you'}</p>
             </div>
             
             <div className="Controls">

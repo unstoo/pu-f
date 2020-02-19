@@ -327,7 +327,7 @@ function reducer(state: any, action: actionType) {
         Router.push('/dashboard')
     }
 
-    // Freelanae related
+    // Freelanae branch
 
     else if (type === 'freelanceInfo.back') {
         return Object.assign({...state}, {
@@ -403,8 +403,204 @@ function reducer(state: any, action: actionType) {
         })
     } 
 
+ 
+    // Business branch 
 
+    else if (type === 'businessInfo.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            businessInfo: value,
+        })
+    }
 
+    else if (type === 'businessInfo.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            businessInfo: value
+        })
+    } 
+
+    else if (type === 'businessAddress.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            businessAddress: value,
+        })
+    }
+
+    else if (type === 'businessAddress.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            businessAddress: value
+        })
+    } 
+
+    else if (type === 'businessAddress.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            businessAddress: value,
+        })
+    }
+
+    else if (type === 'businessAddress.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            businessAddress: value
+        })
+    } 
+
+    else if (type === 'businessPaymentsTo.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'businessPaymentsTo.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'businessPaymentsFrom.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'businessPaymentsFrom.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'addDirectors.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'addDirectors.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+    
+    else if (type === 'directorsData.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'directorsData.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'addShareholders.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'addShareholders.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+    
+    else if (type === 'shareholdersData.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'shareholdersData.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'businessDocs.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'businessDocs.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'proveBusinessDetails.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'proveBusinessDetails.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'proveBusinessAddress.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'proveBusinessAddress.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+    
+    else if (type === 'proveBusinessType.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'proveBusinessType.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'proveDirectorStructure.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'proveDirectorStructure.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
 
     else {
         throw new Error('Unknown action type: ' + type);

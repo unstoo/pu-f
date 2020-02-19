@@ -20,11 +20,21 @@ import TxSurveyInput from './TxSurveyInput'
 import GoalSurveyInput from './GoalSurveyInput'
 import TopUp from './TopUp'
 import ToActivate from './ToActivate'
-// <FreelancePages \>
+// Freelance pages
 import FrelanceInfoInput from './FrelanceInfoInput'
 import PaymentsInfoInput from './PaymentsInfoInput'
-
-// Other
+// Business pages
+import BusinessInfoInput from './BusinessInfoInput'
+import BusinessAddressInput from './BusinessAddressInput'
+import DirectorsInput from './DirectorsInput'
+import DirectorsDataInput from './DirectorsDataInput'
+import ShareholdersInput from './ShareholdersInput'
+import ShareholdersDataInput from './ShareholdersDataInput'
+import BusinessDocsInput from './BusinessDocsInput'
+import ProveBusinessDetailsInput from './ProveBusinessDetailsInput'
+import ProveBusinessAddressInput from './ProveBusinessAddressInput'
+import ProveBusinessTypeInput from './ProveBusinessTypeInput'
+import ProveDirectorStructureInput from './ProveDirectorStructureInput'
 
 type CurrentPageProps = {
     pageNumber: number, 
@@ -82,22 +92,22 @@ const FreelancePages: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pag
 
 const BusinessPages: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNumber, defValue}) => {
     if (pageNumber === 6) return <AccountTypeInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
-    if (pageNumber === 7) return <div>businessAddress</div>
-    if (pageNumber === 8) return <div>businessInfo</div>
+    if (pageNumber === 7) return <BusinessInfoInput dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 8) return <BusinessAddressInput dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
     if (pageNumber === 9) return <PaymentsInfoInput header={"Choose country to receive payments from"}  
     dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
     if (pageNumber === 10) return  <PaymentsInfoInput header={"Choose country to receive payments to"}  
     dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
-    if (pageNumber === 11) return <div>addDirectors</div>
-    if (pageNumber === 12) return <div>directorsPersonalData</div>
-    if (pageNumber === 13) return <div>addShareholders</div>
-    if (pageNumber === 14) return <div>shareholdersPersonalData</div>
-    if (pageNumber === 15) return <div>businessDocs</div>
-    if (pageNumber === 16) return <div>proveBusinessDetails</div>
-    if (pageNumber === 17) return <div>proveBusinessAddress</div>
-    if (pageNumber === 18) return <div>proveBusinessType</div>
-    if (pageNumber === 19) return <div>proveDirectorStructure</div>
-    
+    if (pageNumber === 11) return <DirectorsInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 12) return <DirectorsDataInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 13) return <ShareholdersInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 14) return <ShareholdersDataInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 15) return <BusinessDocsInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 16) return <ProveBusinessDetailsInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 17) return <ProveBusinessAddressInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 18) return <ProveBusinessTypeInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 19) return <ProveDirectorStructureInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+
     return <div> { "<" + dispatchType + "/> -- component doesn't exist yet."}</div>
 }
 
@@ -122,7 +132,7 @@ let initialState = {
     email: '',
     axiosEmail: false,
 
-    accountType: 'personal',
+    accountType: 'business',
     axiosAccountType: false,
 
     
@@ -194,7 +204,7 @@ let initialState = {
     axiosFreelanceComplete: false
 }
 
-initialState = Object.assign(initialState, { page: 6 })
+initialState = Object.assign(initialState, { page: 11 })
 
 const MultiForm: React.FC = () => {
     const [state, dispatch] = React.useReducer(reducer, initialState)
@@ -438,6 +448,7 @@ const MultiForm: React.FC = () => {
         { name: 'poaFile', inputType: 'file'},
         { name: 'txSurvey', inputType: 'text'},
         { name: 'goalSurvey', inputType: 'text'},
+        { name: 'Complete', inputType: 'text'}
     ]
 
     const schemeFreelance = [
@@ -451,7 +462,7 @@ const MultiForm: React.FC = () => {
         { name: 'freelancePaymentsFrom', inputType: 'text'},
         { name: 'freelancePaymentsTo', inputType: 'text'},
         { name: 'freelanceTxSurvey', inputType: 'text'},
-        { name: '', inputType: 'text'},
+        { name: 'Complete', inputType: 'text'}
     ]
 
     const schemeBusiness = [
@@ -462,20 +473,20 @@ const MultiForm: React.FC = () => {
         { name: 'personalData', inputType: 'text', },
         { name: 'accountType', inputType: 'text' },
         // Business pages
-        { name: 'signupBusiness', inputType: 'text'},
-        { name: 'businessAddress', inputType: 'text'},
         { name: 'businessInfo', inputType: 'text'},
-        { name: 'paymentsFrom', inputType: 'text'},
-        { name: 'paymentsTo', inputType: 'text'},
+        { name: 'businessAddress', inputType: 'text'},
+        { name: 'businessPaymentsFrom', inputType: 'text'},
+        { name: 'businessPaymentsTo', inputType: 'text'},
         { name: 'addDirectors', inputType: 'text'},
-        { name: 'directorsPersonalData', inputType: 'text'},
+        { name: 'directorsData', inputType: 'text'},
         { name: 'addShareholders', inputType: 'text'},
-        { name: 'shareholdersPersonalData', inputType: 'text'},
+        { name: 'shareholdersData', inputType: 'text'},
         { name: 'businessDocs', inputType: 'text'},
         { name: 'proveBusinessDetails', inputType: 'text'},
         { name: 'proveBusinessAddress', inputType: 'text'},
         { name: 'proveBusinessType', inputType: 'text'},
-        { name: 'proveDirectorStructure', inputType: 'text'}
+        { name: 'proveDirectorStructure', inputType: 'text'},
+        { name: 'Complete', inputType: 'text'}
     ]
 
     const isEuCountry = (country: string) => {
@@ -484,8 +495,6 @@ const MultiForm: React.FC = () => {
 
     const yieldDefValue = (scheme: any) => {
         const name = scheme[state.page - 1].name
-        console.log('DefValue name = ' + name);
-        console.log(name)
         if (typeof state[name] === 'string') {
             return state[name]
         } else if (!state[name]) {
@@ -501,7 +510,7 @@ const MultiForm: React.FC = () => {
 
     return (
         <div>
-            {/* <div>{JSON.stringify(state)}</div> */}
+            <div>DispatchType: {schemeBusiness[state.page - 1].name}</div>
             <form className="multiForm">
                 { state.accountType === 'personal' &&
                 <PersonalPages 

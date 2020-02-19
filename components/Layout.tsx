@@ -12,7 +12,7 @@ const Layout: React.FunctionComponent<Props> = ({
   title = 'This is the default title',
   isThisIndexPage
 }) => (
-  <div>
+  <div className="nextLayout">
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -81,7 +81,7 @@ const Header = () => {
         <div className="container">
             <div className="row head align-items-end">
                 <div className="col-auto">
-                    <img src="img/logo.png" alt=""/>
+                    <a href="http://35.159.33.7:8080/"><img src="img/logo.png" alt=""/></a>
                 </div>
                 <div className="col"></div>
                 <div className="col-auto">

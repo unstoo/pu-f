@@ -1,4 +1,5 @@
 import * as React from 'react'
+import style from './style.module.css'
 
 type StepProps = {
     validationScheme?: any,
@@ -18,6 +19,11 @@ const PersonalDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
     const [year, setYear] = React.useState('')
 	const [country, setCountry] = React.useState(defValue.country)
 	const [countryError, setCountryError] = React.useState('')
+
+	const togglePlaceholder = (e: any) => {
+		if (e.type == 'focus') e.target.className = style["placeholder-false"];
+		if (e.type == 'blur') e.target.className = style["placeholder-true"];
+	}
 
     const firstNameHandler = (e: any) => {
         const {value} = e.target
@@ -57,7 +63,6 @@ const PersonalDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
         if (name === 'year') setYear(value)
     }
 
-
     const clickHandler = () => {
 		if (country === '') setCountryError('Please select country')
 		if (firstName.trim() === '') setFnameError('First name too short')
@@ -74,43 +79,47 @@ const PersonalDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
 		}
     }
 
-
-
     return (
-         <div className="PersonalData">
+         <div className={style.PersonalData}>
              <h2>Your personal data</h2>
-            <div className="PersonalData-InputBlock">
+            <div className={style["PersonalData-InputBlock"]}>
 				{fnameError && <label style={errStyle}>{fnameError}</label>}
                 {!fnameError &&  <label>First name</label>}
                 <input type="text" name="firstname" onBlur={onBlurHandler} onChange={firstNameHandler}/>
             </div>
-            <div className="PersonalData-InputBlock">
+            <div className={style["PersonalData-InputBlock"]}>
 				{lnameError && <label style={errStyle}>{lnameError}</label>}
                 {!lnameError &&  <label>Last name</label>}
                 <input type="text" name="lastname" onBlur={onBlurHandler} onChange={lastNameHandler}/>
             </div>
-            <div className="PersonalData-InputBlock">
-                <label>Patronymic (optionally)</label>
+            <div className={style["PersonalData-InputBlock"]}>
+                <label>Patronymic (optional)</label>
                 <input type="text" name="patronymic" onChange={patrNameHandler}/>
             </div>
-            <div className="birthdate">
-                <div className='birthdateHeader'>Birthdate</div>
-                <div className='birthdateInput'>
-                    <div className='birthdateInput-day'>
+            <div className={style.birthdate}>
+                <div className={style.birthdateHeader}>Birthdate</div>
+                <div className={style.birthdateInput}>
+                    <div className={style["birthdateInput-day"]}>
                         <label>Day</label>
-                        <input type="number" name="day" min={1} max={31} placeholder="31" onChange={dobHandler} />
+						<input className={style['placeholder-true']} 
+						onFocus={togglePlaceholder} onBlur={togglePlaceholder} onChange={dobHandler}
+						type="number" name="day" min={1} max={31} placeholder="31" />
                     </div>
-                    <div className='birthdateInput-month'>
+                    <div className={style["birthdateInput-month"]}>
                         <label>Month</label>
-                        <input type="number" name="month" min={1} max={12} placeholder="1" onChange={dobHandler} />
+						<input className={style['placeholder-true']} 
+						onFocus={togglePlaceholder} onBlur={togglePlaceholder} onChange={dobHandler}
+						type="number" name="month" min={1} max={12} placeholder="1" />
                     </div>
-                    <div className='birthdateInput-year'>
+                    <div className={style["birthdateInput-year"]}>
                         <label>Year</label> 
-                        <input type="number" name="year" placeholder="1987" min={1900} onChange={dobHandler} />
+						<input className={style['placeholder-true']}
+						onFocus={togglePlaceholder} onBlur={togglePlaceholder} onChange={dobHandler}
+						type="number" name="year" placeholder="1987" min={1900} />
                     </div>
                 </div>
             </div>
-            <div className="PersonalData-country">
+            <div className={style["PersonalData-country"]}>
 				{lnameError && <label style={errStyle}>{countryError}</label>}
                 {!lnameError &&  <label>Country</label>}
                 <select name="country" onChange={countryHandler}>

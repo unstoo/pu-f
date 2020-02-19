@@ -1,4 +1,5 @@
 import * as React from 'react'
+import style from './style.module.css'
 
 
 type StepProps = {
@@ -23,12 +24,12 @@ const GoalSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
     }
 
     return (
-        <div className="GoalSurvey"> 
-            <div className="Header">
+        <div className={style.GoalSurvey}> 
+            <div className={style.Header}>
                 <h2>What is the main reason you use PAYSUNION</h2>
             </div>
 
-            <div className="InputBlock">
+            <div className={style.InputBlock}>
                 <div>
                     <input onChange={changeHandler} type="radio" name="goal" value="Daily Payments and Savings"/>
                     <label htmlFor="goal">Daily Payments and Savings</label>
@@ -47,7 +48,7 @@ const GoalSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
                 </div>
             </div>
         
-            <div className="Controls">
+            <div className={style.Controls}>
                 <button type="button" onClick={() => {}}>Back</button>
                 <button type="button" onClick={clickHandler}>Next</button>
             </div>    

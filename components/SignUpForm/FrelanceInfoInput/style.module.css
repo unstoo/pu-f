@@ -1,0 +1,38 @@
+.FreelanceInfo {
+}
+
+.Header {
+    margin-bottom: 25px;
+}
+
+.Header p {
+    text-align: left;
+}
+
+.FreelanceInfo .InputBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.FreelanceInfo .InputBlock label {
+    margin: 15px;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.FreelanceInfo .InputBlock input {
+
+}
+
+.FreelanceInfo .Controls {
+    width: 330px;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.FreelanceInfo button {
+    width: 140px;
+}

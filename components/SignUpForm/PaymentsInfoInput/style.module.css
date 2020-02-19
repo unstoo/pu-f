@@ -1,0 +1,31 @@
+.TxSurvey .Header {
+    margin-bottom: 50px;
+}
+
+
+.TxSurvey .InputBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.TxSurvey .InputBlock label {
+    margin: 15px;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.TxSurvey .InputBlock input {
+    margin-bottom: 20px;
+}
+
+.TxSurvey .Controls {
+    width: 330px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.TxSurvey button {
+    width: 100px;
+}

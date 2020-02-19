@@ -1,4 +1,5 @@
 import * as React from 'react'
+import style from './style.module.css'
 
 type StepProps = {
     validationScheme?: any,
@@ -17,8 +18,10 @@ const SMSCodeInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue })
     }
 
     const onChange = (e: any) => {
+        console.log(e.target.value);
+        
         const {value} = e.target
-        if (value) setValue(value)
+        if (e.target.value == "" || e.target.value.match(/^[1-9]\d*\.?\d*$/)) setValue(value)
         if (error) setError('')
     }
 
@@ -28,12 +31,12 @@ const SMSCodeInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue })
     }
 
     return (
-        <div className="SMSCodeStep">
+        <div className={style.SMSCodeStep}>
             <h2>Input SMS code</h2>
             <p>We send you a message with a code to approve your phone.</p>
             { !error && <label>Input SMS code</label> }
             { error && <label style={errStyle}>{error}</label> }
-            <input className="SMSCodeStep-Input" onChange={onChange} value={value} type="text" min="0" max="0" />
+            <input className={style["SMSCodeStep-Input"]} onChange={onChange} value={value} type="number" />
             { !error && <button type="button" onClick={clickHandler}>Verify SMS</button> }
             { error && <button type="button" onClick={clickHandler} disabled>Verify SMS</button> }
         </div>

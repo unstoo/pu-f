@@ -1,4 +1,5 @@
 import * as React from 'react'
+import style from './style.module.css'
 
 type StepProps = {
     validationScheme?: any,
@@ -36,16 +37,16 @@ const AccountTypeInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
     })
 
     return (
-         <div className="AccountTypeStep">
+         <div className={style.AccountTypeStep}>
             <h2>Choose your account type</h2>
-            <div className="AccountTypeStep-OptionsRow">
+            <div className={style["AccountTypeStep-OptionsRow"]}>
                 {/* <button type="button" onClick={selectHandler} value="personal">Personal</button>
                 <button type="button" onClick={selectHandler} value="business" disabled>Business</button>
                 <button type="button" onClick={selectHandler} value="freelance">Freelance</button> */}
 
                 {optionsUI}
             </div>
-            <div className="AccountTypeStep-next">
+            <div className={style["AccountTypeStep-next"]}>
                 <button type="button" onClick={clickHandler}>Next</button>
             </div>
         </div>

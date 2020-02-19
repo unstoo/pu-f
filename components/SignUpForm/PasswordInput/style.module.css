@@ -1,0 +1,7 @@
+.PasswordStep{
+    
+}
+
+.PasswordStep label:last-of-type {
+    margin-top: 0;
+}

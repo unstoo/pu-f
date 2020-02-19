@@ -1,5 +1,5 @@
 import * as React from 'react'
-import UserContext from '../../UserContext';
+import style from './style.module.css'
 
 type StepProps = {
     validationScheme?: any,
@@ -9,13 +9,11 @@ type StepProps = {
 }
 
 const ToActivate: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
-    const { user, setUser } = React.useContext(UserContext)
-
     const goNextHandler = () => {
         dispatch({ type: dispatchType+'.next' })   
     }
+    
     const exitHandler = () => {
-        setUser('Yevgeny Ozhegob')
         dispatch({ type: dispatchType+'.dashboard' })   
     }
     const goBackHandler = () => {
@@ -23,15 +21,15 @@ const ToActivate: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) =
     }
 
     return (
-        <div className="ToActivate"> 
-            <div className="Header">
-            <p>To activat your account, let's quickly confirm that you are really {user || defValue.firstName || 'you'}</p>
+        <div className={style.ToActivate}> 
+            <div className={style.Header}>
+            <p>To activate your account, let's quickly confirm that you are really { defValue.firstName || 'you'}</p>
             </div>
             
-            <div className="Controls">
+            <div className={style.Controls}>
                 <button type="button" onClick={goBackHandler}>Back</button>
                 <button type="button" onClick={exitHandler}>Not now</button>
-                <button type="button" className="LongerButton" onClick={goNextHandler}>Verify identifity</button>
+                <button type="button" className={style.LongerButton} onClick={goNextHandler}>Verify identity</button>
             </div>
         </div>
     )

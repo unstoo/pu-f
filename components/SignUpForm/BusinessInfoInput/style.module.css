@@ -1,0 +1,30 @@
+.BusinessInfo .Header {
+    margin-bottom: 30px;
+}
+
+.BusinessInfo .InputBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.BusinessInfo .InputBlock label {
+    margin: 15px;
+    margin-left: 25px;
+}
+
+.BusinessInfo .InputBlock input {
+    margin-bottom: 10px;
+}
+
+.BusinessInfo .Controls {
+    width: 330px;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.BusinessInfo button {
+    width: 100px;
+}

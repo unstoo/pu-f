@@ -1,89 +1,51 @@
 import * as React from 'react'
 import style from './style.module.css'
 
+
 type StepProps = {
     validationScheme?: any,
     dispatch: Function,
-    defValue?: any,
     dispatchType: string
+    defValue?: any,
+    header?: string
 }
 
-const AddressDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
-    const [country, setCountry] = React.useState(defValue.country)
-    const [state, setState] = React.useState(defValue.state)
-    const [city, setCity] = React.useState(defValue.city)
-    const [zip, setZip] = React.useState(defValue.zip)
-    const [addressOne, setAddressOne] = React.useState(defValue.addressOne)
-    const [addressTwo, setAddressTwo] = React.useState(defValue.addressTwo)
+const PaymentsInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, header }) => {
+    const [values, setValues] = React.useState()
 
-    const addressHandler = (e: any) => {
+    const changeHandler = (e: any) => {
         const {value, name}  = e.target
 
-        if (name === 'country') setCountry(value)
-        if (name === 'state') setState(value)
-        if (name === 'city') setCity(value)
-        if (name === 'zip') setZip(value)
-        if (name === 'addressone') setAddressOne(value)
-        if (name === 'addresstwo') setAddressTwo(value)
+        if (name === 'txVolume') setValues(value)
     }
 
-    const clickHandler = (e: any) => { 
-		const value = {
-            country,
-            state,
-            city,
-            zip,
-            addressOne,
-            addressTwo
-        }
-		     
-        dispatch({ type: dispatchType + '.' + e.target.name, value }) 
+    const clickHandler = (e: any) => {
+        const { name } = e.target
+        dispatch({ type: dispatchType + '.' + name, value: values})   
     }
 
     return (
-         <div className={style.AddressData}> 
-            <div className={style["AddressData-header"]}>
-                <h2>Your home address</h2>
-                <p>Do not specify a PO Box</p>
-            </div>
-            <div className={style["AddressData-InputBlock"]}>
-                <label>Country</label>
-                <select name="country" onChange={addressHandler} value={country}>
-                    { countryList.map(country => <option key={'AddressData-' + country} value={country}>{country}</option>)}
-                </select>
-            </div>
-            
-            <div className={style["AddressData-InputBlock"]}>
-                <label>State</label>
-                <input type="text" name="state" value={state} onChange={addressHandler}/>
-            </div>
-            <div className={style["AddressData-InputBlock"]}>
-                <label>City</label>
-                <input type="text" name="city" value={city} onChange={addressHandler}/>
-            </div>
-            <div className={style["AddressData-InputBlock"]}>
-                <label>ZIP</label>
-                <input type="text" name="zip" value={zip} onChange={addressHandler}/>
-            </div>
-            <div className={style["AddressData-InputBlock"]}>
-                <label>Address 1</label>
-                <input type="text" name="addressone" value={addressOne} onChange={addressHandler}/>
-            </div>
-            <div className={style["AddressData-InputBlock"]}>
-                <label>Address 2</label>
-                <input type="text" name="addresstwo" value={addressTwo} onChange={addressHandler}/>
-            </div>
-            
-            <div className={style["AddressData-Controls"]}>
-                <button type="button" name="back" onClick={clickHandler}>Back</button>
-                <button type="button" name="next" onClick={clickHandler}>Next</button>
-            </div>
+        <div className={style.PaymentsInfoInput}> 
+        <div className={style.Header}>
+        <h2>{ header || "Choose country to receive payments from" }</h2>
+            <p>This is just for indicative purpose and does not need to be precise</p>
         </div>
+        <div className={style.InputBlock}>
+            <label>Country</label>
+            <select name="paymentsCountry" onChange={changeHandler} value={countryList[0]}>
+                { countryList.map(o => <option key={'paymentsCountry-' + o} value={o}>{o}</option>)}
+            </select>
+        </div>
+        
+        <div className={style.Controls}>
+            <button type="button" name="back" onClick={clickHandler}>Back</button>
+            <button type="button" name="next" onClick={clickHandler}>Next</button>
+        </div>
+    </div>
     )
 }
 
-export default AddressDataInput
-
+export default PaymentsInfoInput
 
 const countryList = [
 	"Afghanistan",

@@ -133,115 +133,13 @@ function reducer(state: any, action: actionType) {
 
     else if (type === 'axios.accountType') {
         return Object.assign({...state}, {
-            page: state.page + 1,
-        })
-    }
-
-    // TODO: accontType already selected / Can't amend it.
-    // else if (type === 'axios.accountType.error') {
-    //     return Object.assign({...state}, {
-    //         page: state.page + 1,
-    //     })
-    // }
-
-   
-
-    else if (type === 'addressData') {
-        return Object.assign({...state}, {
-            axiosAddressData: true,
-            addressData: Object.assign(state.addressData, value),
-        })
-    }
-
-    else if (type === 'axios.addressData') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-        })
-    }
-
-    else if (type === 'idType') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-            selectedIdType: value
-        })
-    }
-
-    else if (type === 'idData') {
-        return Object.assign({...state}, {
-            axiosIdData: true,
-            idData: Object.assign({idType: state.selectedIdType}, value),
-        })
-    }
-
-    else if (type === 'axios.idData') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-        })
-    }
-
-    else if (type === 'idFiles') {
-        return Object.assign({...state}, {
-            axiosIdFiles: true,
-            idFiles: value
-        })
-    }
-
-    else if (type === 'axios.idFiles') {
-        return Object.assign({...state}, {
             page: state.page + 1
-        })
-    }
-
-    else if (type === 'idSelfieFile') {
-        return Object.assign({...state}, {
-            axiosIdSelfieFile: true,
-            idSelfieFile: value
-        })
-    }
-
-    else if (type === 'axios.idSelfieFile') {
-        return Object.assign({...state}, {
-            page: state.page + 1
-        })
-    }
-
-    else if (type === 'poaFile') {
-        return Object.assign({...state}, {
-            axiosPoaFile: true,
-            poaFile: value
-        })
-    }
-
-    else if (type === 'axios.poaFile') {
-        return Object.assign({...state}, {
-            page: state.page + 1
-        })
-    }
-
-    else if (type === 'txSurvey') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-            txSurvery: value
-        })
-    }
-
-    else if (type === 'goalSurvey') {
-        return Object.assign({...state}, {
-            axiosComplete: true,
-            goalSurvery: value
-        })
-    }
-
-    else if (type === 'axios.goalSurvey') {
-        return Object.assign({...state}, {
-            axiosComplete: true,
-            goalSurvery: value
         })
     }
 
     else if (type === 'topUp.next') {
         return Object.assign({...state}, {
-            page: state.page + 1,
+            page: state.page + 1
         })
     }
 
@@ -249,6 +147,7 @@ function reducer(state: any, action: actionType) {
         // TOOO: axiosAccountType isn't ready for back-forth scenario. Edit useEffect.
         return Object.assign({...state}, {
             page: state.page - 1,
+            axiosAccountType: false
         })
     }
 
@@ -274,14 +173,438 @@ function reducer(state: any, action: actionType) {
     else if (type === 'toActivate.dashboard') {
         Router.push('/dashboard')
         // window.location.href = "/dashboard"
+        return state
+    }
+
+    else if (type === 'addressData.back') {
         return Object.assign({...state}, {
-            page: state.page,
+            page: state.page - 1,
+            addressData: Object.assign(state.addressData, value),
+        })
+    }
+   
+    else if (type === 'addressData.next') {
+        return Object.assign({...state}, {
+            axiosAddressData: true,
+            addressData: Object.assign(state.addressData, value),
         })
     }
 
+    else if (type === 'axios.addressData') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+        })
+    }
+
+    else if (type === 'idType.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            axiosAddressData: false,
+        })
+    }
+
+    else if (type === 'idType.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            idType: value
+        })
+    }
+
+    else if (type === 'idData.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            idData: Object.assign({idType: state.idType}, value),
+        })
+    }
+
+    else if (type === 'idData.next') {
+        return Object.assign({...state}, {
+            axiosIdData: true,
+            idData: Object.assign({idType: state.idType}, value),
+        })
+    }
+
+    else if (type === 'axios.idData') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+        })
+    }
+
+    else if (type === 'idFiles.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            axiosIdData: false,
+            idFiles: value
+        })
+    }
+
+    else if (type === 'idFiles.next') {
+        return Object.assign({...state}, {
+            axiosIdFiles: true,
+            idFiles: value
+        })
+    }
+
+    else if (type === 'axios.idFiles') {
+        return Object.assign({...state}, {
+            page: state.page + 1
+        })
+    }
+
+    else if (type === 'idSelfieFile.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            axiosIdFiles: false,
+            idSelfieFile: value
+        })
+    }
+
+    else if (type === 'idSelfieFile.next') {
+        return Object.assign({...state}, {
+            axiosIdSelfieFile: true,
+            idSelfieFile: value
+        })
+    }
+
+    else if (type === 'axios.idSelfieFile') {
+        return Object.assign({...state}, {
+            page: state.page + 1
+        })
+    }
+
+    else if (type === 'poaFile.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            axiosIdSelfieFile: false,
+            poaFile: value
+        })
+    }
+
+    else if (type === 'poaFile.next') {
+        return Object.assign({...state}, {
+            axiosPoaFile: true,
+            poaFile: value
+        })
+    }
+
+    else if (type === 'axios.poaFile') {
+        return Object.assign({...state}, {
+            page: state.page + 1
+        })
+    }
+
+    else if (type === 'txSurvey.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            txSurvery: value,
+            axiosPoaFile: false
+        })
+    }
+
+    else if (type === 'txSurvey.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            txSurvery: value
+        })
+    }
+
+    else if (type === 'goalSurvey.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            goalSurvery: value
+        })
+    }
+
+    else if (type === 'goalSurvey.next') {
+        return Object.assign({...state}, {
+            axiosSurvey: true,
+            goalSurvery: value
+        })
+    }
+
+    else if (type === 'axios.dashboard') {
+        return state
+        Router.push('/dashboard')
+    }
+
+    // Freelanae branch
+
+    else if (type === 'freelanceInfo.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelanceInfo: value,
+            axiosAccountType: false
+        })
+    }
+
+    else if (type === 'freelanceInfo.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelanceInfo: value
+        })
+    }
+
+    else if (type === 'freelancePaymentFrom.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelanePaymentFrom: value,
+        })
+    }
+
+    else if (type === 'freelancePaymentFrom.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelanePaymentFrom: value
+        })
+    }
+
+    else if (type === 'freelancePaymentsTo.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'freelancePaymentsTo.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'freelancePaymentsFrom.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'freelancePaymentsFrom.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'freelanceTxSurvey.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelanceTxSurvey: value,
+        })
+    }
+
+    else if (type === 'freelanceTxSurvey.next') {
+        // Router.push('/dashboard')
+        window.location.href = '/dashboard'
+        return Object.assign({...state}, {
+            page: state.page,
+            freelanceTxSurvey: value,
+            axiosFreelanceComplete: true
+        })
+    } 
+
+ 
+    // Business branch 
+
+    else if (type === 'businessInfo.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            businessInfo: value,
+        })
+    }
+
+    else if (type === 'businessInfo.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            businessInfo: value
+        })
+    } 
+
+    else if (type === 'businessAddress.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            businessAddress: value,
+        })
+    }
+
+    else if (type === 'businessAddress.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            businessAddress: value
+        })
+    } 
+
+    else if (type === 'businessAddress.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            businessAddress: value,
+        })
+    }
+
+    else if (type === 'businessAddress.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            businessAddress: value
+        })
+    } 
+
+    else if (type === 'businessPaymentsTo.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'businessPaymentsTo.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'businessPaymentsFrom.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'businessPaymentsFrom.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'addDirectors.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'addDirectors.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+    
+    else if (type === 'directorsData.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'directorsData.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'addShareholders.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'addShareholders.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+    
+    else if (type === 'shareholdersData.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'shareholdersData.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'businessDocs.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'businessDocs.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'proveBusinessDetails.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'proveBusinessDetails.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'proveBusinessAddress.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'proveBusinessAddress.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+    
+    else if (type === 'proveBusinessType.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'proveBusinessType.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
+
+    else if (type === 'proveDirectorStructure.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'proveDirectorStructure.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelancePaymentTo: value
+        })
+    }
 
     else {
         throw new Error('Unknown action type: ' + type);
+        return state
     }
 }
 

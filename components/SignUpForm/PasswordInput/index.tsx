@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './style.module.css'
 
 type StepProps = {
     validationScheme?: any,
@@ -72,7 +73,7 @@ const PasswordInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }
     }
 
     return (
-         <div className="PasswordStep">
+         <div className={style.PasswordStep}>
             <h2>Set password</h2>
 
             { !errorTooShort && !errorTooSimple && <label>Password</label> }

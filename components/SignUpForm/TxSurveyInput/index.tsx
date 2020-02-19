@@ -1,4 +1,5 @@
 import * as React from 'react'
+import style from './style.module.css'
 
 
 type StepProps = {
@@ -21,8 +22,9 @@ const TxSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
         if (name === 'singleMaxLimitTx') setTxMaxLimit(value)
     }
 
-    const clickHandler = () => {
-        dispatch({ type: dispatchType, value: {
+    const clickHandler = (e: any) => {
+        const { name } = e.target
+        dispatch({ type: dispatchType + '.' + name, value: {
             txVolume,
             txCount,
             singleMaxLimitTx
@@ -30,19 +32,19 @@ const TxSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
     }
 
     return (
-        <div className="TxSurvey"> 
-        <div className="Header">
+        <div className={style.TxSurvey}> 
+        <div className={style.Header}>
             <h2>Confirm your transactional information</h2>
             <p>This is just for indicative purpose and does not need to be precise</p>
         </div>
-        <div className="InputBlock">
+        <div className={style.InputBlock}>
             <label>Monthly volume of transfers</label>
             <select name="txVolume" onChange={changeHandler}>
                 { volumesList.map(o => <option key={'txSurvey-' + o.value} value={o.value}>{o.label}</option>)}
             </select>
         </div>
 
-        <div className="InputBlock">
+        <div className={style.InputBlock}>
             <label>Number of payments per month</label>
             <select name="txCount" onChange={changeHandler}>
                 <option value={"<10"}>{"< 10"}</option>
@@ -50,14 +52,14 @@ const TxSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
             </select>
         </div>
 
-        <div className="InputBlock">
+        <div className={style.InputBlock}>
             <label>Maximum single payment</label>
             <input type="number" name="singleMaxLimitTx" onChange={changeHandler}/>
         </div>
         
-        <div className="Controls">
-            <button type="button" onClick={clickHandler}>Back</button>
-            <button type="button" onClick={clickHandler}>Next</button>
+        <div className={style.Controls}>
+            <button type="button" name="back" onClick={clickHandler}>Back</button>
+            <button type="button" name="next" onClick={clickHandler}>Next</button>
         </div>
     </div>
     )

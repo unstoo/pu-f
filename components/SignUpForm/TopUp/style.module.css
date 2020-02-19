@@ -1,0 +1,33 @@
+.TopUp .Header {
+    margin-bottom: 50px;
+    max-width: 370px;
+    align-items: flex-start;
+}
+
+.TopUp .InputBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.TopUp .InputBlock label {
+    margin: 15px;
+    margin-left: 25px;
+    margin-top: 20px;
+}
+
+.TopUp .InputBlock input {
+    margin-bottom: 20px;
+}
+
+.TopUp .Controls {
+    width: 340px;
+    margin-bottom: 30px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.TopUp .Controls  button {
+    width: 100px;
+}

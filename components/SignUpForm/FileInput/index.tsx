@@ -1,4 +1,5 @@
 import * as React from 'react'
+import style from './style.module.css'
 
 type StepProps = {
     validationScheme?: any,
@@ -28,7 +29,7 @@ const FileInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue, file
         const formDataNew = new FormData()
         formDataNew.append("upload", uploadOne);
         formDataNew.append("upload", uploadTwo);
-        dispatch({ type: dispatchType, value: formDataNew})
+        dispatch({ type: dispatchType + '.' + e.target.name, value: formDataNew})
 
     }
 
@@ -47,17 +48,18 @@ const FileInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue, file
             <h2>{header || 'Upload file'}</h2>
             
         </div>
-        <div className="FileInput-Block">
+        <div className={style["FileInput-Block"]}>
             <label>
             <div>{paragraph || 'Select image of your ID'}</div>
-            <input className="FileInput" type="file" name="upload" multiple={true} key={header} onChange={fileLoadHandler}/>
+            <input className={style.FileInput} type="file" name="upload" multiple={true} key={header} onChange={fileLoadHandler}/>
             {filesCount === 2 &&
                 <input type="file" name="uploadtwo" multiple={true} onChange={fileLoadHandler}/>
             }
             </label>
         </div>
-        <div className="Controls">
-            <button type="button" onClick={clickHandler}>Next</button>
+        <div className={style.Controls}>
+            <button type="button" name="back" onClick={clickHandler}>Back</button>
+            <button type="button" name="next" onClick={clickHandler}>Next</button>
         </div>
     </div>
     )

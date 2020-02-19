@@ -1,0 +1,31 @@
+.Component .Header {
+    margin-bottom: 30px;
+}
+
+
+.Component .InputBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.Component .InputBlock label {
+    margin: 15px;
+    margin-left: 25px;
+}
+
+.Component .InputBlock input {
+    margin-bottom: 10px;
+}
+
+.Component .Controls {
+    width: 330px;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.Component button {
+    width: 100px;
+}

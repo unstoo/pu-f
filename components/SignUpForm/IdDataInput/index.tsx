@@ -1,4 +1,5 @@
 import * as React from 'react'
+import style from './style.module.css'
 
 type StepProps = {
     validationScheme?: any,
@@ -7,19 +8,19 @@ type StepProps = {
     dispatchType: string
 }
 
-const IdDataInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
-    const [idDateIssue, setIdDateIssue] = React.useState('')
-    const [idExpirationDate, setIdExpirationDate] = React.useState('')
-    const [idDivsionCode, setIdDivsionCode] = React.useState('')
-    const [idIssuer, setIdIssuer] = React.useState('')
-    const [idSeries, setIdSeries] = React.useState('')
-    const [idNumber, setIdNumber] = React.useState('')
-    const [sex, setSex] = React.useState('')
+const IdDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
+    const [idDateIssue, setIssueDate] = React.useState(defValue.idDateIssue)
+    const [idDateExpiration, setExpirationDate] = React.useState(defValue.idDateExpiration)
+    const [idDivsionCode, setIdDivsionCode] = React.useState(defValue.idDateDivsionCode)
+    const [idIssuer, setIdIssuer] = React.useState(defValue.idIssuer)
+    const [idSeries, setIdSeries] = React.useState(defValue.idSeries)
+    const [idNumber, setIdNumber] = React.useState(defValue.idNumber)
+    const [sex, setSex] = React.useState(defValue.sex)
 
     const idDataHandler = (e: any) => {
         const {value, name}  = e.target
-        if (name === 'iddateissue') setIdDateIssue(value)
-        if (name === 'idexpirationdata') setIdExpirationDate(value)
+        if (name === 'iddateissue') setIssueDate(value)
+        if (name === 'iddateexpiration') setExpirationDate(value)
         if (name === 'iddivisioncode') setIdDivsionCode(value)
         if (name === 'idissuer') setIdIssuer(value)
         if (name === 'idseries') setIdSeries(value)
@@ -28,54 +29,56 @@ const IdDataInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
     
     }
 
-    const clickHandler = () => {
-            dispatch({ type: dispatchType, value: {
-                idDateIssue,
-                idExpirationDate,
-                idDivsionCode,
-                idIssuer,
-                idSeries,
-                idNumber,
-                sex,
-           }})
+    const clickHandler = (e: any) => {
+
+        const value = {
+            idDateIssue,
+            idDateExpiration,
+            idDivsionCode,
+            idIssuer,
+            idSeries,
+            idNumber,
+            sex 
+        }
+
+        dispatch({ type: dispatchType + '.' + e.target.name, value})
     }
 
     return (
-         <div className="IdData"> 
+         <div className={style.IdData}> 
             <div>
                 <h2>Your ID/passport data</h2>
             </div>
             <div>
-                <label>ID date issue</label>
-                <input type="text" name="iddateissue" onChange={idDataHandler}/>
-                
+                <label>ID date of issue</label>
+                <input type="text" name="iddateissue" value={idDateIssue} onChange={idDataHandler}/>
             </div>
             <div>
-                <label>ID expiration time (optionally)</label>
-                <input type="text" name="idexpirationdata" onChange={idDataHandler}/>
+                <label>ID date of expiration (optional)</label>
+                <input type="text" name="iddateexpiration" value={idDateExpiration} onChange={idDataHandler}/>
             </div>
             <div>
                 <label>ID division code</label>
-                <input type="text" name="iddivisioncode" onChange={idDataHandler}/>
+                <input type="text" name="iddivisioncode" value={idDivsionCode} onChange={idDataHandler}/>
             </div>
             <div>
                 <label>ID issuer</label>
-                <input type="text" name="idissuer" onChange={idDataHandler}/>
+                <input type="text" name="idissuer" value={idIssuer} onChange={idDataHandler}/>
             </div>
             <div>
                 <label>ID series</label>
-                <input type="text" name="idseries" onChange={idDataHandler}/>
+                <input type="text" name="idseries" value={idSeries} onChange={idDataHandler}/>
             </div>
             <div>
                 <label>ID number</label>
-                <input type="text" name="idnumber" onChange={idDataHandler}/>
+                <input type="text" name="idnumber" value={idNumber} onChange={idDataHandler}/>
             </div>
             <div>
                 <label>Sex</label>
-                <input type="text" name="sex" onChange={idDataHandler}/>
+                <input type="text" name="sex" value={sex} onChange={idDataHandler}/>
             </div>
 
-            <div className="Controls">
+            <div className={style.Controls}>
                 <button type="button" name="back" onClick={clickHandler}>Back</button>
                 <button type="button" name="next" onClick={clickHandler}>Next</button>
             </div>

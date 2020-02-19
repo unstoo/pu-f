@@ -510,6 +510,7 @@ table .minus {
 /* end of layout 1 styles */
 
 /* landing styles */
+
 .landing .row{
     height: 70vh;
 }
@@ -532,11 +533,19 @@ table .minus {
 /* end of landing styles */
 
 /* footer styles */
+
+.nextLayout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 footer {
     background-image: url(/img/footer.png);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 178px;
+    height: 188px;
+    width: 100%;
+    margin-top: auto;
 }
 
 .footer,
@@ -583,3 +592,4 @@ footer {
     box-shadow: 0px 0px 0px 3px #554737;
     border: none;
 }
+

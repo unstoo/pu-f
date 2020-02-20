@@ -21,7 +21,9 @@ import GoalSurveyInput from './GoalSurveyInput'
 import TopUp from './TopUp'
 import ToActivate from './ToActivate'
 // Freelance pages
+
 import FreelanceBranches from './FreelanceBranches'
+
 import FrelanceInfoInput from './FrelanceInfoInput'
 import PaymentsInfoInput from './PaymentsInfoInput'
 // Business pages
@@ -36,6 +38,7 @@ import ProveBusinessDetailsInput from './ProveBusinessDetailsInput'
 import ProveBusinessAddressInput from './ProveBusinessAddressInput'
 import ProveBusinessTypeInput from './ProveBusinessTypeInput'
 import ProveDirectorStructureInput from './ProveDirectorStructureInput'
+
 const COMMON_BRANCH = 0;
 const FREELANCE_BRANCH = 1;
 const PERSONAL_BRANCH = 2;
@@ -44,6 +47,7 @@ const COMMON_PAGES_COUNT = 9
 type CurrentPageProps = {
     pageNumber: number, 
     branchNumber?: number,
+
     dispatch: Function,
     dispatchType: string,
     defValue?: any,
@@ -83,6 +87,7 @@ const PersonalPages: React.FC<CurrentPageProps> = ({dispatch, dispatchType, page
     if (pageNumber === 16) return <GoalSurveyInput dispatch={dispatch} dispatchType={dispatchType} validationScheme={validationScheme} defValue={defValue} />
             return <div>Unknown step. {dispatchType}</div>
 }
+
 
 
 const FreelancePages: React.FC<any> = ({pageNumber,   dispatch, dispatchType, defValue, branchNumber, isEuCountry, idFilesCount}) => {
@@ -172,7 +177,9 @@ let initialState = {
     email: '',
     axiosEmail: false,
 
+
     accountType: 'personal',
+
     axiosAccountType: false,
 
     
@@ -203,7 +210,9 @@ let initialState = {
     },
     axiosAddressData: false,
 
+
     idType: '',
+
     idData: {
         idType: '',
         idDateIssue: '',
@@ -232,6 +241,7 @@ let initialState = {
     },
     goalSurvey: {
         purpose: ''
+
     },
     axiosSurvey: false,
     // freelance type related
@@ -244,14 +254,17 @@ let initialState = {
         webistes: [],
         social: []
     },
+
     freelancePaymentsFrom: '',
     freelancePaymentsTo: '',
     freelanceTxSurvey: {},
     axiosFreelanceComplete: false
 }
 
+
 initialState = Object.assign(initialState, { page: 10, branch: 1, accountType: 'freelance',
     freelanceBranch: [false, false], })
+
 
 
 const MultiForm: React.FC = () => {
@@ -499,6 +512,7 @@ const MultiForm: React.FC = () => {
     ]
 
     
+
     const schemeFreelance = [
         { name: 'phoneNumber', inputType: 'number' },
         { name: 'smsCodeToMatch', inputType: 'number' },
@@ -567,6 +581,7 @@ const MultiForm: React.FC = () => {
                 state[name],
                 { firstName: state.personalData.firstName } )
         }
+
     }
 
     const yieldDefValueF = (scheme: any) => {
@@ -604,6 +619,7 @@ const MultiForm: React.FC = () => {
         <div>
             <div>DispatchType: {yieldDispatchType(schemeFreelance, [schemeFreelanceBusiness, schemeFreelancePersonal])}</div>
             <div>freelanceBranches: {JSON.stringify(state.freelanceBranches)}</div>
+
             <form className="multiForm">
                 { state.accountType === 'personal' &&
                 <PersonalPages 
@@ -624,6 +640,7 @@ const MultiForm: React.FC = () => {
                  defValue={yieldDefValueF(schemeFreelance) } 
                  isEuCountry={isEuCountry(state.selectedCountry)} 
                  idFilesCount={state.idType === 'passport' ? 1 : 2}
+
                  />
                 }
                 { state.accountType === 'business' &&

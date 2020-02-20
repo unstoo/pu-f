@@ -28,7 +28,9 @@ const GoalSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
             </div>
 
             <div className={style.InputBlock}>
+
                 <div className={style.Radio}>
+
                     <input onChange={changeHandler} type="radio" name="goal" value="Daily Payments and Savings"/>
                     <label htmlFor="goal">Daily Payments and Savings</label>
                 </div>
@@ -47,8 +49,10 @@ const GoalSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
             </div>
         
             <div className={style.Controls}>
+
                 <button type="button" name="back" onClick={clickHandler}>Back</button>
                 <button type="button" name="next" onClick={clickHandler}>Next</button>
+
             </div>    
         </div>)
 }

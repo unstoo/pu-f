@@ -8,6 +8,7 @@ type StepProps = {
     dispatchType: string
 }
 
+
 type OptionProps = {
     option: string
 }
@@ -26,11 +27,14 @@ const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
     const [social, setSocial] = React.useState([])
 
     const lists = {
+
         category: ['Consulting, IT or business service', 'Sales', 'Other'],
+
         subCategory: ['Artificial Intelligence', 'Data mining', 'Other'],
         customers: ['All', 'Individuals', 'Business'],
         salesChannels: ['All', 'Online', 'Exhibitions']
     }
+
 
     const Option: React.FC<OptionProps> = ({option}) => <option value={option} >{ option }</option>
     const OptionsList: React.FC<OptionsListProps> = ({list, keyPrefix}) => {
@@ -38,6 +42,7 @@ const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
         const options = list.map((option: any) => <Option option={option} key={keyPrefix + option}/>)
         return options
     }
+
 
     const selectHandler = (e: any) => {
         const { value, name }  = e.target
@@ -72,34 +77,44 @@ const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
             <div className={style.InputBlock}>
                 <label>Business category</label>
                 <select name="category" onChange={selectHandler} value={lists.category[0]}>
+
                     <OptionsList list={lists.category} keyPrefix={'freelanceCategory-'} />
+
                 </select>
             </div>
             <div className={style.InputBlock}>
                 <label>Subcategory</label>
                 <select name="subCategory" onChange={selectHandler} value={lists.subCategory[0]}>
+
                 <OptionsList list={lists.subCategory} keyPrefix={'freelanceSubCategory-'} />
+
                 </select>
             </div>
             <div className={style.InputBlock}>
                 <label>Who are your customers?</label>
                 <select name="customers" onChange={selectHandler} value={lists.customers[0]}>
+
                     <OptionsList list={lists.customers} keyPrefix={'customers-'} />
+
                 </select>
             </div>
             <div className={style.InputBlock}>
                 <label>How do you sell your products and services?</label>
                 <select name="salesChannels" onChange={selectHandler} value={lists.salesChannels[0]}>
+
                     <OptionsList list={lists.salesChannels} keyPrefix={'salesChannels-'} />
+
                 </select>
             </div>
 
             <div className={style.InputBlock}>
+
                 <DynamicInputList label={'Your business website (optional)'} list={[]} parentHandler={((value:any) => alert('parent handler recd: ' + JSON.stringify(value)))} />
             </div>
 
 
             <div className={style.InputBlock}>
+
                 <label>Your business website (optional)</label>
                 <input type="text" name="website" onChange={inputHandler} />
             </div>
@@ -170,6 +185,7 @@ const DynamicInputList: React.FC<DynamicInputList> = ({list, parentHandler, labe
         </div>
     )
 }
+
 
 
 export default FrelanceInfoInput

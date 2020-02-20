@@ -330,6 +330,7 @@ function reducer(state: any, action: actionType) {
 
     // Freelanae branch
 
+
     else if (type === 'freelanceBranch') {
         return Object.assign({...state}, {
             page: state.page + 1,
@@ -374,6 +375,7 @@ function reducer(state: any, action: actionType) {
     }
 
     else if (type === 'freelancePaymentsTo.back') {
+
         return Object.assign({...state}, {
             page: state.page - 1,
             freelancePaymentTo: value,
@@ -405,6 +407,7 @@ function reducer(state: any, action: actionType) {
             freelanceTxSurvey: value,
             axiosFreelanceComplete: true,
             freelanceBranch: [state.freelanceBranch[0], true]
+
         })
     } 
 

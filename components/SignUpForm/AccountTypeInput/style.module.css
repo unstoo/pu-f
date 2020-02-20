@@ -15,7 +15,7 @@
     margin-bottom: 25px;
 }
 
-.AccountTypeStep-OptionsRow button {
+.AccountTypeStep .AccountTypeStep-OptionsRow button {
     width: 200px;
     height: 75px;
     border: none;
@@ -26,19 +26,19 @@
     color: #555;
 }
 
-.AccountTypeStep-OptionsRow button:hover {
+.AccountTypeStep .AccountTypeStep-OptionsRow button:hover {
     background-color: #ecf7f9;
     color: #222;
     box-shadow: 0px 2px 5px 0px rgba(165, 182, 185, 0.6);
     transition: ease-in-out 0.3s; 
 }
 
-.AccountTypeStep-OptionsRow button:disabled {
+.AccountTypeStep .AccountTypeStep-OptionsRow button:disabled {
     box-shadow: none;
     background: silver;
 }
 
-.AccountTypeStep-OptionsRow button:hover:disabled {
+.AccountTypeStep .AccountTypeStep-OptionsRow button:hover:disabled {
     box-shadow: none;
     background: silver;
     color: #555;

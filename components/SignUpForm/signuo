@@ -39,8 +39,6 @@ import ProveDirectorStructureInput from './ProveDirectorStructureInput'
 const COMMON_BRANCH = 0;
 const FREELANCE_BRANCH = 1;
 const PERSONAL_BRANCH = 2;
-
-const COMMON_PAGES_COUNT = 9
 type CurrentPageProps = {
     pageNumber: number, 
     branchNumber?: number,
@@ -151,7 +149,7 @@ const BusinessPages: React.FC<CurrentPageProps> = ({dispatch, dispatchType, page
 let initialState = {
     page: 1,
     branch: COMMON_BRANCH,
-    freelanceBranch: [false, false],
+    completedFreelanceBranches: [false, false],
     completedBusinessBranches: [false, false, false, false],
 
     phoneNumber: {
@@ -237,12 +235,6 @@ let initialState = {
     // freelance type related
 
     freelanceInfo: {
-        category: '',
-        subCategory: '',
-        customers: '',
-        salesChannels: '',
-        webistes: [],
-        social: []
     },
     freelancePaymentsFrom: '',
     freelancePaymentsTo: '',
@@ -250,8 +242,7 @@ let initialState = {
     axiosFreelanceComplete: false
 }
 
-initialState = Object.assign(initialState, { page: 6, branch: 1, accountType: 'freelance',
-    freelanceBranch: [false, false], })
+initialState = Object.assign(initialState, { page: 6 })
 
 
 const MultiForm: React.FC = () => {
@@ -495,7 +486,8 @@ const MultiForm: React.FC = () => {
         { name: 'idSelfieFile', inputType: 'file' },
         { name: 'poaFile', inputType: 'file'},
         { name: 'txSurvey', inputType: 'text'},
-        { name: 'goalSurvey', inputType: 'text'}
+        { name: 'goalSurvey', inputType: 'text'},
+        { name: 'Complete', inputType: 'text', endOfBrnach: true, branchIndex: COMMON_BRANCH}
     ]
 
     
@@ -572,9 +564,9 @@ const MultiForm: React.FC = () => {
     const yieldDefValueF = (scheme: any) => {
         const COMMON_PAGES_COUNT = 9
         if (state.page <= COMMON_PAGES_COUNT) {
-            return state[scheme[state.page - 1].name]
+            return scheme[state.page - 1].name
         }
-      
+
         let setScheme = state.branch === FREELANCE_BRANCH ? schemeFreelanceBusiness : schemeFreelancePersonal
         const shiftedIndex = state.page - COMMON_PAGES_COUNT - 1
         const name = setScheme[shiftedIndex].name
@@ -588,7 +580,7 @@ const MultiForm: React.FC = () => {
     }
 
     const yieldDispatchType = (scheme: any, branches: any) => {
-        
+        const COMMON_PAGES_COUNT = 9
         if (state.page <= COMMON_PAGES_COUNT) {
             return scheme[state.page - 1].name
         }
@@ -603,7 +595,6 @@ const MultiForm: React.FC = () => {
     return (
         <div>
             <div>DispatchType: {yieldDispatchType(schemeFreelance, [schemeFreelanceBusiness, schemeFreelancePersonal])}</div>
-            <div>freelanceBranches: {JSON.stringify(state.freelanceBranches)}</div>
             <form className="multiForm">
                 { state.accountType === 'personal' &&
                 <PersonalPages 

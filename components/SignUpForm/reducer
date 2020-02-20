@@ -1,12 +1,11 @@
 import Router from 'next/router'
-const COMMON_PAGES_COUNT = 9;
+import FreelanceBranches from './FreelanceBranches'
+
 
 type actionType = {
     type: string,
     value: any
 }
-
-
 
 function reducer(state: any, action: actionType) {
     const { type, value } = action
@@ -360,14 +359,14 @@ function reducer(state: any, action: actionType) {
         })
     }
 
-    else if (type === 'freelancePaymentsFrom.back') {
+    else if (type === 'freelancePaymentFrom.back') {
         return Object.assign({...state}, {
             page: state.page - 1,
             freelanePaymentFrom: value,
         })
     }
 
-    else if (type === 'freelancePaymentsFrom.next') {
+    else if (type === 'freelancePaymentFrom.next') {
         return Object.assign({...state}, {
             page: state.page + 1,
             freelanePaymentFrom: value
@@ -383,13 +382,25 @@ function reducer(state: any, action: actionType) {
 
     else if (type === 'freelancePaymentsTo.next') {
         return Object.assign({...state}, {
-            page: COMMON_PAGES_COUNT,
-            freelancePaymentTo: value,
-            freelanceBranch: [true, state.freelanceBranch[1]]
+            page: state.page + 1,
+            freelancePaymentTo: value
         })
     }
 
-    
+    else if (type === 'freelancePaymentsFrom.back') {
+        return Object.assign({...state}, {
+            page: state.page - 1,
+            freelancePaymentTo: value,
+        })
+    }
+
+    else if (type === 'freelancePaymentsFrom.next') {
+        return Object.assign({...state}, {
+            page: state.page,
+            freelancePaymentTo: value,
+            completedFreelanceBranches: [true, state.completedFreelanceBranches[1]]
+        })
+    }
 
     else if (type === 'freelanceTxSurvey.back') {
         return Object.assign({...state}, {
@@ -402,10 +413,10 @@ function reducer(state: any, action: actionType) {
         // Router.push('/dashboard')
         // window.location.href = '/dashboard'
         return Object.assign({...state}, {
-            page: COMMON_PAGES_COUNT,
+            page: state.page,
             freelanceTxSurvey: value,
             axiosFreelanceComplete: true,
-            freelanceBranch: [state.freelanceBranch[0], true]
+            completedFreelanceBranches: [state.completedFreelanceBranches[0], true]
         })
     } 
 

@@ -2,7 +2,7 @@
     /* max-width: 500px; */
     padding: 15px;
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 10px;
     min-height: 400px;
 }
 
@@ -19,18 +19,18 @@
 }
 
 .multiForm input {
-    text-align: center;
     width: 330px;
     height: 50px;
-    background-color: #ecf7f9;
-    color: #444;
-    font-size: 18px;
     padding-top: 15px;
     padding-bottom: 15px;
+    margin-bottom: 10px;
     box-sizing: border-box;
+    background-color: #ecf7f9;
     border: none;
     border-radius: 30px;
-    margin-bottom: 30px;
+    color: #444;
+    font-size: 18px;
+    text-align: center;
 }
 
 .multiForm select {
@@ -47,7 +47,7 @@
     box-sizing: border-box;
     border: none;
     border-radius: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     background-position: right 5px top;
         
     background-image: url("https://image.flaticon.com/icons/svg/60/60995.svg");
@@ -69,7 +69,7 @@
 
 .multiForm button {
     box-sizing: border-box;
-    width: 200px;
+    width: 125px;
     height: 45px;
     border: none;
     border-radius: 30px;

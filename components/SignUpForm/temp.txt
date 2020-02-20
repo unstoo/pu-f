@@ -1,0 +1,99 @@
+// const BusinessPages: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNumber, defValue}) => {
+//     if (pageNumber === 6) return <AccountTypeInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 7) return <BusinessInfoInput dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 8) return <BusinessAddressInput dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 9) return <PaymentsInfoInput header={"Choose country to receive payments from"}  
+//     dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 10) return  <PaymentsInfoInput header={"Choose country to receive payments to"}  
+//     dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 11) return <DirectorsInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 12) return <DirectorsDataInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 13) return <ShareholdersInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 14) return <ShareholdersDataInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 15) return <BusinessDocsInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 16) return <ProveBusinessDetailsInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 17) return <ProveBusinessAddressInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 18) return <ProveBusinessTypeInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 19) return <ProveDirectorStructureInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+
+//     return <div> { "<" + dispatchType + "/> -- component doesn't exist yet."}</div>
+// }
+
+// const FreelancePages: React.FC<any> = ({pageNumber,  dispatch, dispatchType, defValue, branchNumber, isEuCountry, idFilesCount}) => {
+
+//     if (pageNumber === 6) return <AccountTypeInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 7) return <TopUp dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//     if (pageNumber === 8) return <ToActivate dispatch={dispatch} dispatchType={dispatchType}  defValue={defValue}/>
+//     if (pageNumber === 9) return <FreelanceBranches dispatch={dispatch} dispatchType={dispatchType}  defValue={defValue} />
+    
+//     if (pageNumber > 9 && branchNumber === PERSONAL_BRANCH) {
+//         if (pageNumber === 10) return <AddressDataInput dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//         if (pageNumber === 11) return <IdTypeSelector dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//         if (pageNumber === 12) {
+//             if (isEuCountry)
+//                 return <IdDataInputEu dispatch={dispatch} dispatchType={dispatchType} defValue={defValue} />
+            
+//             if (!isEuCountry) 
+//             return <IdDataInput dispatch={dispatch} dispatchType={dispatchType}  defValue={defValue} />
+//         }
+//         // id
+//         if (pageNumber === 13) return <FileInput filesCount={idFilesCount} dispatch={dispatch} dispatchType={dispatchType}  defValue={defValue} header={'Provide ID'} paragraph={'Upload front side photo of ID'}/>
+//         // selfie
+//         if (pageNumber === 14) return <FileInput header={'Selfie upload'} filesCount={1} dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//         // proof of adress
+//         if (pageNumber === 15) return <FileInput header={'Proof of address'} filesCount={1} dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//         if (pageNumber === 16) return <TxSurveyInput dispatch={dispatch} dispatchType={dispatchType}  defValue={defValue} />
+//         if (pageNumber === 17) return <GoalSurveyInput dispatch={dispatch} dispatchType={dispatchType} defValue={defValue} />
+//         return <div> { "<" + dispatchType + "/> -- component doesn't exist yet. PERSONAL_BRANCH"}</div>
+//     }
+
+//     if (pageNumber > 9 && branchNumber === FREELANCE_BRANCH) {
+//         if (pageNumber === 10) return <FrelanceInfoInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//         if (pageNumber === 11) return <PaymentsInfoInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//         if (pageNumber === 12) 
+//             return <PaymentsInfoInput header={"Choose country to receive payments to"}  
+//                 dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+//         return <div> { "<" + dispatchType + "/> -- component doesn't exist yet. FREELANCE_BRANCH"}</div>
+//     }  
+
+//     return <h1>{ "<" + dispatchType + "/> -- component doesn't exist yet. FREELANCE PAGES"}</h1>
+// }
+
+// import FreelanceBranches from './FreelanceBranches'
+// import FrelanceInfoInput from './FrelanceInfoInput'
+// import PaymentsInfoInput from './PaymentsInfoInput'
+
+
+
+
+
+const FreelancePages2: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNumber, defValue}) => {
+    if (pageNumber === 6) return <AccountTypeInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 7) return <FrelanceInfoInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 8) return <PaymentsInfoInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 9) 
+        return <PaymentsInfoInput header={"Choose country to receive payments to"}  
+                dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    if (pageNumber === 10) return <TxSurveyInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
+    
+    return <div> { "<" + dispatchType + "/> -- component doesn't exist yet."}</div>
+}
+
+
+const schemeFreelance = [
+        { name: 'phoneNumber', inputType: 'number' },
+        { name: 'smsCodeToMatch', inputType: 'number' },
+        { name: 'password', inputType: 'password' },
+        { name: 'email', inputType: 'email' },
+        { name: 'personalData', inputType: 'text', },
+        { name: 'accountType', inputType: 'text' },
+        { name: 'topUp' },
+        { name: 'toActivate' },
+        { name:  'freelanceBranch'},
+
+        { name: 'freelanceInfo', inputType: 'text'},
+        { name: 'freelancePaymentsFrom', inputType: 'text'},
+        { name: 'freelancePaymentsTo', inputType: 'text'},
+        { name: 'freelanceTxSurvey', inputType: 'text'},
+        { name: 'Complete', inputType: 'text'}
+    ]

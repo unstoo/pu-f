@@ -8,6 +8,16 @@ type StepProps = {
     dispatchType: string
 }
 
+type OptionProps = {
+    option: string,
+    keyPrefix: string
+}
+
+type OptionsListProps = {
+    list: any,
+    keyPrefix: string
+}
+
 const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
     const [category, setCategory] = React.useState(defValue.value)
     const [subCategory, setSubCategory] = React.useState(defValue.value)
@@ -21,6 +31,13 @@ const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
         subCategory: ['Artificial Intelligence', 'Data mining', 'Other'],
         customers: ['All', 'Individuals', 'Business'],
         salesChannels: ['All', 'Online', 'Exhibitions']
+    }
+
+    const Option: React.FC<OptionProps> = ({option, keyPrefix}) => <option value={option} key={keyPrefix + option} >{ option }</option>
+    const OptionsList: React.FC<OptionsListProps> = ({list, keyPrefix}) => {
+        
+        const options = list.map((option: any) => <Option option={option} keyPrefix={keyPrefix}/>)
+        return options
     }
 
     const selectHandler = (e: any) => {
@@ -56,8 +73,7 @@ const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
             <div className={style.InputBlock}>
                 <label>Business category</label>
                 <select name="category" onChange={selectHandler} value={lists.category[0]}>
-                    <option value="consultingitbusiness">Consulting, IT or business service</option>
-                    <option value="other">Other</option>
+                    <OptionsList list={lists.category} keyPrefix={'freelanceCategory-'} />
                 </select>
             </div>
             <div className={style.InputBlock}>

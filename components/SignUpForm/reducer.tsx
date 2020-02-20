@@ -1,10 +1,11 @@
 import Router from 'next/router'
-
+const COMMON_PAGES_COUNT = 9;
 
 type actionType = {
     type: string,
     value: any
 }
+//asdasdas
 
 function reducer(state: any, action: actionType) {
     const { type, value } = action
@@ -329,6 +330,21 @@ function reducer(state: any, action: actionType) {
 
     // Freelanae branch
 
+
+    else if (type === 'freelanceBranch') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            branch: value,
+        })
+    }
+
+    else if (type === 'freelanceInfo.next') {
+        return Object.assign({...state}, {
+            page: state.page + 1,
+            freelanceInfo: value
+        })
+    }
+
     else if (type === 'freelanceInfo.back') {
         return Object.assign({...state}, {
             page: state.page - 1,
@@ -344,14 +360,14 @@ function reducer(state: any, action: actionType) {
         })
     }
 
-    else if (type === 'freelancePaymentFrom.back') {
+    else if (type === 'freelancePaymentsFrom.back') {
         return Object.assign({...state}, {
             page: state.page - 1,
             freelanePaymentFrom: value,
         })
     }
 
-    else if (type === 'freelancePaymentFrom.next') {
+    else if (type === 'freelancePaymentsFrom.next') {
         return Object.assign({...state}, {
             page: state.page + 1,
             freelanePaymentFrom: value
@@ -359,6 +375,7 @@ function reducer(state: any, action: actionType) {
     }
 
     else if (type === 'freelancePaymentsTo.back') {
+
         return Object.assign({...state}, {
             page: state.page - 1,
             freelancePaymentTo: value,
@@ -367,24 +384,13 @@ function reducer(state: any, action: actionType) {
 
     else if (type === 'freelancePaymentsTo.next') {
         return Object.assign({...state}, {
-            page: state.page + 1,
-            freelancePaymentTo: value
-        })
-    }
-
-    else if (type === 'freelancePaymentsFrom.back') {
-        return Object.assign({...state}, {
-            page: state.page - 1,
+            page: COMMON_PAGES_COUNT,
             freelancePaymentTo: value,
+            freelanceBranch: [true, state.freelanceBranch[1]]
         })
     }
 
-    else if (type === 'freelancePaymentsFrom.next') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
-            freelancePaymentTo: value
-        })
-    }
+    
 
     else if (type === 'freelanceTxSurvey.back') {
         return Object.assign({...state}, {
@@ -395,11 +401,13 @@ function reducer(state: any, action: actionType) {
 
     else if (type === 'freelanceTxSurvey.next') {
         // Router.push('/dashboard')
-        window.location.href = '/dashboard'
+        // window.location.href = '/dashboard'
         return Object.assign({...state}, {
-            page: state.page,
+            page: COMMON_PAGES_COUNT,
             freelanceTxSurvey: value,
-            axiosFreelanceComplete: true
+            axiosFreelanceComplete: true,
+            freelanceBranch: [state.freelanceBranch[0], true]
+
         })
     } 
 

@@ -17,10 +17,8 @@ const GoalSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
         setGoal(value)
     }
 
-    const clickHandler = () => {
-        dispatch({ type: dispatchType, value: {
-            goal
-        }})   
+    const clickHandler = (e: any) => {
+        dispatch({ type: dispatchType + '.' + e.target.name, value: { goal }})   
     }
 
     return (
@@ -30,27 +28,31 @@ const GoalSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
             </div>
 
             <div className={style.InputBlock}>
-                <div>
+
+                <div className={style.Radio}>
+
                     <input onChange={changeHandler} type="radio" name="goal" value="Daily Payments and Savings"/>
                     <label htmlFor="goal">Daily Payments and Savings</label>
                 </div>
-                <div>
+                <div className={style.Radio}>
                     <input onChange={changeHandler} type="radio" name="goal2" value="Travel Payments"/>
                     <label htmlFor="goal2">Travel Payments</label>
                 </div>
-                <div>
+                <div className={style.Radio}>
                     <input onChange={changeHandler} type="radio" name="goal3" value="Sending Money"/>
                     <label htmlFor="goal3">Sending Money</label>
                 </div>
-                <div>
+                <div className={style.Radio}>
                     <input onChange={changeHandler} type="radio" name="goal4" value="Access to financial assets"/>
                     <label htmlFor="goal4">Access to financial assets</label>
                 </div>
             </div>
         
             <div className={style.Controls}>
-                <button type="button" onClick={() => {}}>Back</button>
-                <button type="button" onClick={clickHandler}>Next</button>
+
+                <button type="button" name="back" onClick={clickHandler}>Back</button>
+                <button type="button" name="next" onClick={clickHandler}>Next</button>
+
             </div>    
         </div>)
 }

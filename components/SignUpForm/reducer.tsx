@@ -5,8 +5,7 @@ type actionType = {
     type: string,
     value: any
 }
-
-
+//asdasdas
 
 function reducer(state: any, action: actionType) {
     const { type, value } = action

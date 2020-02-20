@@ -250,7 +250,7 @@ let initialState = {
     axiosFreelanceComplete: false
 }
 
-initialState = Object.assign(initialState, { page: 6, branch: 1, accountType: 'freelance',
+initialState = Object.assign(initialState, { page: 10, branch: 1, accountType: 'freelance',
     freelanceBranch: [false, false], })
 
 

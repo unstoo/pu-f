@@ -1,22 +1,19 @@
+.FreelanceBranches {
+    margin-top: 30px;
+}
+
 .FreelanceBranches h2 {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
-.Options {
+.FreelanceBranches  .Options {
     margin-top: 20px;
-    width: 100%;
-}
-
-.Options {
-    width: 375px;
-    height: auto;
-}
-
-.Options {
     display: flex;
-    flex-direction: row;
     width: 700px;
-    margin-bottom: 25px;
+}
+
+.FreelanceBranches  .Controls {
+    margin-top: 20px;
 }
 
 .FreelanceBranches .Options button {
@@ -29,11 +26,28 @@
     padding-right: 15px;
     border: none;
     border-radius: 15px;
-    background-color: rgba(248,252,253, 1);
-    box-shadow: 0px 4px 6.65px 0.35px rgba(196, 205, 207, 0.8);
+    background-color: #fff;
+    box-shadow: 0px 4px 7px 0px rgba(196, 205, 207, 0.8);
     transition: ease-in-out 0.3s; 
     color: #555;
     font-weight: normal;
+}
+
+.FreelanceBranches .Options button:disabled {
+    display: flex;
+    align-items: center;
+    width: 445px;
+    height: 75px;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    border-radius: 15px;
+    transition: ease-in-out 0.3s; 
+    font-weight: normal;
+    box-shadow: none;
+    background: silver;
+    color: #555;
 }
 
 .FreelanceBranches .Options .Label {
@@ -51,15 +65,10 @@
 }
 
 .FreelanceBranches .Options button:hover {
-    background-color: #ecf7f9;
+    background-color: #fff;
     color: #222;
-    box-shadow: 0px 2px 5px 0px rgba(165, 182, 185, 0.6);
+    box-shadow: 0px 1px 5px 0px rgba(165, 182, 185, 0.6);
     transition: ease-in-out 0.3s; 
-}
-
-.FreelanceBranches .Options button:disabled {
-    box-shadow: none;
-    background: silver;
 }
 
 .FreelanceBranches .Options button:hover:disabled {

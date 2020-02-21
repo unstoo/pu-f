@@ -10,9 +10,9 @@ type StepProps = {
 }
 
 const TxSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
-    const [txVolume, setTxVolume] = React.useState()
-    const [txCount, stTxCount] = React.useState()
-    const [singleMaxLimitTx, setTxMaxLimit] = React.useState()
+    const [txVolume, setTxVolume] = React.useState(volumesList[0])
+    const [txCount, stTxCount] = React.useState('<10')
+    const [singleMaxLimitTx, setTxMaxLimit] = React.useState('0')
 
     const changeHandler = (e: any) => {
         const {value, name}  = e.target

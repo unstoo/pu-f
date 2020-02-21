@@ -22,7 +22,8 @@ const FreelanceBranches: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
 
     const clickHandler = (e: React.SyntheticEvent) => {
         e.preventDefault()
-        dispatch({ type: dispatchType, value: branch })
+            dispatch({ type: dispatchType, value: branch })
+
     }
 
     // const options = ['Type of business', 'Personal profile']
@@ -49,9 +50,9 @@ const FreelanceBranches: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
                         <div className={style.Text}>Submit type of your business</div>
                     </div>
                     <div className={style.Status}>
-                        {JSON.stringify(defValue[0])}
+                        {defValue[0] ? 'Peding' : ''}
                     </div>
-                    <div className={style.Icon}>icon</div>
+                    {/* <div className={style.Icon}>icon</div> */}
                 </button>
                 <button type="button" onClick={selectHandler} value={PERSONAL_BRANCH} style={style} disabled={defValue[1]}>
                     <div className={style.Label}>
@@ -59,13 +60,13 @@ const FreelanceBranches: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
                         <div className={style.Text}>Submit a quick photof of yourself and your ID</div>
                     </div>
                     <div className={style.Status}>
-                    {JSON.stringify(defValue[1])}
+                        {defValue[1] ? 'Peding' : ''}
                     </div>
-                    <div className={style.Icon}>icon</div>
+                    {/* <div className={style.Icon}>icon</div> */}
                 </button>
             </div>
             <div className={style.Controls}>
-                <button type="button" onClick={clickHandler}>Next</button>
+                <button type="button" onClick={clickHandler} disabled={!branch ? true : false}>Next</button>
             </div>
         </div>
     )

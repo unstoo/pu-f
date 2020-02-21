@@ -27,10 +27,10 @@ const lists = {
 
 
 const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
-    const [category, setCategory] = React.useState(lists.category[0])
-    const [subCategory, setSubCategory] = React.useState(lists.subCategory[0])
-    const [customers, setCustomers] = React.useState(lists.customers[0])
-    const [salesChannels, setSalesChannels] = React.useState(lists.salesChannels[0])
+    const [category, setCategory] = React.useState(defValue.category || lists.category[0])
+    const [subCategory, setSubCategory] = React.useState(defValue.category || lists.subCategory[0])
+    const [customers, setCustomers] = React.useState(defValue.category || lists.customers[0])
+    const [salesChannels, setSalesChannels] = React.useState(defValue.category || lists.salesChannels[0])
     const [websites, setWebsites] = React.useState(defValue.websites || [{value: ''}])
     const [socials, setSocials] = React.useState(defValue.socials || [{value: ''}])
     
@@ -74,25 +74,25 @@ const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
             </div>
             <div className={style.InputBlock}>
                 <label>Business category</label>
-                <select name="category" onChange={selectHandler} value={lists.category[0]}>
+                <select name="category" onChange={selectHandler} value={category}>
                     <OptionsList list={lists.category} keyPrefix={'freelanceCategory-'} />
                 </select>
             </div>
             <div className={style.InputBlock}>
                 <label>Subcategory</label>
-                <select name="subCategory" onChange={selectHandler} value={lists.subCategory[0]}>
+                <select name="subCategory" onChange={selectHandler} value={subCategory}>
                 <OptionsList list={lists.subCategory} keyPrefix={'freelanceSubCategory-'} />
                 </select>
             </div>
             <div className={style.InputBlock}>
                 <label>Who are your customers?</label>
-                <select name="customers" onChange={selectHandler} value={lists.customers[0]}>
+                <select name="customers" onChange={selectHandler} value={customers}>
                     <OptionsList list={lists.customers} keyPrefix={'customers-'} />
                 </select>
             </div>
             <div className={style.InputBlock}>
                 <label>How do you sell your products and services?</label>
-                <select name="salesChannels" onChange={selectHandler} value={lists.salesChannels[0]}>
+                <select name="salesChannels" onChange={selectHandler} value={salesChannels}>
                     <OptionsList list={lists.salesChannels} keyPrefix={'salesChannels-'} />
                 </select>
             </div>

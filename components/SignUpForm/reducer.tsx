@@ -347,14 +347,6 @@ function reducer(state: any, action: actionType) {
     else if (type === 'freelanceInfo.back') {
         return Object.assign({...state}, {
             page: state.page - 1,
-            freelanceInfo: value,
-            axiosAccountType: false
-        })
-    }
-
-    else if (type === 'freelanceInfo.next') {
-        return Object.assign({...state}, {
-            page: state.page + 1,
             freelanceInfo: value
         })
     }

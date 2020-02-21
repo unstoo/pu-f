@@ -3,45 +3,51 @@ import style from './style.module.css'
 
 type DynamicInputList = {
     list: any,
+    label: string,
+    name: string
     parentHandler: Function,
-    label: string
 }
 
 
-const DynamicInputList: React.FC<DynamicInputList> = ({list, parentHandler, label}) => {
-    const [itemsList, setItemsList] = React.useState(list)
-    parentHandler;
+const DynamicInputList: React.FC<DynamicInputList> = ({ list, label, parentHandler, name }) => {
+    
     const changeHandler = (e: any) => {
-        console.log('Parent: Change Handler', e)
+        console.log('DynamicInputList: Change Handler')
         const parsedIndex = Number.parseInt(e.target.name)
-        const cloneItems = [...itemsList]
-        cloneItems[parsedIndex].value = e.target.value
-        setItemsList(cloneItems)
+        const newList = [...list]
+        newList[parsedIndex].value = e.target.value
+        parentHandler({ target: {
+            value: newList,
+            name: name
+        }});
     }
-    // const blurHandler = () => {
-    //     console.log('Parent: Blur Handler')
-    //     parentHandler;
-    // }
     const addInputField = () => {
-        console.log('Parent: Add Handler')
-        const updatedItemList = [...itemsList]
-        updatedItemList.push({value: ''})
-        setItemsList(updatedItemList)
+        console.log('DynamicInputList: Add Handler')
+        const newList = [...list]
+        newList.push({value: ''})
+        parentHandler({ target: {
+            value: newList,
+            name: name
+        }});
     }
     const removeInputField = (e: any) => {
-        console.log('Parent: Remove Handler')
+        console.log('DynamicInputList: Remove Handler')
         const itemIndex = e.target.name
         if (itemIndex == 0) return
-        const head = [...itemsList].slice(0, Number.parseInt(itemIndex) )
-        const tail = [...itemsList].slice(Number.parseInt(itemIndex) + 1)
-        setItemsList([...head,  ...tail])
+        const head = [...list].slice(0, Number.parseInt(itemIndex) )
+        const tail = [...list].slice(Number.parseInt(itemIndex) + 1)
+        parentHandler({ target: {
+            value: [...head,  ...tail],
+            name: name
+        }})
     }
 
     const getList = () => {
-        const items = itemsList.slice(1).map((item: any, index: any) => {
-            console.log(JSON.stringify(itemsList))
+        const items = list.slice(1).map((item: any, index: any) => {
+            console.log(JSON.stringify(list))
             return <DynamicInput  key={'DynamicListItem-' + label + index}
-                initValue={item.value} index={(index + 1).toString()} label={label} removeValueHandler={removeInputField} changeValueHandler={changeHandler}/>
+                initValue={item.value} index={(index + 1).toString()} label={label} 
+                 removeValueHandler={removeInputField} changeValueHandler={changeHandler}/>
         })
 
         return items
@@ -50,13 +56,11 @@ const DynamicInputList: React.FC<DynamicInputList> = ({list, parentHandler, labe
     return (
         <div className={style.DynamicList}>
             <div className={style.StaticItem}>
-                {/* <label>{ label || 'Dynamic list label'}</label>
-                <input type="text" value={itemsList[0].name || ''} name="0" onChange={changeHandler} onBlur={blurHandler}/> */}
-                <DynamicInput  key={'DynamicListItem-' + label + 0} initValue={itemsList[0].value} 
-                index="0" label={label} removeValueHandler={removeInputField} changeValueHandler={changeHandler} hideButton={true}/>
+                <DynamicInput  key={'DynamicListItem-' + label + 0} initValue={list[0].value} index="0" label={label}
+                     removeValueHandler={removeInputField} changeValueHandler={changeHandler} hideButton={true}/>
             </div>
 
-            { itemsList.length > 1 && getList() }
+            { list.length > 1 && getList() }
             
             <div className={style.Controls}>
                 <button className={style.ButtonAdd} onClick={addInputField} type="button">+</button>
@@ -77,7 +81,10 @@ type DynamicInputProps = {
 
 
 
-const DynamicInput: React.FC<DynamicInputProps>  = ({ initValue, index, label, changeValueHandler, removeValueHandler, hideButton }) => {
+const DynamicInput: React.FC<DynamicInputProps>  = ({ 
+    initValue, index, label, 
+    changeValueHandler, removeValueHandler, 
+    hideButton }) => {
     const [value, setValue] = React.useState(initValue)
 
     const changeHandler = (e: any) => {

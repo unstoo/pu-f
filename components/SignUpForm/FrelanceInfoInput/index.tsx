@@ -1,5 +1,5 @@
 import * as React from 'react'
-import DynamicInputList from '../DynamicInputList'
+import DynamicInputsList from '../DynamicInputsList'
 import style from './style.module.css'
 
 type StepProps = {
@@ -18,20 +18,22 @@ type OptionsListProps = {
     keyPrefix: string
 }
 
-const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
-    const [category, setCategory] = React.useState(defValue.value)
-    const [subCategory, setSubCategory] = React.useState(defValue.value)
-    const [customers, setCustomers] = React.useState(defValue.value)
-    const [salesChannels, setSalesChannels] = React.useState(defValue.value)
-    const [website, setWebsite] = React.useState([])
-    const [social, setSocial] = React.useState([])
+const lists = {
+    category: ['Consulting, IT or business service', 'Sales', 'Other'],
+    subCategory: ['Artificial Intelligence', 'Data mining', 'Other'],
+    customers: ['All', 'Individuals', 'Business'],
+    salesChannels: ['All', 'Online', 'Exhibitions']
+}
 
-    const lists = {
-        category: ['Consulting, IT or business service', 'Sales', 'Other'],
-        subCategory: ['Artificial Intelligence', 'Data mining', 'Other'],
-        customers: ['All', 'Individuals', 'Business'],
-        salesChannels: ['All', 'Online', 'Exhibitions']
-    }
+
+const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) => {
+    const [category, setCategory] = React.useState(lists.category[0])
+    const [subCategory, setSubCategory] = React.useState(lists.subCategory[0])
+    const [customers, setCustomers] = React.useState(lists.customers[0])
+    const [salesChannels, setSalesChannels] = React.useState(lists.salesChannels[0])
+    const [websites, setWebsites] = React.useState(defValue.websites || [{value: ''}])
+    const [socials, setSocials] = React.useState(defValue.socials || [{value: ''}])
+    
 
     const Option: React.FC<OptionProps> = ({option}) => <option value={option} >{ option }</option>
     const OptionsList: React.FC<OptionsListProps> = ({list, keyPrefix}) => {
@@ -50,8 +52,8 @@ const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
 
     const inputHandler = (e: any) => {
         const { value, name }  = e.target
-        if (name === 'website') setWebsite(value)
-        if (name === 'social') setSocial(value)
+        if (name === 'websites') setWebsites(value)
+        if (name === 'socials') setSocials(value)
     }
 
     const clickHandler = (e: any) => {
@@ -60,8 +62,8 @@ const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
             subCategory,
             customers,
             salesChannels,
-            website,
-            social
+            websites,
+            socials
         }})
     }
 
@@ -96,12 +98,12 @@ const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
             </div>
 
             <div className={style.InputBlock}>
-                <DynamicInputList label={'Your business website (optional)'} list={[{value: 'john'},{value: 'pete'}]} parentHandler={inputHandler} />
+                <DynamicInputsList name="websites" label={'Your business website (optional)'}
+                 list={websites} parentHandler={inputHandler} />
             </div>
-
-
             <div className={style.InputBlock}>
-                <DynamicInputList label={'Social link (optional)'} list={[{value: ''}]} parentHandler={inputHandler} />
+                <DynamicInputsList name="socials" label={'Social link (optional)'} 
+                list={socials} parentHandler={inputHandler} />
             </div>
 
             <div className={style.Controls}>

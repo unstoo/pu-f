@@ -239,8 +239,8 @@ let initialState = {
         subCategory: '',
         customers: '',
         salesChannels: '',
-        webistes: [],
-        social: []
+        // webistes: [{value: ''}],
+        // socials: [{value: ''}]
     },
     freelancePaymentsFrom: '',
     freelancePaymentsTo: '',
@@ -573,10 +573,12 @@ const MultiForm: React.FC = () => {
             return state[scheme[state.page - 1].name]
         }
       
-        let setScheme = state.branch === FREELANCE_BRANCH ? schemeFreelanceBusiness : schemeFreelancePersonal
+        let setScheme = Number.parseInt(state.branch) === FREELANCE_BRANCH ? schemeFreelanceBusiness : schemeFreelancePersonal
         const shiftedIndex = state.page - COMMON_PAGES_COUNT - 1
         const name = setScheme[shiftedIndex].name
-        
+        // console.log('branch: ', state.branch)
+        // console.log('name: ', name)
+        // console.log('defValueF: ', state[name])
         if (typeof state[name] === 'string') return state[name]
         if (!state[name]) return []
         return Object.assign( 

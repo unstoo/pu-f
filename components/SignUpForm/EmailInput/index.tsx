@@ -1,4 +1,5 @@
 import * as React from 'react'
+import style from './style.module.css'
 
 type StepProps = {
     validationScheme?: any,
@@ -30,12 +31,14 @@ const EmailInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) =
     }
 
     return (
-         <div className="EmailInput">
+         <div className={style.Email}>
             { !error && <label>Input email</label> }
             { error && <label style={errStyle}>{error}</label> }
             <input type="email" onChange={changeHandler}/>
-            { !error && <button type="button" onClick={clickHandler}>Save email</button> }
-            { error && <button type="button" onClick={clickHandler} disabled>Save email</button> }
+            <div className={style.Controls}>
+                { !error && <button type="button" onClick={clickHandler}>Save email</button> }
+                { error && <button type="button" onClick={clickHandler} disabled>Save email</button> }
+            </div>
             
         </div>
     )

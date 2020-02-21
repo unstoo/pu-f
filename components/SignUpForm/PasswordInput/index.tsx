@@ -73,7 +73,7 @@ const PasswordInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }
     }
 
     return (
-         <div className={style.PasswordStep}>
+         <div className={style.Password}>
             <h2>Set password</h2>
 
             { !errorTooShort && !errorTooSimple && <label>Password</label> }
@@ -85,10 +85,12 @@ const PasswordInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }
             { errorDoesntMatch && <label style={errStyle}>{errorDoesntMatch}</label> }
             <input type="password" onBlur={repasswordBlurHandler} onChange={repasswordChangeHandler}/>
 
-            { !errorDoesntMatch && !errorTooShort && !errorTooSimple
-            &&  <button type="button" onClick={clickHandler}>Set password ></button> }
-            { (errorDoesntMatch || errorTooShort || errorTooSimple) &&
-              <button type="button" onClick={clickHandler} style={disabledStyle} disabled>Set password ></button> }
+            <div className={style.Controls}>
+                { !errorDoesntMatch && !errorTooShort && !errorTooSimple
+                &&  <button type="button" onClick={clickHandler}>Set password ></button> }
+                { (errorDoesntMatch || errorTooShort || errorTooSimple) &&
+                <button type="button" onClick={clickHandler} style={disabledStyle} disabled>Set password ></button> }
+            </div>
         </div>
     )
 }

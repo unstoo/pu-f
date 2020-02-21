@@ -354,28 +354,36 @@ function reducer(state: any, action: actionType) {
     else if (type === 'freelancePaymentsFrom.back') {
         return Object.assign({...state}, {
             page: state.page - 1,
-            freelanePaymentFrom: value,
+            freelancePaymentsFrom: value,
         })
     }
 
     else if (type === 'freelancePaymentsFrom.next') {
         return Object.assign({...state}, {
             page: state.page + 1,
-            freelanePaymentFrom: value
+            freelancePaymentsFrom: value
         })
     }
 
     else if (type === 'freelancePaymentsTo.back') {
         return Object.assign({...state}, {
             page: state.page - 1,
-            freelancePaymentTo: value,
+            freelancePaymentsTo: value,
         })
     }
 
     else if (type === 'freelancePaymentsTo.next') {
         return Object.assign({...state}, {
+            freelancePaymentsTo: value,
+            axiosFreelanceBusinessBranch: true
+        })
+    }
+
+    else if (type === 'axiosFreelanceBusinessBranch') {
+        return Object.assign({...state}, {
             page: COMMON_PAGES_COUNT,
-            freelancePaymentTo: value,
+            freelancePaymentsTo: value,
+            //if both true -> dashboard
             freelanceBranch: [true, state.freelanceBranch[1]]
         })
     }
@@ -385,7 +393,7 @@ function reducer(state: any, action: actionType) {
     else if (type === 'freelanceTxSurvey.back') {
         return Object.assign({...state}, {
             page: state.page - 1,
-            freelanceTxSurvey: value,
+            txSurvey: value,
         })
     }
 
@@ -393,12 +401,19 @@ function reducer(state: any, action: actionType) {
         // Router.push('/dashboard')
         // window.location.href = '/dashboard'
         return Object.assign({...state}, {
+            txSurvey: value,
+            axiosFreelancePersonalBranch: true,
+        })
+    }
+
+    else if (type === 'axiosFreelancePersonalBranch') {
+        return Object.assign({...state}, {
             page: COMMON_PAGES_COUNT,
-            freelanceTxSurvey: value,
-            axiosFreelanceComplete: true,
+            freelancePaymentsTo: value,
+            //if both true -> dashboard
             freelanceBranch: [state.freelanceBranch[0], true]
         })
-    } 
+    }
 
  
     // Business branch 

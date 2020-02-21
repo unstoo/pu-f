@@ -31,14 +31,16 @@ const SMSCodeInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue })
     }
 
     return (
-        <div className={style.SMSCodeStep}>
+        <div className={style.SMS}>
             <h2>Input SMS code</h2>
             <p>We send you a message with a code to approve your phone.</p>
-            { !error && <label>Input SMS code</label> }
+            { !error && <label>Code</label> }
             { error && <label style={errStyle}>{error}</label> }
             <input className={style["SMSCodeStep-Input"]} onChange={onChange} value={value} type="number" />
+            <div className={style.Controls}>
             { !error && <button type="button" onClick={clickHandler}>Verify SMS</button> }
             { error && <button type="button" onClick={clickHandler} disabled>Verify SMS</button> }
+            </div>
         </div>
     )
 }

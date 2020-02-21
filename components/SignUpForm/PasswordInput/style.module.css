@@ -1,7 +1,8 @@
-.PasswordStep{
-    
+
+.Password label:last-of-type {
+    margin-top: 10px;
 }
 
-.PasswordStep label:last-of-type {
-    margin-top: 0;
+.Password .Controls {
+    margin-top: 20px;
 }

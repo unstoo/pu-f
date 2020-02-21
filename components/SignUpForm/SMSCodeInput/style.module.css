@@ -1,3 +1,7 @@
-.SMSCodeStep .SMSCodeStep-Input {
+.SMS {
     text-align: center;
+}
+
+.SMS .Controls {
+    margin-top: 20px;
 }

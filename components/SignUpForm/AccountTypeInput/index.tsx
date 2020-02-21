@@ -33,7 +33,8 @@ const AccountTypeInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
             style = {}
         }
 
-        return <button type="button" key={'AccountTypeKey-' + o} onClick={selectHandler} value={o.toLowerCase()} style={style}>{o}</button>
+        return <button type="button" key={'AccountTypeKey-' + o} onClick={selectHandler} value={o.toLowerCase()} 
+            style={style} disabled={o === 'Buisness' ? true : false}>{o}</button>
     })
 
     return (

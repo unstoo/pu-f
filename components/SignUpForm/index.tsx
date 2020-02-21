@@ -24,6 +24,7 @@ import ToActivate from './ToActivate'
 import FreelanceBranches from './FreelanceBranches'
 import FrelanceInfoInput from './FrelanceInfoInput'
 import PaymentsInfoInput from './PaymentsInfoInput'
+import PaymentsInfoInput2 from './PaymentsInfoInput2'
 // Business pages
 import BusinessInfoInput from './BusinessInfoInput'
 import BusinessAddressInput from './BusinessAddressInput'
@@ -116,7 +117,7 @@ const FreelancePages: React.FC<any> = ({pageNumber,   dispatch, dispatchType, de
         if (pageNumber === 10) return <FrelanceInfoInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
         if (pageNumber === 11) return <PaymentsInfoInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
         if (pageNumber === 12) 
-            return <PaymentsInfoInput header={"Choose country to receive payments to"}  
+            return <PaymentsInfoInput2 header={"Choose country to receive payments to"}  
                 dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
         return <div> { "<" + dispatchType + "/> -- component doesn't exist yet. FREELANCE_BRANCH"}</div>
     }  
@@ -228,6 +229,7 @@ let initialState = {
         txCount: '',
         singleMaxLimitTx: ''
     },
+
     goalSurvey: {
         purpose: ''
     },
@@ -242,13 +244,13 @@ let initialState = {
         // webistes: [{value: ''}],
         // socials: [{value: ''}]
     },
-    freelancePaymentsFrom: '',
-    freelancePaymentsTo: '',
+    freelancePaymentsFrom: 'Austria',
+    freelancePaymentsTo: 'Austria',
+    axiosFreelanceBusinessBranch: false,
     freelanceTxSurvey: {},
-    axiosFreelanceComplete: false
+    axiosFreelancePersonalBranch: false,
 }
-
-initialState = Object.assign(initialState, { page: 10, branch: 1, accountType: 'freelance',
+initialState = Object.assign(initialState, { page: 5, branch: 2, accountType: 'personal',
     freelanceBranch: [false, false], })
 
 
@@ -266,6 +268,8 @@ const MultiForm: React.FC = () => {
     const axiosIdSelfieFile = React.useRef(state.axiosIdSelfieFile)
     const axiosPoaFile = React.useRef(state.axiosPoaFile)
     const axiosSurvey = React.useRef(state.axiosSurvey)
+    const axiosFreelanceBusinessBranch = React.useRef(state.axiosFreelanceBusinessBranch)
+    const axiosFreelancePersonalBranch = React.useRef(state.axiosFreelancePersonalBranch)
     const url = 'http://localhost:4000/api'
     const headers =  { headers: { 'Authorization': cookies.get('token') } }
 
@@ -475,7 +479,43 @@ const MultiForm: React.FC = () => {
         
     }, [state.axiosSurvey])
     
-    
+    React.useEffect(() => {
+        if (axiosFreelanceBusinessBranch.current) {
+            console.log('LAUNCH axiosFreelanceBusinessBranch')
+
+            axios.post(url, {
+                freelanceInfo: state.freelanceInfo, 
+                freelancePaymentsFrom: state.freelancePaymentsFrom,
+                freelancePaymentsTo: state.freelancePaymentsTo
+            }, headers)
+            .then(({ data }) => {
+                dispatch({ type: 'axiosFreelanceBusinessBranch', value: data.value })
+            })
+            .catch(err => console.log(err))
+
+        } else if (!axiosFreelanceBusinessBranch.current) {
+            axiosFreelanceBusinessBranch.current = true
+        }
+        
+    }, [state.axiosFreelanceBusinessBranch])
+
+    React.useEffect(() => {
+        if (axiosFreelancePersonalBranch.current) {
+            console.log('LAUNCH axiosFreelancePersonalBranch')
+
+            axios.post(url, {
+                txSurvey: state.txSurvey
+            }, headers)
+            .then(({ data }) => {
+                dispatch({ type: 'axiosFreelancePersonalBranch', value: data.value })
+            })
+            .catch(err => console.log(err))
+
+        } else if (!axiosFreelancePersonalBranch.current) {
+            axiosFreelancePersonalBranch.current = true
+        }
+        
+    }, [state.axiosFreelancePersonalBranch])
 
     const schemePersonal = [
         { name: 'phoneNumber', inputType: 'number' },
@@ -577,8 +617,9 @@ const MultiForm: React.FC = () => {
         const shiftedIndex = state.page - COMMON_PAGES_COUNT - 1
         const name = setScheme[shiftedIndex].name
         // console.log('branch: ', state.branch)
-        // console.log('name: ', name)
-        // console.log('defValueF: ', state[name])
+        console.log('name: ', name)
+        console.log('defValueFrom: ', state.freelancePaymentsFrom)
+        console.log('defValueTo: ', state.freelancePaymentsTo)
         if (typeof state[name] === 'string') return state[name]
         if (!state[name]) return []
         return Object.assign( 

@@ -3,6 +3,8 @@ import Link from 'next/link.js';
 import axios from 'axios';
 import { Cookies } from 'react-cookie';
 
+import Layout from '../components/Layout'
+
 const serverUrl = 'http://localhost:4000';
 
 // set up cookies
@@ -28,17 +30,13 @@ class Index extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Main page</h2>
-        <br></br>
-        <button onClick={() => this.onLoginClick()}>Get Token</button>
-        <br></br>
-        <p>Token: {this.state.token}</p>
-        <br></br>
-        <Link href="/secret">
-          <a>Secret page</a>
-        </Link>
-      </div >
+      <Layout>
+        <div>
+          <button onClick={() => this.onLoginClick()}>Get Token</button>
+          <br></br>
+          <p>Current token: {this.state.token || 'null'}</p>
+        </div >
+      </Layout>
     )
   }
 }

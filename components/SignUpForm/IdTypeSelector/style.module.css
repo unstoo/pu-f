@@ -22,17 +22,14 @@
     margin-top: 20px;
 }
 
-.IdType .InputBlock input {
-
-}
 
 .IdType .Controls {
     width: 330px;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 15px;
+    margin-top: 30px;
 }
 
-.IdType button {
-    width: 140px;
+.IdType .Controls button {
+    width: 130px;
 }

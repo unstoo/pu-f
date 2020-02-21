@@ -1,11 +1,3 @@
-.IdData {
-    
-}
-
-.IdData label {
-    margin-top: 25px;
-}
-
 .IdData .Controls {
     width: 330px;
     margin-top: 50px;
@@ -15,4 +7,27 @@
 
 .IdData .Controls button {
     width: 140px;
+}
+
+
+.IdData  h2 {
+    margin-bottom: 40px;
+}
+
+
+.IdData .InputBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.IdData .InputBlock label {
+    margin: 15px;
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+.IdData .InputBlock input {
+    margin-bottom: 15px;
 }

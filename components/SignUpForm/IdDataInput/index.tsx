@@ -46,34 +46,34 @@ const IdDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValue }) 
 
     return (
          <div className={style.IdData}> 
-            <div>
+            <div className={style.Header}>
                 <h2>Your ID/passport data</h2>
             </div>
-            <div>
+            <div className={style.InputBlock}>
                 <label>ID date of issue</label>
                 <input type="text" name="iddateissue" value={idDateIssue} onChange={idDataHandler}/>
             </div>
-            <div>
+            <div className={style.InputBlock}>
                 <label>ID date of expiration (optional)</label>
                 <input type="text" name="iddateexpiration" value={idDateExpiration} onChange={idDataHandler}/>
             </div>
-            <div>
+            <div className={style.InputBlock}>
                 <label>ID division code</label>
                 <input type="text" name="iddivisioncode" value={idDivsionCode} onChange={idDataHandler}/>
             </div>
-            <div>
+            <div className={style.InputBlock}>
                 <label>ID issuer</label>
                 <input type="text" name="idissuer" value={idIssuer} onChange={idDataHandler}/>
             </div>
-            <div>
+            <div className={style.InputBlock}>
                 <label>ID series</label>
                 <input type="text" name="idseries" value={idSeries} onChange={idDataHandler}/>
             </div>
-            <div>
+            <div className={style.InputBlock}>
                 <label>ID number</label>
                 <input type="text" name="idnumber" value={idNumber} onChange={idDataHandler}/>
             </div>
-            <div>
+            <div className={style.InputBlock}>
                 <label>Sex</label>
                 <input type="text" name="sex" value={sex} onChange={idDataHandler}/>
             </div>

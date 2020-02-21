@@ -324,8 +324,8 @@ function reducer(state: any, action: actionType) {
     }
 
     else if (type === 'axios.dashboard') {
-        return state
         Router.push('/dashboard')
+        return state
     }
 
     // Freelanae branch

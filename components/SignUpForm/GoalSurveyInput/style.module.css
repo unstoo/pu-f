@@ -3,29 +3,36 @@
 }
 
 
-.GoalxSurvey .InputBlock {
+.GoalSurvey .InputBlock {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: flex-start;
 }
 
-.GoalxSurvey .InputBlock label {
-    margin: 15px;
-    margin-left: 25px;
-    margin-top: 20px;
-}
-
-.GoalxSurvey .InputBlock input {
+.GoalSurvey .Radio {
+    display: flex;
+    flex-direction: row;
     margin-bottom: 20px;
 }
 
-.GoalxSurvey .Controls {
+.GoalSurvey .Radio label {
+    margin: 0;
+    margin-left: 20px;
+}
+
+.GoalSurvey .Radio input {
+    width: 20px;
+    height: 20px;
+    margin-top: 12px;
+}
+
+.GoalSurvey .Controls {
     width: 330px;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 30px;
 }
 
-.GoalxSurvey button {
-    width: 100px;
+.GoalSurvey button {
+    width: 130px;
 }

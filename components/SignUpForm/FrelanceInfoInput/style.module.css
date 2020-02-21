@@ -1,6 +1,3 @@
-.FreelanceInfo {
-}
-
 .Header {
     margin-bottom: 25px;
 }
@@ -22,10 +19,6 @@
     margin-top: 20px;
 }
 
-.FreelanceInfo .InputBlock input {
-
-}
-
 .FreelanceInfo .Controls {
     width: 330px;
     flex-direction: row;
@@ -33,6 +26,28 @@
     margin-top: 15px;
 }
 
-.FreelanceInfo button {
-    width: 140px;
+.Controls button {
+    width: 130px;
+    margin-top: 40px;
+}
+
+.FreelanceInfo .ButtonAdd {
+    width: 40px;
+    height: 40px;
+    border-radius: 15px;
+    padding: 0;
+    line-height: 0;
+
+    padding: 0;
+    padding-bottom: 3px;
+    margin: 0;
+    width: 28px;
+    height: 28px;
+    margin-left: 10px;
+    box-shadow: none;
+    background: #ddd;
+    border-radius: 12px;
+    color: #333;
+    line-height: 0;
+    font-size: 15px;
 }

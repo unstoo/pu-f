@@ -1,31 +1,31 @@
-.AddressData-header {
+.AddressData .Header {
     margin-bottom: 30px;
 }
 
 
-.AddressData .AddressData-InputBlock {
+.AddressData .InputBlock {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-.AddressData .AddressData-InputBlock label {
+.AddressData .InputBlock label {
     margin: 15px;
     margin-left: 25px;
 }
 
-.AddressData .AddressData-InputBlock input {
+.AddressData .InputBlock input {
     margin-bottom: 10px;
 }
 
-.AddressData .AddressData-Controls {
+.AddressData .Controls {
     width: 330px;
+    margin-top: 40px;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 30px;
 }
 
-.AddressData button {
-    width: 100px;
+.AddressData .Controls button {
+    width: 130px;
 }

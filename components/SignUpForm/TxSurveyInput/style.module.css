@@ -21,11 +21,12 @@
 }
 
 .TxSurvey .Controls {
+    margin-top: 30px;
     width: 330px;
     flex-direction: row;
     justify-content: space-around;
 }
 
-.TxSurvey button {
-    width: 100px;
+.TxSurvey .Controls button {
+    width: 130px;
 }

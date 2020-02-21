@@ -1,4 +1,5 @@
 import * as React from 'react'
+import DynamicInputList from '../DynamicInputList'
 import style from './style.module.css'
 
 type StepProps = {
@@ -95,18 +96,12 @@ const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
             </div>
 
             <div className={style.InputBlock}>
-                <DynamicInputList label={'Your business website (optional)'} list={[]} parentHandler={((value:any) => alert('parent handler recd: ' + JSON.stringify(value)))} />
+                <DynamicInputList label={'Your business website (optional)'} list={[{value: 'john'},{value: 'pete'}]} parentHandler={inputHandler} />
             </div>
 
 
             <div className={style.InputBlock}>
-                <label>Your business website (optional)</label>
-                <input type="text" name="website" onChange={inputHandler} />
-            </div>
-
-            <div className={style.InputBlock}>
-                <label>Social link (optional)</label>
-                <input type="text" name="social" onChange={inputHandler} />
+                <DynamicInputList label={'Social link (optional)'} list={[{value: ''}]} parentHandler={inputHandler} />
             </div>
 
             <div className={style.Controls}>
@@ -118,58 +113,7 @@ const FrelanceInfoInput: React.FC<StepProps> = ({ dispatch, dispatchType, defVal
 }
 
 
-type DynamicInputList = {
-    list: any,
-    parentHandler: Function,
-    label: string
-}
 
-
-const DynamicInputList: React.FC<DynamicInputList> = ({list, parentHandler, label}) => {
-    const [itemsList, setItemsList] = React.useState([{name: 'john'},{name: 'pete'},{name: 'drew'}])
-    
-    const blurHandler = (e: any) => {
-        alert(e.target.value)
-        list;
-        parentHandler;
-    }
-    const addInputField = () => {
-        const updatedItemList = [...itemsList]
-        updatedItemList.push({name: ''})
-        setItemsList(updatedItemList)
-    }
-    const removeInputField = (e: any) => {
-        
-        const itemIndex = e.target.name
-        const head = [...itemsList].slice(0, Number.parseInt(itemIndex) )
-        const tail = [...itemsList].slice(Number.parseInt(itemIndex) + 1)
-        setItemsList([...head,  ...tail])
-    }
-
-    const makeList = () => itemsList.slice(1).map((obj, index) => {
-        return <>
-
-        <div className={style.DynamicItem}>
-                    <label>{ label || 'Dynamic list label'}</label>
-                    <input type="text" value={obj.name}  onChange={() => {}} onBlur={blurHandler}/>
-                    <button onClick={removeInputField} name={index.toString()} type="button">delete</button>
-        </div>
-        </>
-    })
-
-    return (
-        <div>
-            <div className={style.StaticItem}>
-                <label>{ label || 'Dynamic list label'}</label>
-                <input type="text" value={itemsList[0].name || ''} name="0" onChange={() => {}} onBlur={blurHandler}/>
-            </div>
-            { itemsList.length > 1 && makeList() }
-            <div className={style.AddItemButton}>
-                <button onClick={addInputField} type="button">+</button>
-            </div>
-        </div>
-    )
-}
 
 
 export default FrelanceInfoInput

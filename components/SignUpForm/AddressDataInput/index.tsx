@@ -42,39 +42,39 @@ const AddressDataInput: React.FC<StepProps> = ({ dispatch, dispatchType, defValu
 
     return (
          <div className={style.AddressData}> 
-            <div className={style["AddressData-header"]}>
+            <div className={style.Header}>
                 <h2>Your home address</h2>
                 <p>Do not specify a PO Box</p>
             </div>
-            <div className={style["AddressData-InputBlock"]}>
+            <div className={style.InputBlock}>
                 <label>Country</label>
                 <select name="country" onChange={addressHandler} value={country}>
                     { countryList.map(country => <option key={'AddressData-' + country} value={country}>{country}</option>)}
                 </select>
             </div>
             
-            <div className={style["AddressData-InputBlock"]}>
+            <div className={style.InputBlock}>
                 <label>State</label>
                 <input type="text" name="state" value={state} onChange={addressHandler}/>
             </div>
-            <div className={style["AddressData-InputBlock"]}>
+            <div className={style.InputBlock}>
                 <label>City</label>
                 <input type="text" name="city" value={city} onChange={addressHandler}/>
             </div>
-            <div className={style["AddressData-InputBlock"]}>
+            <div className={style.InputBlock}>
                 <label>ZIP</label>
                 <input type="text" name="zip" value={zip} onChange={addressHandler}/>
             </div>
-            <div className={style["AddressData-InputBlock"]}>
+            <div className={style.InputBlock}>
                 <label>Address 1</label>
                 <input type="text" name="addressone" value={addressOne} onChange={addressHandler}/>
             </div>
-            <div className={style["AddressData-InputBlock"]}>
+            <div className={style.InputBlock}>
                 <label>Address 2</label>
                 <input type="text" name="addresstwo" value={addressTwo} onChange={addressHandler}/>
             </div>
             
-            <div className={style["AddressData-Controls"]}>
+            <div className={style.Controls}>
                 <button type="button" name="back" onClick={clickHandler}>Back</button>
                 <button type="button" name="next" onClick={clickHandler}>Next</button>
             </div>

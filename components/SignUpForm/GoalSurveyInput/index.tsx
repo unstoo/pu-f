@@ -29,19 +29,19 @@ const GoalSurveryInput: React.FC<StepProps> = ({ dispatch, dispatchType }) => {
 
             <div className={style.InputBlock}>
                 <div className={style.Radio}>
-                    <input onChange={changeHandler} type="radio" name="goal" value="Daily Payments and Savings"/>
-                    <label htmlFor="goal">Daily Payments and Savings</label>
+                    <input onChange={changeHandler} type="radio" name="goal" id="goal1" value="Daily Payments and Savings"/>
+                    <label htmlFor="goal1">Daily Payments and Savings</label>
                 </div>
                 <div className={style.Radio}>
-                    <input onChange={changeHandler} type="radio" name="goal2" value="Travel Payments"/>
+                    <input onChange={changeHandler} type="radio" name="goal" id="goal2" value="Travel Payments"/>
                     <label htmlFor="goal2">Travel Payments</label>
                 </div>
                 <div className={style.Radio}>
-                    <input onChange={changeHandler} type="radio" name="goal3" value="Sending Money"/>
+                    <input onChange={changeHandler} type="radio" name="goal" id="goal3" value="Sending Money"/>
                     <label htmlFor="goal3">Sending Money</label>
                 </div>
                 <div className={style.Radio}>
-                    <input onChange={changeHandler} type="radio" name="goal4" value="Access to financial assets"/>
+                    <input onChange={changeHandler} type="radio" name="goal" id="goal4" value="Access to financial assets"/>
                     <label htmlFor="goal4">Access to financial assets</label>
                 </div>
             </div>

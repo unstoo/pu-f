@@ -84,7 +84,6 @@ const PersonalPages: React.FC<CurrentPageProps> = ({dispatch, dispatchType, page
             return <div>Unknown step. {dispatchType}</div>
 }
 
-
 const FreelancePages: React.FC<any> = ({pageNumber,   dispatch, dispatchType, defValue, branchNumber, isEuCountry, idFilesCount}) => {
 
     if (pageNumber === 6) return <AccountTypeInput  dispatch={dispatch} dispatchType={dispatchType} defValue={defValue}/>
@@ -124,7 +123,6 @@ const FreelancePages: React.FC<any> = ({pageNumber,   dispatch, dispatchType, de
 
     return <h1>{ "<" + dispatchType + "/> -- component doesn't exist yet. FREELANCE PAGES: page: " + pageNumber + "; branchNumber: " +branchNumber}</h1>
 }
-
 
 
 const BusinessPages: React.FC<CurrentPageProps> = ({dispatch, dispatchType, pageNumber, defValue}) => {
@@ -589,7 +587,8 @@ const MultiForm: React.FC = () => {
 
     const yieldDispatchType = (scheme: any, branches: any) => {
         
-        if (state.page <= COMMON_PAGES_COUNT) {
+        if (state.page <= COMMON_PAGES_COUNT || state.accountType === 'personal') {
+            console.log('next dispatch type: ', scheme[state.page - 1].name)
             return scheme[state.page - 1].name
         }
 
@@ -602,14 +601,14 @@ const MultiForm: React.FC = () => {
 
     return (
         <div>
-            <div>DispatchType: {yieldDispatchType(schemeFreelance, [schemeFreelanceBusiness, schemeFreelancePersonal])}</div>
-            <div>freelanceBranches: {JSON.stringify(state.freelanceBranches)}</div>
+            {/* <div>DispatchType: {yieldDispatchType(schemeFreelance, [schemeFreelanceBusiness, schemeFreelancePersonal])}</div>
+            <div>freelanceBranches: {JSON.stringify(state.freelanceBranches)}</div> */}
             <form className="multiForm">
                 { state.accountType === 'personal' &&
                 <PersonalPages 
                 pageNumber={state.page} 
                 dispatch={dispatch} 
-                dispatchType = {schemePersonal[state.page - 1].name}
+                dispatchType = {yieldDispatchType(schemePersonal, [])}
                 defValue={yieldDefValue(schemePersonal)} 
                 isEuCountry={isEuCountry(state.selectedCountry)} 
                 idFilesCount={state.idType === 'passport' ? 1 : 2}

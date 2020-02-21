@@ -380,6 +380,9 @@ function reducer(state: any, action: actionType) {
     }
 
     else if (type === 'axiosFreelanceBusinessBranch') {
+        if (state.freelanceBranch[1]) {
+            Router.push('/dashboard')
+        }
         return Object.assign({...state}, {
             page: COMMON_PAGES_COUNT,
             freelancePaymentsTo: value,
@@ -407,6 +410,9 @@ function reducer(state: any, action: actionType) {
     }
 
     else if (type === 'axiosFreelancePersonalBranch') {
+        if (state.freelanceBranch[0]) {
+            Router.push('/dashboard')
+        }
         return Object.assign({...state}, {
             page: COMMON_PAGES_COUNT,
             freelancePaymentsTo: value,

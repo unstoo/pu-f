@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Link from 'next/link'
 // import fetch from 'isomorphic-unfetch';
 // import { NextPage, NextFunctionComponent } from 'next';
 
@@ -56,7 +57,11 @@ const Dashboard: React.FC<Props> = ({hydrate}) => {
           accountId={propsAccountHeader.accountId}
           interfaceLanguage={propsAccountHeader.interfaceLanguage}
         >
-          <Button>Log out</Button>
+          <Link href="/">
+              <a>
+                <Button>Log out</Button>
+              </a>
+          </Link>
         </AccountHeader>
         <LastOperations operations={propsLastOperations} />
         <MyCards />

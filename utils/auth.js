@@ -3,7 +3,8 @@ import Router from 'next/router';
 import { Cookies } from 'react-cookie';
 // set up cookies
 const cookies = new Cookies();
-const serverUrl = 'http://localhost:4000';
+// const serverUrl = 'http://localhost:4000';
+const serverUrl = 'http://35.159.33.7:4000/api'
 
 export async function handleAuthSSR(ctx) {
   let token = null;

@@ -241,8 +241,8 @@ let initialState = {
         subCategory: '',
         customers: '',
         salesChannels: '',
-        // webistes: [{value: ''}],
-        // socials: [{value: ''}]
+        webistes: [{value: ''}],
+        socials: [{value: ''}]
     },
     freelancePaymentsFrom: 'Austria',
     freelancePaymentsTo: 'Austria',
@@ -250,8 +250,8 @@ let initialState = {
     freelanceTxSurvey: {},
     axiosFreelancePersonalBranch: false,
 }
-initialState = Object.assign(initialState, { page: 5, branch: 2, accountType: 'personal',
-    freelanceBranch: [false, false], })
+// initialState = Object.assign(initialState, { page: 1, branch: 1, accountType: 'freelance',
+//     freelanceBranch: [false, true], })
 
 
 const MultiForm: React.FC = () => {
@@ -270,7 +270,8 @@ const MultiForm: React.FC = () => {
     const axiosSurvey = React.useRef(state.axiosSurvey)
     const axiosFreelanceBusinessBranch = React.useRef(state.axiosFreelanceBusinessBranch)
     const axiosFreelancePersonalBranch = React.useRef(state.axiosFreelancePersonalBranch)
-    const url = 'http://localhost:4000/api'
+    // const url = 'http://localhost:4000/api'
+    const url = 'http://35.159.33.7:4000/api'
     const headers =  { headers: { 'Authorization': cookies.get('token') } }
 
     React.useEffect(() => {
